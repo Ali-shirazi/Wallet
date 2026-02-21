@@ -1,38 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\FinalWALLET\\Wallet\\",
+  "WorkspaceRootPath": "D:\\MyProject\\Wallet\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{48B9BD94-0A70-492E-97FB-873CCAA7B1E4}|Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj|c:\\finalwallet\\wallet\\wallet.shared.contract\\viewmodels\\transactiontypevm\\transactiontypeforwalletvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{48B9BD94-0A70-492E-97FB-873CCAA7B1E4}|Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj|solutionrelative:wallet.shared.contract\\viewmodels\\transactiontypevm\\transactiontypeforwalletvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\MyProject\\Wallet\\Wallet.Shared.Contract\\ViewModels\\TransactionTypeVm\\TransactionTypeForWalletVm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Wallet.Shared.Contract\\ViewModels\\TransactionTypeVm\\TransactionTypeForWalletVm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CF538522-8499-407E-BE01-4C1634CB616A}|Wallet.Presentation\\Wallet.Presentation.csproj|c:\\finalwallet\\wallet\\wallet.presentation\\views\\wallet\\_sharj.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{CF538522-8499-407E-BE01-4C1634CB616A}|Wallet.Presentation\\Wallet.Presentation.csproj|solutionrelative:wallet.presentation\\views\\wallet\\_sharj.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\MyProject\\Wallet\\Wallet.Presentation\\Views\\TransactionType\\_Update.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Wallet.Presentation\\Views\\TransactionType\\_Update.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CF538522-8499-407E-BE01-4C1634CB616A}|Wallet.Presentation\\Wallet.Presentation.csproj|c:\\finalwallet\\wallet\\wallet.presentation\\controllers\\walletcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CF538522-8499-407E-BE01-4C1634CB616A}|Wallet.Presentation\\Wallet.Presentation.csproj|solutionrelative:wallet.presentation\\controllers\\walletcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\MyProject\\Wallet\\Wallet.Api.Application\\Services\\WalletService\\WalletService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Wallet.Api.Application\\Services\\WalletService\\WalletService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2332F429-E77F-4337-A5C4-B283E4D16013}|Wallet.Api\\Wallet.Api.csproj|c:\\finalwallet\\wallet\\wallet.api\\controllers\\walletcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2332F429-E77F-4337-A5C4-B283E4D16013}|Wallet.Api\\Wallet.Api.csproj|solutionrelative:wallet.api\\controllers\\walletcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\MyProject\\Wallet\\Wallet.Api\\Controllers\\WalletController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Wallet.Api\\Controllers\\WalletController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CF538522-8499-407E-BE01-4C1634CB616A}|Wallet.Presentation\\Wallet.Presentation.csproj|c:\\finalwallet\\wallet\\wallet.presentation\\views\\wallet\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{CF538522-8499-407E-BE01-4C1634CB616A}|Wallet.Presentation\\Wallet.Presentation.csproj|solutionrelative:wallet.presentation\\views\\wallet\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\MyProject\\Wallet\\Wallet.Service\\Services\\WalletServices\\WalletService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Wallet.Service\\Services\\WalletServices\\WalletService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CF538522-8499-407E-BE01-4C1634CB616A}|Wallet.Presentation\\Wallet.Presentation.csproj|c:\\finalwallet\\wallet\\wallet.presentation\\views\\transactiontype\\_update.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{CF538522-8499-407E-BE01-4C1634CB616A}|Wallet.Presentation\\Wallet.Presentation.csproj|solutionrelative:wallet.presentation\\views\\transactiontype\\_update.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\MyProject\\Wallet\\Wallet.Presentation\\Controllers\\WalletController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Wallet.Presentation\\Controllers\\WalletController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F5BC2A18-E23D-4199-971B-102851306837}|Wallet.Api.Application\\Wallet.Api.Application.csproj|c:\\finalwallet\\wallet\\wallet.api.application\\services\\walletservice\\walletservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F5BC2A18-E23D-4199-971B-102851306837}|Wallet.Api.Application\\Wallet.Api.Application.csproj|solutionrelative:wallet.api.application\\services\\walletservice\\walletservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\MyProject\\Wallet\\Wallet.Presentation\\Views\\Wallet\\_Sharj.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Wallet.Presentation\\Views\\Wallet\\_Sharj.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{941CE8DE-2566-4B2C-9A4D-B19FF69DF553}|Wallet.Service\\Wallet.Service.csproj|c:\\finalwallet\\wallet\\wallet.service\\services\\walletservices\\walletservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{941CE8DE-2566-4B2C-9A4D-B19FF69DF553}|Wallet.Service\\Wallet.Service.csproj|solutionrelative:wallet.service\\services\\walletservices\\walletservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\MyProject\\Wallet\\Wallet.Presentation\\Views\\Wallet\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Wallet.Presentation\\Views\\Wallet\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,11 +42,99 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 25,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "Name": "ST:140:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:139:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:137:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:11:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:12:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:142:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:141:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:145:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:144:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:136:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:138:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Bookmark",
@@ -60,9 +148,9 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "TransactionTypeForWalletVm.cs",
-              "DocumentMoniker": "C:\\FinalWALLET\\Wallet\\Wallet.Shared.Contract\\ViewModels\\TransactionTypeVm\\TransactionTypeForWalletVm.cs",
+              "DocumentMoniker": "D:\\MyProject\\Wallet\\Wallet.Shared.Contract\\ViewModels\\TransactionTypeVm\\TransactionTypeForWalletVm.cs",
               "RelativeDocumentMoniker": "Wallet.Shared.Contract\\ViewModels\\TransactionTypeVm\\TransactionTypeForWalletVm.cs",
-              "ToolTip": "C:\\FinalWALLET\\Wallet\\Wallet.Shared.Contract\\ViewModels\\TransactionTypeVm\\TransactionTypeForWalletVm.cs",
+              "ToolTip": "D:\\MyProject\\Wallet\\Wallet.Shared.Contract\\ViewModels\\TransactionTypeVm\\TransactionTypeForWalletVm.cs",
               "RelativeToolTip": "Wallet.Shared.Contract\\ViewModels\\TransactionTypeVm\\TransactionTypeForWalletVm.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -71,11 +159,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "_Update.cshtml",
-              "DocumentMoniker": "C:\\FinalWALLET\\Wallet\\Wallet.Presentation\\Views\\TransactionType\\_Update.cshtml",
+              "DocumentMoniker": "D:\\MyProject\\Wallet\\Wallet.Presentation\\Views\\TransactionType\\_Update.cshtml",
               "RelativeDocumentMoniker": "Wallet.Presentation\\Views\\TransactionType\\_Update.cshtml",
-              "ToolTip": "C:\\FinalWALLET\\Wallet\\Wallet.Presentation\\Views\\TransactionType\\_Update.cshtml",
+              "ToolTip": "D:\\MyProject\\Wallet\\Wallet.Presentation\\Views\\TransactionType\\_Update.cshtml",
               "RelativeToolTip": "Wallet.Presentation\\Views\\TransactionType\\_Update.cshtml",
               "ViewState": "AgIAACkAAAAAAAAAAAAAAEAAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -83,11 +171,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "WalletService.cs",
-              "DocumentMoniker": "C:\\FinalWALLET\\Wallet\\Wallet.Api.Application\\Services\\WalletService\\WalletService.cs",
+              "DocumentMoniker": "D:\\MyProject\\Wallet\\Wallet.Api.Application\\Services\\WalletService\\WalletService.cs",
               "RelativeDocumentMoniker": "Wallet.Api.Application\\Services\\WalletService\\WalletService.cs",
-              "ToolTip": "C:\\FinalWALLET\\Wallet\\Wallet.Api.Application\\Services\\WalletService\\WalletService.cs",
+              "ToolTip": "D:\\MyProject\\Wallet\\Wallet.Api.Application\\Services\\WalletService\\WalletService.cs",
               "RelativeToolTip": "Wallet.Api.Application\\Services\\WalletService\\WalletService.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAEwCYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -97,9 +185,9 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "WalletController.cs",
-              "DocumentMoniker": "C:\\FinalWALLET\\Wallet\\Wallet.Api\\Controllers\\WalletController.cs",
+              "DocumentMoniker": "D:\\MyProject\\Wallet\\Wallet.Api\\Controllers\\WalletController.cs",
               "RelativeDocumentMoniker": "Wallet.Api\\Controllers\\WalletController.cs",
-              "ToolTip": "C:\\FinalWALLET\\Wallet\\Wallet.Api\\Controllers\\WalletController.cs",
+              "ToolTip": "D:\\MyProject\\Wallet\\Wallet.Api\\Controllers\\WalletController.cs",
               "RelativeToolTip": "Wallet.Api\\Controllers\\WalletController.cs",
               "ViewState": "AgIAACkAAAAAAAAAAAAIwDcAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -107,11 +195,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "WalletService.cs",
-              "DocumentMoniker": "C:\\FinalWALLET\\Wallet\\Wallet.Service\\Services\\WalletServices\\WalletService.cs",
+              "DocumentMoniker": "D:\\MyProject\\Wallet\\Wallet.Service\\Services\\WalletServices\\WalletService.cs",
               "RelativeDocumentMoniker": "Wallet.Service\\Services\\WalletServices\\WalletService.cs",
-              "ToolTip": "C:\\FinalWALLET\\Wallet\\Wallet.Service\\Services\\WalletServices\\WalletService.cs",
+              "ToolTip": "D:\\MyProject\\Wallet\\Wallet.Service\\Services\\WalletServices\\WalletService.cs",
               "RelativeToolTip": "Wallet.Service\\Services\\WalletServices\\WalletService.cs",
               "ViewState": "AgIAACgAAAAAAAAAAAAgwDQAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -119,11 +207,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "WalletController.cs",
-              "DocumentMoniker": "C:\\FinalWALLET\\Wallet\\Wallet.Presentation\\Controllers\\WalletController.cs",
+              "DocumentMoniker": "D:\\MyProject\\Wallet\\Wallet.Presentation\\Controllers\\WalletController.cs",
               "RelativeDocumentMoniker": "Wallet.Presentation\\Controllers\\WalletController.cs",
-              "ToolTip": "C:\\FinalWALLET\\Wallet\\Wallet.Presentation\\Controllers\\WalletController.cs",
+              "ToolTip": "D:\\MyProject\\Wallet\\Wallet.Presentation\\Controllers\\WalletController.cs",
               "RelativeToolTip": "Wallet.Presentation\\Controllers\\WalletController.cs",
               "ViewState": "AgIAAEEAAAAAAAAAAAAiwEoAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -131,11 +219,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "_Sharj.cshtml",
-              "DocumentMoniker": "C:\\FinalWALLET\\Wallet\\Wallet.Presentation\\Views\\Wallet\\_Sharj.cshtml",
+              "DocumentMoniker": "D:\\MyProject\\Wallet\\Wallet.Presentation\\Views\\Wallet\\_Sharj.cshtml",
               "RelativeDocumentMoniker": "Wallet.Presentation\\Views\\Wallet\\_Sharj.cshtml",
-              "ToolTip": "C:\\FinalWALLET\\Wallet\\Wallet.Presentation\\Views\\Wallet\\_Sharj.cshtml",
+              "ToolTip": "D:\\MyProject\\Wallet\\Wallet.Presentation\\Views\\Wallet\\_Sharj.cshtml",
               "RelativeToolTip": "Wallet.Presentation\\Views\\Wallet\\_Sharj.cshtml",
               "ViewState": "AgIAACEAAAAAAAAAAAAgwDYAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -143,11 +231,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\FinalWALLET\\Wallet\\Wallet.Presentation\\Views\\Wallet\\Index.cshtml",
+              "DocumentMoniker": "D:\\MyProject\\Wallet\\Wallet.Presentation\\Views\\Wallet\\Index.cshtml",
               "RelativeDocumentMoniker": "Wallet.Presentation\\Views\\Wallet\\Index.cshtml",
-              "ToolTip": "C:\\FinalWALLET\\Wallet\\Wallet.Presentation\\Views\\Wallet\\Index.cshtml",
+              "ToolTip": "D:\\MyProject\\Wallet\\Wallet.Presentation\\Views\\Wallet\\Index.cshtml",
               "RelativeToolTip": "Wallet.Presentation\\Views\\Wallet\\Index.cshtml",
               "ViewState": "AgIAAJUAAAAAAAAAAAAgwAUBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",

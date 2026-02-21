@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\FinalWALLET\\Wallet\\Wallet.Api.Application\\Wallet.Api.Application.csproj": {}
+    "D:\\MyProject\\Wallet\\Wallet.Api.Application\\Wallet.Api.Application.csproj": {}
   },
   "projects": {
-    "C:\\FinalWALLET\\Wallet\\Wallet.Api.Application\\Wallet.Api.Application.csproj": {
+    "D:\\MyProject\\Wallet\\Wallet.Api.Application\\Wallet.Api.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\FinalWALLET\\Wallet\\Wallet.Api.Application\\Wallet.Api.Application.csproj",
+        "projectUniqueName": "D:\\MyProject\\Wallet\\Wallet.Api.Application\\Wallet.Api.Application.csproj",
         "projectName": "Wallet.Api.Application",
-        "projectPath": "C:\\FinalWALLET\\Wallet\\Wallet.Api.Application\\Wallet.Api.Application.csproj",
-        "packagesPath": "C:\\Users\\rhine\\.nuget\\packages\\",
-        "outputPath": "C:\\FinalWALLET\\Wallet\\Wallet.Api.Application\\obj\\",
+        "projectPath": "D:\\MyProject\\Wallet\\Wallet.Api.Application\\Wallet.Api.Application.csproj",
+        "packagesPath": "C:\\Users\\Mohammad\\.nuget\\packages\\",
+        "outputPath": "D:\\MyProject\\Wallet\\Wallet.Api.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\rhine\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mohammad\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,18 +26,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\rhine\\.nuget\\packages": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Users\\Mohammad\\.nuget\\packages": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\FinalWALLET\\Wallet\\Wallet.Api.Infrastructure\\Wallet.Api.Infrastructure.csproj": {
-                "projectPath": "C:\\FinalWALLET\\Wallet\\Wallet.Api.Infrastructure\\Wallet.Api.Infrastructure.csproj"
+              "D:\\MyProject\\Wallet\\Wallet.Api.Infrastructure\\Wallet.Api.Infrastructure.csproj": {
+                "projectPath": "D:\\MyProject\\Wallet\\Wallet.Api.Infrastructure\\Wallet.Api.Infrastructure.csproj"
               },
-              "C:\\FinalWALLET\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj": {
-                "projectPath": "C:\\FinalWALLET\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj"
+              "D:\\MyProject\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj": {
+                "projectPath": "D:\\MyProject\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj"
               }
             }
           }
@@ -109,24 +108,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.310/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\FinalWALLET\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj": {
+    "D:\\MyProject\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\FinalWALLET\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj",
+        "projectUniqueName": "D:\\MyProject\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj",
         "projectName": "Wallet.Api.Domain",
-        "projectPath": "C:\\FinalWALLET\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj",
-        "packagesPath": "C:\\Users\\rhine\\.nuget\\packages\\",
-        "outputPath": "C:\\FinalWALLET\\Wallet\\Wallet.Api.Domain\\obj\\",
+        "projectPath": "D:\\MyProject\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj",
+        "packagesPath": "C:\\Users\\Mohammad\\.nuget\\packages\\",
+        "outputPath": "D:\\MyProject\\Wallet\\Wallet.Api.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\rhine\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mohammad\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -135,8 +134,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\rhine\\.nuget\\packages": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Users\\Mohammad\\.nuget\\packages": {}
         },
         "frameworks": {
           "net9.0": {
@@ -207,24 +205,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.310/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\FinalWALLET\\Wallet\\Wallet.Api.Infrastructure\\Wallet.Api.Infrastructure.csproj": {
+    "D:\\MyProject\\Wallet\\Wallet.Api.Infrastructure\\Wallet.Api.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\FinalWALLET\\Wallet\\Wallet.Api.Infrastructure\\Wallet.Api.Infrastructure.csproj",
+        "projectUniqueName": "D:\\MyProject\\Wallet\\Wallet.Api.Infrastructure\\Wallet.Api.Infrastructure.csproj",
         "projectName": "Wallet.Api.Infrastructure",
-        "projectPath": "C:\\FinalWALLET\\Wallet\\Wallet.Api.Infrastructure\\Wallet.Api.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\rhine\\.nuget\\packages\\",
-        "outputPath": "C:\\FinalWALLET\\Wallet\\Wallet.Api.Infrastructure\\obj\\",
+        "projectPath": "D:\\MyProject\\Wallet\\Wallet.Api.Infrastructure\\Wallet.Api.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Mohammad\\.nuget\\packages\\",
+        "outputPath": "D:\\MyProject\\Wallet\\Wallet.Api.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\rhine\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mohammad\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -233,18 +231,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\rhine\\.nuget\\packages": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Users\\Mohammad\\.nuget\\packages": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\FinalWALLET\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj": {
-                "projectPath": "C:\\FinalWALLET\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj"
+              "D:\\MyProject\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj": {
+                "projectPath": "D:\\MyProject\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj"
               },
-              "C:\\FinalWALLET\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj": {
-                "projectPath": "C:\\FinalWALLET\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj"
+              "D:\\MyProject\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj": {
+                "projectPath": "D:\\MyProject\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj"
               }
             }
           }
@@ -312,24 +309,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.310/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\FinalWALLET\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj": {
+    "D:\\MyProject\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\FinalWALLET\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj",
+        "projectUniqueName": "D:\\MyProject\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj",
         "projectName": "Wallet.Shared.Contract",
-        "projectPath": "C:\\FinalWALLET\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj",
-        "packagesPath": "C:\\Users\\rhine\\.nuget\\packages\\",
-        "outputPath": "C:\\FinalWALLET\\Wallet\\Wallet.Shared.Contract\\obj\\",
+        "projectPath": "D:\\MyProject\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj",
+        "packagesPath": "C:\\Users\\Mohammad\\.nuget\\packages\\",
+        "outputPath": "D:\\MyProject\\Wallet\\Wallet.Shared.Contract\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\rhine\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mohammad\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -338,8 +335,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\rhine\\.nuget\\packages": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Users\\Mohammad\\.nuget\\packages": {}
         },
         "frameworks": {
           "net9.0": {
@@ -410,7 +406,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.310/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
