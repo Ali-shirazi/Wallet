@@ -107,3 +107,8 @@ packages/
 /Wallet.Shared.Contract/obj/Release/net9.0/Wallet.Shared.Contract.GeneratedMSBuildEditorConfig.editorconfig
 /.vs/Wallet/DesignTimeBuild/.dtbcache.v2
 /.vs/Wallet/v17/.futdcache.v2
+/.vs/VSWorkspaceState.json
+/.vs/Wallet/v17/DocumentLayout.json
+/Wallet.Api.Serivce/obj/Debug/net9.0/Wallet.Serivce.GeneratedMSBuildEditorConfig.editorconfig
+/Wallet.Api.Serivce/obj/Release/net9.0/Wallet.Serivce.GeneratedMSBuildEditorConfig.editorconfig
+/Wallet.Service/obj/Release/net9.0/Wallet.Service.GeneratedMSBuildEditorConfig.editorconfig
