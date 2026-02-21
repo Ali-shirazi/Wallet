@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "j4XOw3sXgeY=",
+  "dgSpecHash": "zz2qQ1+GDKY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\rhine\\Source\\Repos\\Wallet\\Wallet.Api\\Wallet.Api.csproj",
+  "projectFilePath": "C:\\Users\\rhine\\source\\repos\\Wallet\\Wallet.Api\\Wallet.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rhine\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\rhine\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

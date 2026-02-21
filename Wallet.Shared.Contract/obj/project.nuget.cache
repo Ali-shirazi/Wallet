@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OpHtOLcAOx8=",
+  "dgSpecHash": "+nqL5f3I9cg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\rhine\\Source\\Repos\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj",
+  "projectFilePath": "C:\\Users\\rhine\\source\\repos\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rhine\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\rhine\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

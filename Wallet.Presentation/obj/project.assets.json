@@ -9622,9 +9622,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rhine\\Source\\Repos\\Wallet\\Wallet.Presentation\\Wallet.Presentation.csproj",
+      "projectUniqueName": "C:\\Users\\rhine\\source\\repos\\Wallet\\Wallet.Presentation\\Wallet.Presentation.csproj",
       "projectName": "Wallet.Presentation",
-      "projectPath": "C:\\Users\\rhine\\Source\\Repos\\Wallet\\Wallet.Presentation\\Wallet.Presentation.csproj",
+      "projectPath": "C:\\Users\\rhine\\source\\repos\\Wallet\\Wallet.Presentation\\Wallet.Presentation.csproj",
       "packagesPath": "C:\\Users\\rhine\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\rhine\\Source\\Repos\\Wallet\\Wallet.Presentation\\obj\\",
       "projectStyle": "PackageReference",
@@ -9648,11 +9648,11 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\rhine\\Source\\Repos\\Wallet\\Wallet.Service\\Wallet.Service.csproj": {
-              "projectPath": "C:\\Users\\rhine\\Source\\Repos\\Wallet\\Wallet.Service\\Wallet.Service.csproj"
+            "C:\\Users\\rhine\\source\\repos\\Wallet\\Wallet.Service\\Wallet.Service.csproj": {
+              "projectPath": "C:\\Users\\rhine\\source\\repos\\Wallet\\Wallet.Service\\Wallet.Service.csproj"
             },
-            "C:\\Users\\rhine\\Source\\Repos\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj": {
-              "projectPath": "C:\\Users\\rhine\\Source\\Repos\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj"
+            "C:\\Users\\rhine\\source\\repos\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj": {
+              "projectPath": "C:\\Users\\rhine\\source\\repos\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj"
             }
           }
         }

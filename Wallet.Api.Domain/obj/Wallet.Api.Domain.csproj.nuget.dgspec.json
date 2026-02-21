@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rhine\\Source\\Repos\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj": {}
+    "C:\\Users\\rhine\\source\\repos\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rhine\\Source\\Repos\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj": {
+    "C:\\Users\\rhine\\source\\repos\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rhine\\Source\\Repos\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\rhine\\source\\repos\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj",
         "projectName": "Wallet.Api.Domain",
-        "projectPath": "C:\\Users\\rhine\\Source\\Repos\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj",
+        "projectPath": "C:\\Users\\rhine\\source\\repos\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj",
         "packagesPath": "C:\\Users\\rhine\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\rhine\\Source\\Repos\\Wallet\\Wallet.Api.Domain\\obj\\",
         "projectStyle": "PackageReference",
