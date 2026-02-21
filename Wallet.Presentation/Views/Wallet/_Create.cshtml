@@ -1,0 +1,78 @@
+﻿@model Wallet.Shared.Contract.ViewModels.WalletVm.WalletVm
+
+<form id="CreateWallet" class="w-100">
+
+    <!-- ردیف اول -->
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <label for="Name" class="form-label">نام کیف پول</label>
+            <input type="text" class="form-control shadow rounded-2 text-right" asp-for="Name">
+        </div>
+        <div class="col-md-3">
+            <label for="SubSysId" class="form-label">نام شرکت</label>
+            <input type="text" class="form-control shadow rounded-2 text-right" asp-for="SubSysId">
+        </div>
+
+    </div>
+
+    <!-- ردیف دوم -->
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <label for="Balance" class="form-label">موجودی</label>
+            <input type="number" class="form-control shadow rounded-2 text-right" asp-for="Balance">
+        </div>
+        <div class="col-md-3">
+            <label for="SaveDate" class="form-label">تاریخ</label>
+            <input type="text" class="form-control shadow rounded-2 text-right" asp-for="SaveDate">
+        </div>
+    </div>
+
+    <!-- ردیف دکمه ذخیره (پایین و وسط) -->
+
+    <div class="row">
+        <div class="col-12 text-center">
+            <button type="button" onclick="AddWallet()" class="btn btn-success shadow rounded-2">
+                ذخیره
+            </button>
+        </div>
+    </div>
+
+</form>
+
+<script>
+    function AddWallet() {
+        var formData = $('#CreateWallet').serialize();
+
+        // اعتبارسنجی ساده
+        if (!$('#Name').val()) {
+            Swal.fire('هشدار', 'لطفاً نام کیف پول را وارد کنید.', 'warning');
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/Wallet/Create",
+            data: formData,
+            success: function (response) {
+                Swal.fire({
+                    title: 'موفق!',
+                    text: response.Message || "عملیات با موفقیت انجام شد",
+                    icon: 'success',
+                    confirmButtonText: 'تایید'
+                }).then(function () {
+                    // بستن مودال XL
+                    const modalEl = document.getElementById('my_xl_modal');
+                    const modalInstance = bootstrap.Modal.getInstance(modalEl);
+                    if (modalInstance) {
+                        modalInstance.hide();
+                    }
+                    // رفرش صفحه
+                    window.location.href = "/Wallet/Index";
+                });
+            },
+            error: function () {
+                Swal.fire('خطا!', 'سرویس مورد نظر در دسترس نمی‌باشد', 'error');
+            }
+        });
+    }
+</script>

@@ -1,0 +1,89 @@
+﻿@model Wallet.Shared.Contract.ViewModels.TransactionVm.TransactionVm
+
+@{
+    Layout = null;
+}
+<!-- فرم ویرایش -->
+<form id="updateTransaction" class="w-100">
+
+    <!-- اضافه کردن فیلد مخفی برای Id -->
+    <input type="hidden" asp-for="Id" />
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <label for="Name" class="form-label">نام تراکنش</label>
+            <input type="text" class="form-control shadow rounded-2 text-right" asp-for="Name">
+        </div>
+        <div class="col-md-3">
+            <label for="SubSysId" class="form-label">نام کیف پول</label>
+            <input type="text" class="form-control shadow rounded-2 text-right" asp-for="WalletId">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <label for="Name" class="form-label">نوع تراکنش</label>
+            <input type="text" class="form-control shadow rounded-2 text-right" asp-for="TransactionTypeId">
+        </div>
+        <div class="col-md-3">
+            <label for="SubSysId" class="form-label">تاریخ</label>
+            <input type="text" class="form-control shadow rounded-2 text-right" asp-for="SaveDate">
+        </div>
+    </div>
+
+    <!-- دکمه ذخیره -->
+    <div class="text-center mt-3">
+        <button type="button" onclick="updateTransaction()" class="btn btn-success w-25">ذخیره تغییرات</button>
+    </div>
+</form>
+<script>
+    // ذخیره فرم اولیه برای مقایسه
+    var originalFormData = $('#updateTransaction').serialize();
+
+    function updateTransaction() {
+        debugger;
+        var currentFormData = $('#updateTransaction').serialize();
+
+        if (currentFormData === originalFormData) {
+            Swal.fire({
+                title: 'بدون تغییر',
+                text: 'هیچ تغییری در اطلاعات اعمال نشده است.',
+                icon: 'info',
+                confirmButtonText: 'تایید'
+            });
+            return;
+        }
+
+        // ارسال اطلاعات به سرور
+        $.ajax({
+            type: "POST",
+            url: "/Transaction/Update",
+            data: currentFormData,
+            success: function (response) {
+                Swal.fire({
+                    title: 'موفق!',
+                    text: 'اطلاعات با موفقیت ویرایش شد.',
+                    icon: 'success',
+                    confirmButtonText: 'تایید'
+                }).then(function () {
+                    // بستن مودال
+                    const modalEl = document.getElementById('my_lg_modal');
+                    const modalInstance = bootstrap.Modal.getInstance(modalEl);
+                    if (modalInstance) {
+                        modalInstance.hide();
+                    }
+
+                    // رفرش کردن صفحه برای نمایش تغییرات
+                    window.location.reload();
+                });
+            },
+            error: function (xhr, status, error) {
+                Swal.fire({
+                    title: 'خطا!',
+                    text: 'عملیات ویرایش با مشکل مواجه شد.',
+                    icon: 'error',
+                    confirmButtonText: 'تایید'
+                });
+            }
+        });
+    }
+</script>

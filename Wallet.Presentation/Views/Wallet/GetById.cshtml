@@ -1,0 +1,29 @@
+﻿@model Wallet.Shared.Contract.ViewModels.WalletVm.WalletVm
+@{
+    Layout = null;
+}
+
+<!-- تغییر مهم: اضافه کردن dir="rtl" -->
+<div class="w-100 d-flex flex-row justify-content-between mb-2 align-items-center flex-wrap" dir="rtl">
+
+    <div class="d-flex flex-column justify-content-around align-items-start mx-2">
+        <label for="Name" class="m-2"> نام کیف پول</label>
+        <input type="text" class="form-control shadow rounded-2 text-right" asp-for="Name" readonly style="color: var(--input-txt-color); background-color: var(--input-bg-color);">
+    </div>
+
+    <div class="d-flex flex-column justify-content-around align-items-start mx-2">
+        <label for="Keyword" class="m-2">نام شرکت</label>
+        <input type="text" class="form-control shadow rounded-2 text-right" asp-for="SubSysId" readonly style="color: var(--input-txt-color); background-color: var(--input-bg-color);">
+    </div>
+
+    <div class="d-flex flex-column justify-content-around align-items-start mx-2">
+        <label for="Descr" class="m-2">موجودی</label>
+        <input type="text" asp-for="Balance" class="form-control shadow rounded-2 text-right" readonly style="color: var(--input-txt-color); background-color: var(--input-bg-color);">
+    </div>
+
+    <div class="d-flex flex-column justify-content-around align-items-start mx-2">
+        <label for="Descr" class="m-2">تاریخ</label>
+        <input type="text" asp-for="SaveDate" class="form-control shadow rounded-2 text-right" readonly style="color: var(--input-txt-color); background-color: var(--input-bg-color);">
+    </div>
+
+</div>

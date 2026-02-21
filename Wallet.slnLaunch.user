@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "Wallet.Api\\Wallet.Api.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Wallet.Presentation\\Wallet.Presentation.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

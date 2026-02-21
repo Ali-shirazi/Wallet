@@ -1,0 +1,253 @@
+﻿@using Wallet.Shared.Contract.ViewModels.TransactionTypeVm
+@model List<TransactionTypeVm>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- پنل ویرایش -->
+<div id="updateSubSystemEl" class="position-absolute rounded-3 p-2 flex-column justify-content-start align-items-center h-50 w-50"
+     style="z-index: 10; background-color: rgba(15, 15, 15, 0.79); top:25%; right:23%; display:none">
+    <div class="flex-column justify-content-start align-items-center d-flex w-100 h-50">
+        <div class="ms-auto" onclick="$('#updateSubSystemEl').hide(500)">
+            <button class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <h3 class="mx-auto mt-5 text-white text-lg">نام جدید :</h3>
+        <input id="editingInput" class="p-2 w-50" style="background-color:#fff;" />
+    </div>
+    <div class="d-flex flex-row justify-content-around align-items-center w-50 mx-auto">
+        <button onclick="handleUpdateSubSys()" class="btn btn-success"><i class="bi bi-check-lg"></i></button>
+        <button onclick="$('#updateSubSystemEl').hide(500)" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
+    </div>
+</div>
+
+<div class="container-fluid h-100 w-100 mx-auto">
+    <div style="background:#fff; padding:15px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,.1);">
+        <div class="card-body" style="padding-top:2px;">
+            <div class="card-header d-flex flex-row-reverse justify-content-between align-items-center"
+                 style="background-color:#fff; font-size:18px;">
+                <!-- بخش سمت راست: شامل دکمه افزودن و تیتر -->
+                <div class="d-flex align-items-center gap-2">
+                    <!-- دکمه افزودن -->
+                    <a id="Create_Func" onclick="Create_Func()" class="btn btn-success">
+                        <i class="bi bi-plus-lg"></i> افزودن نوع تراکنش
+                    </a>
+                    <!-- تیتر -->
+                    <div class="d-flex align-items-center">
+                        لیست نوع تراکنش ها
+                        <p class="text-info mx-2" id="selectedSysNameElement"></p>
+                    </div>
+                </div>
+                <!-- بخش سمت چپ: دکمه خروج -->
+                <div class="d-none d-lg-flex">
+                    <a href="~/Home/Index" class="btn btn-outline-dark">
+                        بازگشت <i class="bi bi-arrow-return-left"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive shadow-lg rounded mb-5 w-100">
+                    <table id="tbl_subsys" class="cell-border w-100" dir="rtl">
+                        <thead class="bg-primary text-white" style="height:70px;">
+                            <tr>
+                                <th style=" width:7%; border-left:1px solid #fff; border-top-right-radius:10px;  text-align:center">ردیف</th>
+                                <th style="border-left:1px solid #fff; text-align:center">نام تراکنش  </th>
+                                <th style="width:30%; border-left:1px solid #fff;  border-top-left-radius:10px; text-align:center">عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white" style="height:70px">
+                            @foreach (var (item, index) in Model.Select((item, index) => (item, index)))
+                            {
+                                <tr id="@item.Id">
+                                    <td class="text-center border border-secondary">@(index + 1)</td>
+                                    <td class="text-center border border-secondary">@item.Name</td>
+                                    <td class="text-center border border-secondary">
+                                        <!-- دکمه مشاهده (Bootstrap Icon) -->
+                                        <button type="button" onclick="Detail_TransactionType('@item.Id')"
+                                                title="مشاهده"
+                                                style="background:#0d6efd; border:none; padding:10px 15px; border-radius:8px; margin:0 5px; cursor:pointer; color:white; font-size:18px;">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                        <!-- دکمه ویرایش (Bootstrap Icon) -->
+                                        <button type="button" onclick="Edit_TransactionType('@item.Id')"
+                                                title="ویرایش"
+                                                style="background:#ffc107; border:none; padding:10px 15px; border-radius:8px; margin:0 5px; cursor:pointer; color:white; font-size:18px;">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button>
+                                        <!-- دکمه حذف (Bootstrap Icon) -->
+                                        <button type="button" onclick="Del_TransactionType('@item.Id','@item.Name')"
+                                                title="حذف"
+                                                style="background:#dc3545; border:none; padding:10px 15px; border-radius:8px; margin:0 5px; cursor:pointer; color:white; font-size:18px;">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div style="height: 60px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // این کد فقط زمانی اجرا می‌شود که صفحه و تمام کتابخانه‌ها لود شده باشند
+            new DataTable('#tbl_subsys', {
+
+                ordering: false,
+                paging: true,
+                pageLength: 6,
+                layout: {
+                    topStart: 'pageLength',
+                    topEnd: 'search',
+                    bottomStart: 'paging',
+                    bottomEnd: 'info'
+                },
+                language: {
+                    info: 'صفحه _PAGE_ از _PAGES_',
+                    infoEmpty: 'اطلاعاتی موجود نیست',
+                    zeroRecords: 'اطلاعاتی یافت نشد',
+                    search: 'جستجو:',
+                    paginate: {
+                        first: "اول",
+                        last: "آخر",
+                        next: "بعدی",
+                        previous: "قبلی"
+                    }
+                }
+            });
+        });
+
+        function Detail_TransactionType(Id) {
+           debugger;
+            $.ajax({
+                cache: false,
+                type: "Get",
+                url: "/TransactionType/GetById",
+                data: { Id: Id },
+                success: function (data) {
+                    $('#my_lg_modal .modal-body').html(data);
+                    $('#my_lg_modal .modal-title').html("<p>اطلاعات تراکنش</p>");
+                    var modalElement = new bootstrap.Modal(document.getElementById('my_lg_modal'), {
+                        backdrop: 'static',
+                        keyboard: false
+                    });
+                    modalElement.show();
+                },
+                error: function () {
+                    alert('سرویس مورد نظر در دسترس نمی باشد');
+                }
+            });
+        }
+
+        function Del_TransactionType(id, name) {
+            debugger;
+            swal.fire({
+                title: 'حذف',
+                text: "کاربر گرامی، از حذف " + name + " مطمئن هستید؟",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#1672db',
+                cancelButtonColor: '#e33232',
+                confirmButtonText: 'بله',
+                cancelButtonText: 'خیر'
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        cache: false,
+                        type: "POST",
+                        url: "/TransactionType/Delete/" + id,
+                        success: function (data) {
+                            if (data === true) {
+                                swal.fire({
+                                    title: 'حذف!',
+                                    text: "با موفقیت حذف شد",
+                                    icon: 'success',
+                                    confirmButtonText: 'تأیید'
+                                }).then(function () {
+                                    window.location.reload();
+                                });
+                            } else {
+                                swal.fire({
+                                    title: 'هشدار!',
+                                    text: "عملیات حذف با شکست مواجه شد.",
+                                    icon: 'warning',
+                                    confirmButtonText: 'لغو'
+                                });
+                            }
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            console.log(xhr);
+                            swal.fire({
+                                title: 'خطا!',
+                                text: "سرویس مورد نظر در دسترس نمی‌باشد: " + xhr.status,
+                                icon: 'error',
+                                confirmButtonText: 'باشه'
+                            });
+                        }
+                    });
+                }
+            });
+        }
+
+        function Create_Func() {
+            debugger;
+            $.ajax({
+                cache: false,
+                type: "Get",
+                url: "/TransactionType/_Create",
+                success: function (data) {
+                    $('#my_md_modal .modal-body').html(data);
+                     $('#my_md_modal .modal-title').html("افزودن نوع تراکنش");
+                    var modalElement = new bootstrap.Modal(document.getElementById('my_md_modal'), {
+                        backdrop: 'static',
+                        keyboard: false
+                    });
+                    modalElement.show();
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('سرویس مورد نظر در دسترس نمی باشد');
+                }
+            });
+        }
+
+        function Edit_TransactionType(Id) {
+            debugger;
+            $.ajax({
+                cache: false,
+                type: "Get",
+                url: "/TransactionType/_Update",
+                data: { Id: Id },
+                success: function (data) {
+                    // چاپ کردن کل خروجی سرور در کنسول
+                    console.log("خروجی سرور:", data);
+                    // چک کردن اینکه آیا خروجی خالی است یا خیر
+                    if (!data || data.trim() === "") {
+                        alert("خروجی سرور خالی است! احتمالا مدل نال است.");
+                        return;
+                    }
+                    $('#my_lg_modal .modal-body').html(data);
+                    $('#staticBackdropLabelLG').html("فرم به روز رسانی تراکنش");
+                    setTimeout(function () {
+                        var modalElement = document.getElementById('my_lg_modal');
+                        var modalInstance = bootstrap.Modal.getInstance(modalElement);
+                        if (!modalInstance) {
+                            modalInstance = new bootstrap.Modal(modalElement, {
+                                backdrop: 'static',
+                                keyboard: false
+                            });
+                        }
+                        modalInstance.show();
+                    }, 100);
+                },
+                error: function (xhr, status, error) {
+                    alert('خطا در دریافت اطلاعات: ' + error);
+                }
+            });
+        }
+    </script>
+}

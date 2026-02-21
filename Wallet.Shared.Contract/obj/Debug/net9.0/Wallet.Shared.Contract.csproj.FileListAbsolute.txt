@@ -1,0 +1,14 @@
+C:\FinalWALLET\Wallet\Wallet.Shared.Contract\bin\Debug\net9.0\Wallet.Shared.Contract.deps.json
+C:\FinalWALLET\Wallet\Wallet.Shared.Contract\bin\Debug\net9.0\Wallet.Shared.Contract.runtimeconfig.json
+C:\FinalWALLET\Wallet\Wallet.Shared.Contract\bin\Debug\net9.0\Wallet.Shared.Contract.dll
+C:\FinalWALLET\Wallet\Wallet.Shared.Contract\bin\Debug\net9.0\Wallet.Shared.Contract.pdb
+C:\FinalWALLET\Wallet\Wallet.Shared.Contract\obj\Debug\net9.0\Wallet.Shared.Contract.csproj.AssemblyReference.cache
+C:\FinalWALLET\Wallet\Wallet.Shared.Contract\obj\Debug\net9.0\Wallet.Shared.Contract.GeneratedMSBuildEditorConfig.editorconfig
+C:\FinalWALLET\Wallet\Wallet.Shared.Contract\obj\Debug\net9.0\Wallet.Shared.Contract.AssemblyInfoInputs.cache
+C:\FinalWALLET\Wallet\Wallet.Shared.Contract\obj\Debug\net9.0\Wallet.Shared.Contract.AssemblyInfo.cs
+C:\FinalWALLET\Wallet\Wallet.Shared.Contract\obj\Debug\net9.0\Wallet.Shared.Contract.csproj.CoreCompileInputs.cache
+C:\FinalWALLET\Wallet\Wallet.Shared.Contract\obj\Debug\net9.0\Wallet.Shared.Contract.dll
+C:\FinalWALLET\Wallet\Wallet.Shared.Contract\obj\Debug\net9.0\refint\Wallet.Shared.Contract.dll
+C:\FinalWALLET\Wallet\Wallet.Shared.Contract\obj\Debug\net9.0\Wallet.Shared.Contract.pdb
+C:\FinalWALLET\Wallet\Wallet.Shared.Contract\obj\Debug\net9.0\Wallet.Shared.Contract.genruntimeconfig.cache
+C:\FinalWALLET\Wallet\Wallet.Shared.Contract\obj\Debug\net9.0\ref\Wallet.Shared.Contract.dll

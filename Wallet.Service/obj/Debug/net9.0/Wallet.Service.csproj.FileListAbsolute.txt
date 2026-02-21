@@ -1,0 +1,15 @@
+C:\FinalWALLET\Wallet\Wallet.Service\bin\Debug\net9.0\Wallet.Service.deps.json
+C:\FinalWALLET\Wallet\Wallet.Service\bin\Debug\net9.0\Wallet.Service.dll
+C:\FinalWALLET\Wallet\Wallet.Service\bin\Debug\net9.0\Wallet.Service.pdb
+C:\FinalWALLET\Wallet\Wallet.Service\bin\Debug\net9.0\Wallet.Shared.Contract.dll
+C:\FinalWALLET\Wallet\Wallet.Service\bin\Debug\net9.0\Wallet.Shared.Contract.pdb
+C:\FinalWALLET\Wallet\Wallet.Service\obj\Debug\net9.0\Wallet.Service.csproj.AssemblyReference.cache
+C:\FinalWALLET\Wallet\Wallet.Service\obj\Debug\net9.0\Wallet.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\FinalWALLET\Wallet\Wallet.Service\obj\Debug\net9.0\Wallet.Service.AssemblyInfoInputs.cache
+C:\FinalWALLET\Wallet\Wallet.Service\obj\Debug\net9.0\Wallet.Service.AssemblyInfo.cs
+C:\FinalWALLET\Wallet\Wallet.Service\obj\Debug\net9.0\Wallet.Service.csproj.CoreCompileInputs.cache
+C:\FinalWALLET\Wallet\Wallet.Service\obj\Debug\net9.0\Wallet.S.9D58F7C8.Up2Date
+C:\FinalWALLET\Wallet\Wallet.Service\obj\Debug\net9.0\Wallet.Service.dll
+C:\FinalWALLET\Wallet\Wallet.Service\obj\Debug\net9.0\refint\Wallet.Service.dll
+C:\FinalWALLET\Wallet\Wallet.Service\obj\Debug\net9.0\Wallet.Service.pdb
+C:\FinalWALLET\Wallet\Wallet.Service\obj\Debug\net9.0\ref\Wallet.Service.dll

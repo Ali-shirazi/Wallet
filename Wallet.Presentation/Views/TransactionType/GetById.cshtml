@@ -1,0 +1,13 @@
+﻿@model Wallet.Shared.Contract.ViewModels.TransactionTypeVm.TransactionTypeVm
+
+<div class="w-100 d-flex flex-row justify-content-between mb-2 align-items-center flex-wrap">
+    <div class="d-flex flex-column justify-content-around align-items-start mx-2">
+        <label for="Name" class="m-2"> نوع تراکنش</label>
+        <input type="text" class="form-control shadow rounded-2 text-right" asp-for="Name" readonly style="color: var(--input-txt-color); background-color: var(--input-bg-color);">
+    </div>
+    <div class="d-flex flex-column justify-content-around align-items-start mx-2">
+        <label for="Descr" class="m-2">تاریخ</label>
+        <input type="text" asp-for="SaveDate" class="form-control shadow rounded-2 text-right" readonly style="color: var(--input-txt-color); background-color: var(--input-bg-color);">
+    </div>
+
+</div>

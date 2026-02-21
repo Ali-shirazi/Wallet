@@ -1,0 +1,70 @@
+﻿@model Wallet.Shared.Contract.ViewModels.TransactionTypeVm.TransactionTypeVm
+
+<form id="CreateTransactionType" class="w-100">
+    <div class="d-flex flex-column justify-content-around align-items-start mx-2">
+        <label for="Name" class="m-2">نوع تراکنش</label>
+        <!-- readonly حذف شد و رنگ‌ها اصلاح شدند -->
+        <input type="text"
+               class="form-control shadow rounded-2 text-right"
+               asp-for="Name"
+               style="color: #000; background-color: #fff;"
+               placeholder="نام را وارد کنید">
+    </div>
+
+    <div class="d-flex flex-column justify-content-around align-items-start mx-2">
+        <label for="Descr" class="m-2">تاریخ</label>
+        <!-- readonly حذف شد و رنگ‌ها اصلاح شدند -->
+        <input type="text"
+               asp-for="SaveDate"
+               class="form-control shadow rounded-2 text-right"
+               style="color: #000; background-color: #fff;"
+               placeholder="تاریخ را وارد کنید">
+    </div>
+
+    <!-- ردیف دکمه ذخیره -->
+    <div class="row mt-3">
+        <div class="col-12 text-center">
+            <button type="button" onclick="AddTransactionType()" class="btn btn-success px-5 py-2 shadow">
+                <i class="bi bi-check-lg"></i> ذخیره اطلاعات
+            </button>
+        </div>
+    </div>
+</form>
+
+<script>
+    function AddTransactionType() {
+        var formData = $('#CreateTransactionType').serialize();
+
+        // اعتبارسنجی ساده
+        if (!$('#Name').val()) {
+            Swal.fire('هشدار', 'لطفاً نام کیف پول را وارد کنید.', 'warning');
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/TransactionType/Create",
+            data: formData,
+            success: function (response) {
+                Swal.fire({
+                    title: 'موفق!',
+                    text: response.Message || "عملیات با موفقیت انجام شد",
+                    icon: 'success',
+                    confirmButtonText: 'تایید'
+                }).then(function () {
+                    // بستن مودال XL
+                    const modalEl = document.getElementById('my_xl_modal');
+                    const modalInstance = bootstrap.Modal.getInstance(modalEl);
+                    if (modalInstance) {
+                        modalInstance.hide();
+                    }
+                    // رفرش صفحه
+                    window.location.href = "/TransactionType/Index";
+                });
+            },
+            error: function () {
+                Swal.fire('خطا!', 'سرویس مورد نظر در دسترس نمی‌باشد', 'error');
+            }
+        });
+    }
+</script>

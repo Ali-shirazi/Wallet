@@ -1,0 +1,39 @@
+﻿@using Wallet.Shared.Contract.ViewModels.TransactionVm
+@model List<TransactionVm>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-warning text-center">
+        تراکنشی برای این کیف پول ثبت نشده است
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>ردیف</th>
+                    <th>نام تراکنش</th>
+                    <th>مبلغ</th>
+                    <th>تاریخ</th>
+                    <th>نام کاربر</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var (item, index) in Model.Select((item, index) => (item, index)))
+                {
+                    <tr>
+                        <td>@(index + 1)</td>
+                        <td>@item.Name</td>
+                        <td>@item.Amount</td>
+                        <td>@item.SaveDate.ToString("yyyy/MM/dd HH:mm")</td>
+                        <td>@item.UserSaver</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+
