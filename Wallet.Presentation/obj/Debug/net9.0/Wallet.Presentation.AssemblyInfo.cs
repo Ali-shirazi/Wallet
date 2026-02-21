@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Wallet.Presentation")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6971bc8f596521f6277169e4aaa88d12db2b7b6a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+96c3bb563287b9a230a3405a6024217ee16f851c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Wallet.Presentation")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Wallet.Presentation")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
