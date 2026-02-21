@@ -13,42 +13,38 @@ namespace Wallet.Api.Controllers
 
 
         [HttpPost("AddWallet")]
-        public async Task<ActionResult<int>> AddWallet(WalletDto dto)
+        public async Task<ActionResult<ResponseDto<int>>> AddWallet(WalletDto dto)
         {
             var result = await _service.Create(dto);
 
-            return Json(result);
+            return Json(result.Data);
         }
 
         [HttpGet("GetAllWallets")]
-        public async Task<ActionResult<List<WalletResultDto>>> GetAllWallets()
+        public async Task<ActionResult<ResponseDto<List<WalletResultDto>>>> GetAllWallets()
         {
             var result = await _service.GetAll();
-            return Json(result);
+            return Json(result.Data);
         }
         [HttpPost("UpdateWallet")]
-        public async Task<ActionResult<bool>> UpdateWallet(WalletResultDto dto)
+        public async Task<ActionResult<ResponseDto<bool>>> UpdateWallet(WalletResultDto dto)
         {
             var result = await _service.Update(dto);
-            return Json(result);
+            return Json(result.Data);
         }
         [HttpPost("DeleteWallet/{id}")]
-        public async Task<ActionResult<bool>> DeleteWallet(Guid id)
+        public async Task<ActionResult<ResponseDto<bool>>> DeleteWallet(Guid id)
         {
 
             var result = await _service.Delete(id);
-            return Json(result);
+            return Json(result.Data);
         }
 
         [HttpGet("GetByIdWallet/{id}")]
-        public async Task<ActionResult<WalletResultDto>> GetByIdWallet(Guid id)
+        public async Task<ActionResult<ResponseDto<WalletResultDto>>> GetByIdWallet(Guid id)
         {
             var result = await _service.GetById(id);
-
-            if (result == null)
-                return NotFound();
-
-            return Json(result);
+            return Json(result.Data);
         }
         [HttpPost("CreateTransaction")]
         public async Task<ActionResult<bool>> CreateTransaction(CreateWalletTransactionDto dto)
