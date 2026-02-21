@@ -1,0 +1,47 @@
+﻿/* B-NAZANIN-Font */
+@font-face {
+    font-family: 'Bnazanin';
+    src: url('../Font/BNAZANB.TTF') format('truetype');
+    font-style: normal;
+}
+
+html, body {
+    font-size: 14px;
+    direction: rtl;
+    font-family: Bnazanin !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    background-color: #005b8f !important;
+}
+
+div, a, h1, h2, h3, h4, h5, h6, p, span, input, button, select, textarea, .error {
+    font-family: Bnazanin !important;
+    font-weight: bold;
+}
+
+.bg-blue {
+    background-color: #005b8f !important;
+    color: white !important;
+}
+
+.bg-teal {
+    background-color: #008080 !important;
+    color: white !important;
+}
+
+.bg-smokewhite {
+    background-color: rgb(245, 245, 245);
+}
+
+body {
+    font-size: 14px;
+    direction: rtl;
+    font-family: Bnazanin, sans-serif !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    background-color: #005b8f;
+}
+
+.container {
+    padding: 20px;
+}

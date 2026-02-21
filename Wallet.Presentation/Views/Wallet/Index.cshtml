@@ -4,6 +4,28 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<!-- اضافه کردن لینک Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<style>
+    /* استایل‌های سفارشی برای چیدمان پاورقی جدول */
+
+    /* 1. انتقال اطلاعات (صفحه 1 از 1) به سمت راست */
+    .dataTables_wrapper .dataTables_info {
+        text-align: right !important;
+        padding-right: 10px;
+        float: right; /* برای اطمینان از چسبیدن به راست */
+    }
+
+    /* 2. انتقال دکمه‌های پیجینیشن (قبلی/بعدی) به سمت چپ */
+    .dataTables_wrapper .dataTables_paginate {
+        text-align: left !important;
+        padding-left: 10px;
+        float: left; /* برای اطمینان از چسبیدن به چپ */
+    }
+</style>
+
 <!-- پنل ویرایش -->
 <div id="updateSubSystemEl" class="position-absolute rounded-3 p-2 flex-column justify-content-start align-items-center h-50 w-50"
      style="z-index: 10; background-color: rgba(15, 15, 15, 0.79); top:25%; right:23%; display:none">
@@ -20,40 +42,48 @@
     </div>
 </div>
 
-<div class="container-fluid h-100 w-100 mx-auto">
+<!-- تغییر: عرض کانتینر به 1100px تنظیم شد -->
+<div class="container-fluid mx-auto" style="max-width: 1100px;">
     <div style="background:#fff; padding:15px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,.1);">
         <div class="card-body" style="padding-top:2px;">
-            <div class="card-header d-flex flex-row-reverse justify-content-between align-items-center"
+
+            <!-- هدر کارت: چیدمان اصلاح شده -->
+            <div class="card-header d-flex flex-row justify-content-between align-items-center position-relative"
                  style="background-color:#fff; font-size:18px;">
-                <!-- بخش سمت راست: شامل دکمه افزودن و تیتر -->
+
+                <!-- بخش سمت راست: دکمه افزودن -->
                 <div class="d-flex align-items-center gap-2">
-                    <!-- دکمه افزودن -->
                     <a id="Create_Func" onclick="Create_Func()" class="btn btn-success">
                         <i class="bi bi-plus-lg"></i> افزودن کیف پول
                     </a>
-                    <!-- تیتر -->
-                    <div class="d-flex align-items-center">
-                        لیست کیف پول ها
-                        <p class="text-info mx-2" id="selectedSysNameElement"></p>
-                    </div>
                 </div>
+
+                <!-- بخش وسط: عنوان -->
+                <div class="position-absolute start-50 translate-middle-x">
+                    لیست کیف پول ها
+                </div>
+
                 <!-- بخش سمت چپ: دکمه خروج -->
-                <div class="d-none d-lg-flex">
+                <div class="d-none d-lg-flex ms-auto">
                     <a href="~/Home/Index" class="btn btn-outline-dark">
                         بازگشت <i class="bi bi-arrow-return-left"></i>
                     </a>
                 </div>
             </div>
+
             <div class="card-body">
                 <div class="table-responsive shadow-lg rounded mb-5 w-100">
                     <table id="tbl_subsys" class="cell-border w-100" dir="rtl">
                         <thead class="bg-primary text-white" style="height:70px;">
                             <tr>
                                 <th style=" width:7%; border-left:1px solid #fff; border-top-right-radius:10px;  text-align:center">ردیف</th>
-                                <th style="border-left:1px solid #fff; text-align:center">نام تراکنش  </th>
-                                <th style="width:30%; border-left:1px solid #fff;  border-top-left-radius:10px; text-align:center">عملیات</th>
+                                <!-- تغییر: عرض نام کیف پول روی 40% تنظیم شد -->
+                                <th style="width:40%; border-left:1px solid #fff; text-align:center">نام کیف پول  </th>
+                                <!-- تغییر: عرض عملیات روی 53% تنظیم شد -->
+                                <th style="width:53%; border-left:1px solid #fff;  border-top-left-radius:10px; text-align:center">عملیات</th>
                             </tr>
                         </thead>
+                        <!-- کلاس bg-white برای سفید ماندن ردیف‌ها -->
                         <tbody class="bg-white" style="height:70px">
                             @foreach (var (item, index) in Model.Select((item, index) => (item, index)))
                             {
@@ -61,35 +91,36 @@
                                     <td class="text-center border border-secondary">@(index + 1)</td>
                                     <td class="text-center border border-secondary">@item.Name</td>
                                     <td class="text-center border border-secondary">
-                                        <!-- دکمه مشاهده (Bootstrap Icon) -->
+                                        <!-- دکمه مشاهده -->
                                         <button type="button" onclick="Detail_Wallet('@item.Id')"
                                                 title="مشاهده"
                                                 style="background:#0d6efd; border:none; padding:10px 15px; border-radius:8px; margin:0 5px; cursor:pointer; color:white; font-size:18px;">
                                             <i class="bi bi-eye"></i>
                                         </button>
-                                        <!-- دکمه ویرایش (Bootstrap Icon) -->
+                                        <!-- دکمه ویرایش -->
                                         <button type="button" onclick="Edit_Wallet('@item.Id')"
                                                 title="ویرایش"
                                                 style="background:#ffc107; border:none; padding:10px 15px; border-radius:8px; margin:0 5px; cursor:pointer; color:white; font-size:18px;">
                                             <i class="bi bi-pencil-square"></i>
                                         </button>
-                                        <!-- دکمه حذف (Bootstrap Icon) -->
+                                        <!-- دکمه حذف -->
                                         <button type="button" onclick="Del_Wallet('@item.Id','@item.Name')"
                                                 title="حذف"
                                                 style="background:#dc3545; border:none; padding:10px 15px; border-radius:8px; margin:0 5px; cursor:pointer; color:white; font-size:18px;">
                                             <i class="bi bi-trash"></i>
                                         </button>
-
+                                        <!-- دکمه شارژ -->
                                         <button type="button" onclick="Sharj_Wallet('@item.Id')"
                                                 data-id="@item.Id"
                                                 title="شارژ"
                                                 style="background:green; border:none; padding:10px 15px; border-radius:8px; margin:0 5px; cursor:pointer; color:white; font-size:18px;">
-                                            <i class="bi bi-trash"></i>
+                                            <i class="bi bi-wallet2"></i>
                                         </button>
+                                        <!-- دکمه تراکنش ها -->
                                         <button type="button" onclick="Transactions('@item.Id')"
                                                 title="تراکنش ها"
-                                                style="background:green; border:none; padding:10px 15px; border-radius:8px; margin:0 5px; cursor:pointer; color:white; font-size:18px;">
-                                            <i class="bi bi-trash"></i>
+                                                style="background:#008080; border:none; padding:10px 15px; border-radius:8px; margin:0 5px; cursor:pointer; color:white; font-size:18px;">
+                                            <i class="bi bi-list-ul"></i>
                                         </button>
                                     </td>
                                 </tr>
@@ -106,17 +137,15 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            // این کد فقط زمانی اجرا می‌شود که صفحه و تمام کتابخانه‌ها لود شده باشند
             new DataTable('#tbl_subsys', {
-
                 ordering: false,
                 paging: true,
                 pageLength: 6,
                 layout: {
-                    topStart: 'pageLength',
-                    topEnd: 'search',
-                    bottomStart: 'paging',
-                    bottomEnd: 'info'
+                    topStart: 'search',       // جستجو در سمت راست
+                    topEnd: 'pageLength',     // تعداد در صفحه در سمت چپ
+                    bottomStart: 'info',      // اطلاعات (صفحه 1 از 1) در سمت راست
+                    bottomEnd: 'paging'       // دکمه‌ها (قبلی/بعدی) در سمت چپ
                 },
                 language: {
                     info: 'صفحه _PAGE_ از _PAGES_',
@@ -142,7 +171,7 @@
                 data: { Id: Id },
                 success: function (data) {
                     $('#my_lg_modal .modal-body').html(data);
-                    $('#my_lg_modal .modal-title').html("<p>اطلاعات تراکنش</p>");
+                    $('#my_lg_modal .modal-title').html("<p>اطلاعات کیف پول</p>");
                     var modalElement = new bootstrap.Modal(document.getElementById('my_lg_modal'), {
                         backdrop: 'static',
                         keyboard: false
@@ -213,7 +242,7 @@
                 url: "/Wallet/_Create",
                 success: function (data) {
                     $('#my_md_modal .modal-body').html(data);
-                     $('#my_md_modal .modal-title').html("افزودن نوع تراکنش");
+                     $('#my_md_modal .modal-title').html("افزودن کیف پول");
                     var modalElement = new bootstrap.Modal(document.getElementById('my_md_modal'), {
                         backdrop: 'static',
                         keyboard: false
@@ -242,12 +271,12 @@
                         return;
                     }
                     $('#my_lg_modal .modal-body').html(data);
-                    $('#staticBackdropLabelLG').html("فرم به روز رسانی تراکنش");
+                    $('#staticBackdropLabelLG').html("فرم به روز رسانی کیف پول");
                     setTimeout(function () {
                         var modalElement = document.getElementById('my_lg_modal');
                         var modalInstance = bootstrap.Modal.getInstance(modalElement);
                         if (!modalInstance) {
-                            modalInstance = new bootstrap.Modal(modalElement, {
+                            modalInstance = new bootstrap.Modal(document.getElementById('my_lg_modal'), {
                                 backdrop: 'static',
                                 keyboard: false
                             });
@@ -260,35 +289,27 @@
                 }
             });
         }
-        function Sharj_Wallet(walletId) {
 
+        function Sharj_Wallet(walletId) {
             $.ajax({
                 cache: false,
                 type: "GET",
                 url: "/Wallet/_Sharj",
                 data: { walletId: walletId },
                 success: function (data) {
-
                     $('#my_md_modal .modal-body').html("");
                     $('#my_md_modal .modal-body').html(data);
-                    $('#my_md_modal .modal-title').html("شارژ");
-
+                    $('#my_md_modal .modal-title').html("شارژ کیف پول");
                     var modalElement = new bootstrap.Modal(document.getElementById('my_md_modal'));
                     modalElement.show();
-
-                    // setTimeout(function () {
-                    //     $('#walletIdHidden').val(walletId);
-                    //     $('#walletIdDisplay').text(walletId);
-                    // }, 0);
+                },
+                error: function () {
+                    alert('سرویس مورد نظر در دسترس نمی باشد');
                 }
             });
         }
 
-
-
-
-
-             function Transactions(Id) {
+        function Transactions(Id) {
            debugger;
             $.ajax({
                 cache: false,

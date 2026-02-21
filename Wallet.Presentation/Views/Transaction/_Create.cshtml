@@ -1,59 +1,53 @@
 ﻿@model Wallet.Shared.Contract.ViewModels.TransactionVm.TransactionVm
-
 <form id="CreateTransaction" class="w-100">
-
     <!-- ردیف اول -->
     <div class="row mb-3">
         <!-- نام تراکنش -->
-        <div class="col-md-3">
+        <div class="col-md-6">
             <label for="Name" class="form-label">نام تراکنش</label>
             <input type="text" class="form-control shadow rounded-2 text-right" asp-for="Name">
         </div>
-
         <!-- نام کیف پول (WalletId) -->
-        <div class="col-md-3">
+        <div class="col-md-6">
             <label for="WalletId" class="form-label">نام کیف پول</label>
             <input type="text" class="form-control shadow rounded-2 text-right" asp-for="WalletId">
         </div>
-
-
     </div>
-
     <!-- ردیف دوم -->
     <div class="row mb-3">
-        <div class="col-md-3">
+        <div class="col-md-6">
             <label for="TransactionTypeId" class="form-label">نوع تراکنش</label>
             <input type="text" asp-for="TransactionTypeId" class="form-control shadow rounded-2">
         </div>
-
         <!-- تاریخ -->
-        <div class="col-md-3">
+        <div class="col-md-6">
             <label for="SaveDate" class="form-label">تاریخ</label>
             <input type="text" asp-for="SaveDate" class="form-control shadow rounded-2 ">
         </div>
     </div>
-
-    <!-- ردیف دکمه ذخیره (پایین و وسط) -->
+    <!-- ردیف دکمه‌ها -->
     <div class="row">
-        <div class="col-12 text-center">
+        <div class="col-12 text-center d-flex justify-content-center gap-2">
+            <!-- دکمه ثبت -->
             <button type="button" onclick="AddTransaction()" class="btn btn-success shadow rounded-2">
-                ذخیره تراکنش
+                ثبت
+            </button>
+            <!-- دکمه انصراف -->
+            <button type="button" onclick="closeModal('my_md_modal')" class="btn btn-secondary">
+                انصراف
             </button>
         </div>
     </div>
-
 </form>
 
 <script>
     function AddTransaction() {
         var formData = $('#CreateTransaction').serialize();
-
         // اعتبارسنجی ساده
         if (!$('#Name').val()) {
-            Swal.fire('هشدار', 'لطفاً نام کیف پول را وارد کنید.', 'warning');
+            Swal.fire('هشدار', 'لطفاً نام تراکنش را وارد کنید.', 'warning');
             return;
         }
-
         $.ajax({
             type: "POST",
             url: "/Transaction/Create",
@@ -65,7 +59,7 @@
                     icon: 'success',
                     confirmButtonText: 'تایید'
                 }).then(function () {
-                    // بستن مودال XL
+                    // بستن مودال
                     const modalEl = document.getElementById('my_xl_modal');
                     const modalInstance = bootstrap.Modal.getInstance(modalEl);
                     if (modalInstance) {
@@ -79,5 +73,14 @@
                 Swal.fire('خطا!', 'سرویس مورد نظر در دسترس نمی‌باشد', 'error');
             }
         });
+    }
+
+    function CancelTransaction() {
+        // بستن مودال بدون انجام عملیات
+        const modalEl = document.getElementById('my_xl_modal');
+        const modalInstance = bootstrap.Modal.getInstance(modalEl);
+        if (modalInstance) {
+            modalInstance.hide();
+        }
     }
 </script>
