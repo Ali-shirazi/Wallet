@@ -24,6 +24,14 @@ node_modules/
 *.swp
 Thumbs.db
 Desktop.ini
-
+# Build output folders (case-insensitive)
+**/bin/
+**/obj/
+**/Debug/
+**/Release/
+**/[Bb]in/
+**/[Oo]bj/
+**/[Dd]ebug/
+**/[Rr]elease/
 # NuGet packages
 packages/
