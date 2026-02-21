@@ -105,3 +105,5 @@ packages/
 /Wallet.Shared.Contract/obj/Release/net9.0/Wallet.Shared.Contract.AssemblyInfo.cs
 /Wallet.Shared.Contract/obj/Release/net9.0/Wallet.Shared.Contract.AssemblyInfoInputs.cache
 /Wallet.Shared.Contract/obj/Release/net9.0/Wallet.Shared.Contract.GeneratedMSBuildEditorConfig.editorconfig
+/.vs/Wallet/DesignTimeBuild/.dtbcache.v2
+/.vs/Wallet/v17/.futdcache.v2
