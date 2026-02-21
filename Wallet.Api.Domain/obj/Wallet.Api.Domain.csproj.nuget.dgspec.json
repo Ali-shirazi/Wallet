@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rhine\\source\\repos\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj": {}
+    "H:\\projects\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rhine\\source\\repos\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj": {
+    "H:\\projects\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rhine\\source\\repos\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj",
+        "projectUniqueName": "H:\\projects\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj",
         "projectName": "Wallet.Api.Domain",
-        "projectPath": "C:\\Users\\rhine\\source\\repos\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj",
-        "packagesPath": "C:\\Users\\rhine\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rhine\\Source\\Repos\\Wallet\\Wallet.Api.Domain\\obj\\",
+        "projectPath": "H:\\projects\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj",
+        "packagesPath": "C:\\Users\\ariya\\.nuget\\packages\\",
+        "outputPath": "H:\\projects\\Wallet\\Wallet.Api.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\rhine\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ariya\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\rhine\\.nuget\\packages": {},
+          "C:\\Users\\ariya\\.nuget\\packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -98,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.310/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
