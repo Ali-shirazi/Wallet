@@ -1,0 +1,27 @@
+# .NET / Visual Studio files
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.vsidx
+*.sln.docstates
+*.csproj.user
+*.rptproj.rsuser
+*.dbmdl
+*.jfm
+*.pfx
+*.publishproj
+*.pubxml
+*.publishsettings
+node_modules/
+*.log
+*.tmp
+*.bak
+*.swp
+Thumbs.db
+Desktop.ini
+
+# NuGet packages
+packages/
