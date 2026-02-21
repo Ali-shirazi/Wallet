@@ -5380,23 +5380,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ariya\\.nuget\\packages\\": {},
+    "C:\\Users\\asus\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\projects\\Wallet\\Wallet.Api.Infrastructure\\Wallet.Api.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\asus\\source\\repos\\Ali-shirazi\\Wallet\\Wallet.Api.Infrastructure\\Wallet.Api.Infrastructure.csproj",
       "projectName": "Wallet.Api.Infrastructure",
-      "projectPath": "H:\\projects\\Wallet\\Wallet.Api.Infrastructure\\Wallet.Api.Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\ariya\\.nuget\\packages\\",
-      "outputPath": "H:\\projects\\Wallet\\Wallet.Api.Infrastructure\\obj\\",
+      "projectPath": "C:\\Users\\asus\\source\\repos\\Ali-shirazi\\Wallet\\Wallet.Api.Infrastructure\\Wallet.Api.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\asus\\source\\repos\\Ali-shirazi\\Wallet\\Wallet.Api.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\ariya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5405,18 +5405,18 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Users\\ariya\\.nuget\\packages": {},
+        "C:\\Users\\asus\\.dotnet": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "H:\\projects\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj": {
-              "projectPath": "H:\\projects\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj"
+            "C:\\Users\\asus\\source\\repos\\Ali-shirazi\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj": {
+              "projectPath": "C:\\Users\\asus\\source\\repos\\Ali-shirazi\\Wallet\\Wallet.Api.Domain\\Wallet.Api.Domain.csproj"
             },
-            "H:\\projects\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj": {
-              "projectPath": "H:\\projects\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj"
+            "C:\\Users\\asus\\source\\repos\\Ali-shirazi\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj": {
+              "projectPath": "C:\\Users\\asus\\source\\repos\\Ali-shirazi\\Wallet\\Wallet.Shared.Contract\\Wallet.Shared.Contract.csproj"
             }
           }
         }
@@ -5484,7 +5484,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
