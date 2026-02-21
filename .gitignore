@@ -112,3 +112,6 @@ packages/
 /Wallet.Api.Serivce/obj/Debug/net9.0/Wallet.Serivce.GeneratedMSBuildEditorConfig.editorconfig
 /Wallet.Api.Serivce/obj/Release/net9.0/Wallet.Serivce.GeneratedMSBuildEditorConfig.editorconfig
 /Wallet.Service/obj/Release/net9.0/Wallet.Service.GeneratedMSBuildEditorConfig.editorconfig
+/Wallet.Presentation/obj/Release/net9.0/Wallet.Presentation.assets.cache
+/Wallet.Service/obj/Release/net9.0/Wallet.Service.assets.cache
+/Wallet.Shared.Contract/obj/Release/net9.0/Wallet.Shared.Contract.assets.cache
