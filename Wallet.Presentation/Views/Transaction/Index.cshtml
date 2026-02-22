@@ -214,7 +214,7 @@
                 url: "/Transaction/_Create",
                 success: function (data) {
                     $('#my_md_modal .modal-body').html(data);
-                     $('#my_md_modal .modal-title').html("افزودن تراکنش");
+                    $('#my_md_modal .modal-title').html("افزودن تراکنش");
                     var modalElement = new bootstrap.Modal(document.getElementById('my_md_modal'), {
                         backdrop: 'static',
                         keyboard: false
@@ -227,33 +227,21 @@
             });
         }
         function Edit_Transaction(Id) {
-            debugger;
             $.ajax({
                 cache: false,
                 type: "Get",
                 url: "/Transaction/_Update",
                 data: { Id: Id },
                 success: function (data) {
-                    // چاپ کردن کل خروجی سرور در کنسول
-                    console.log("خروجی سرور:", data);
-                    // چک کردن اینکه آیا خروجی خالی است یا خیر
-                    if (!data || data.trim() === "") {
-                        alert("خروجی سرور خالی است! احتمالا مدل نال است.");
-                        return;
-                    }
-                    $('#my_lg_modal .modal-body').html(data);
-                    $('#staticBackdropLabelLG').html("فرم به روز رسانی تراکنش");
-                    setTimeout(function () {
-                        var modalElement = document.getElementById('my_lg_modal');
-                        var modalInstance = bootstrap.Modal.getInstance(modalElement);
-                        if (!modalInstance) {
-                            modalInstance = new bootstrap.Modal(modalElement, {
-                                backdrop: 'static',
-                                keyboard: false
-                            });
-                        }
-                        modalInstance.show();
-                    }, 100);
+
+                     $('#my_lg_modal .modal-body').html(data);
+                     $('#my_lg_modal .modal-title').html("<p>فرم به روز رسانی تراکنش</p>");
+
+                     var modalElement = new bootstrap.Modal(document.getElementById('my_lg_modal'), {
+                         backdrop: 'static',
+                         keyboard: false
+                     });
+                     modalElement.show();
                 },
                 error: function (xhr, status, error) {
                     alert('خطا در دریافت اطلاعات: ' + error);
