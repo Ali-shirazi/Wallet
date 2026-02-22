@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Wallet.Api.Domain.WalletDbModel;
@@ -10,7 +11,10 @@ using Wallet.Api.Infrastructure.Repositories.WalletTransactionRepository;
 using Wallet.Api.Infrastructure.Repositories.WalletTransactionTypeRepository;
 using Wallet.Shared.Contract.Dtos;
 using Wallet.Shared.Contract.ResultDtos;
+using Wallet.Shared.Contract.ViewModels.WalletVm;
 using Wallet.Shared.Contract.WalletTransaction;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 
 namespace Wallet.Api.Application.Services.WalletService
@@ -20,6 +24,7 @@ namespace Wallet.Api.Application.Services.WalletService
         private readonly IWalletRepository _walletRepository;
         private readonly IWalletTransactionRepository _wallettransactionRepository;
         private readonly IWalletTransactionTypeRepository _walletTransactionTypeRepository;
+        readonly HttpClient _client = new HttpClient();
         private readonly IMapper _mapper;
 
         public WalletService(
@@ -33,9 +38,37 @@ namespace Wallet.Api.Application.Services.WalletService
             _walletTransactionTypeRepository = walletTransactionTypeRepository;
             _mapper = mapper;
         }
+        public async Task<List<SubSystemVM>> GetAllSubSys(string serverName)
+        {
+            try
+            {
+                _client.BaseAddress = new Uri(serverName);
+                _client.DefaultRequestHeaders.Accept.Clear();
+                _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
 
-            public async Task<ResponseDto<bool>> CreateTransaction(CreateWalletTransactionDto dto)
+                var response = await _client.GetAsync("api/SubSystem/GetAll");
+
+                response.EnsureSuccessStatusCode();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<List<SubSystemVM>>(responseContent);
+                }
+                else
+                {
+                    throw new Exception("Error in GetAll");
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+        public async Task<ResponseDto<bool>> CreateTransaction(CreateWalletTransactionDto dto)
             {
                  try
                  {

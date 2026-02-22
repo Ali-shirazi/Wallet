@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Wallet.Service.Services.TransactionService;
 using Wallet.Service.Services.TransactionTypeService;
 using Wallet.Service.Services.WalletServices;
@@ -63,8 +64,14 @@ namespace Wallet.Presentation.Controllers
         [HttpGet]
         public async Task<IActionResult> _Create()
         {
-            var res = new WalletVm();
-            return PartialView(res);
+
+            var res = await _WalletService.GetAllSubSystem(_serverName);
+
+            var subSystemList = new SelectList(res, "Id", "Title");
+
+            ViewBag.SubSystemList = subSystemList;
+
+            return PartialView();
         }
         [HttpGet]
         public async Task<IActionResult> _Sharj(Guid walletId)

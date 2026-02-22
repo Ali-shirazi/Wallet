@@ -15,6 +15,34 @@ namespace Wallet.Service.Services.WalletServices
     public  class WalletService: IWalletService
     {
         readonly HttpClient _client = new HttpClient();
+        public async Task<List<SubSystemVM>> GetAllSubSystem(string serverName)
+        {
+            try
+            {
+                _client.BaseAddress = new Uri(serverName);
+                _client.DefaultRequestHeaders.Accept.Clear();
+                _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+
+                var response = await _client.GetAsync("api/Wallet/GetAllSubSys");
+
+                response.EnsureSuccessStatusCode();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<List<SubSystemVM>>(responseContent);
+                }
+                else
+                {
+                    throw new Exception("Error in GetAllSubSys");
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
         public async Task<int> Create(string serverName, WalletVm data)
         {

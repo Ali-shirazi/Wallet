@@ -1,20 +1,26 @@
 ﻿@model Wallet.Shared.Contract.ViewModels.WalletVm.WalletVm
 
 <form id="CreateWallet" class="w-100">
-
     <!-- ردیف اول -->
     <div class="row mb-3">
         <div class="col-md-6">
             <label for="Name" class="form-label">نام کیف پول</label>
             <input type="text" class="form-control shadow rounded-2 text-right" asp-for="Name">
         </div>
+
+        <!-- تغییرات در این بخش -->
         <div class="col-md-6">
             <label for="SubSysId" class="form-label">نام شرکت</label>
-            <input type="text" class="form-control shadow rounded-2 text-right" asp-for="SubSysId">
+            <!-- استفاده از تگ select برای نمایش لیست کشویی -->
+            <select asp-for="SubSysId"
+                    class="form-control shadow rounded-2 text-right"
+                    asp-items="ViewBag.SubSystemList">
+                <option value="">انتخاب کنید...</option>
+            </select>
         </div>
+        <!-- پایان تغییرات -->
 
     </div>
-
     <!-- ردیف دوم -->
     <div class="row mb-3">
         <div class="col-md-6">
@@ -34,26 +40,22 @@
             </button>
         </div>
     </div>
-
-    
-
 </form>
 
+<!-- اسکریپت شما بدون تغییر باقی می‌ماند، چون ID المنت همچنان SubSysId است -->
 <script>
     function AddWallet() {
-
         var formData = {
             Name: $('#Name').val(),
-            SubSysId: $('#SubSysId').val(),
+            SubSysId: $('#SubSysId').val(), // این خط مقدار انتخاب شده از دراپ‌داون را می‌گیرد
             Balance: $('#Balance').val(),
             SaveDate: $('#SaveDate').val()
         };
-
+        // ... باقی کد اسکریپت بدون تغییر ...
         if (!formData.Name || formData.Name.trim() === "") {
             Swal.fire('هشدار', 'لطفاً نام کیف پول را وارد کنید.', 'warning');
             return;
         }
-
         if (formData.Balance === "" || formData.Balance === null) {
             Swal.fire('هشدار', 'لطفاً موجودی را وارد کنید.', 'warning');
             return;
@@ -61,9 +63,8 @@
         $.ajax({
             type: "POST",
             url: "/Wallet/Create",
-
             data: formData,
-                success: function (data) {
+            success: function (data) {
                 if (data) {
                     swal.fire({
                         title:'موفق!',
@@ -83,7 +84,6 @@
                 }
             },
             error: function (xhr, status, error) {
-          
                 var errorMessage = 'سرویس مورد نظر در دسترس نمی‌باشد';
                 if (xhr.responseJSON && xhr.responseJSON.Message) {
                     errorMessage = xhr.responseJSON.Message;
