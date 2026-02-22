@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Wallet.Shared.Contract.Dtos;
 using Wallet.Shared.Contract.ResultDtos;
-using Wallet.Shared.Contract.ViewModels.WalletVm;
 using Wallet.Shared.Contract.WalletTransaction;
 
 

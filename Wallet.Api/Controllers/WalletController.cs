@@ -3,7 +3,6 @@ using Microsoft.Extensions.Configuration; // این فضای نام را اضا�
 using Wallet.Api.Application.Services.WalletService;
 using Wallet.Shared.Contract.Dtos;
 using Wallet.Shared.Contract.ResultDtos;
-using Wallet.Shared.Contract.ViewModels.WalletVm;
 using Wallet.Shared.Contract.WalletTransaction;
 
 namespace Wallet.Api.Controllers

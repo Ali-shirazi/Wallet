@@ -86,11 +86,11 @@ namespace Wallet.Presentation.Controllers
         }
         public async Task<IActionResult> _Transactionwithdrawal(Guid walletId)
         {
-            var res = await _TransactionTypeService.GetTransactionForWallet(_serverName);
-            var mylist = new List<TransactionTypeForWalletVm>();
-
-            ViewBag.WIdd = walletId;
-            return PartialView(res);
+            var res = await _WalletService.GetAllSubSystem(_serverName);
+            // اصلاحیه: استفاده از "Name" به جای "Title" یا "SystemName"
+            var subSystemList = new SelectList(res, "Id", "Name");
+            ViewBag.SubSystemList = subSystemList;
+            return PartialView();
 
 
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wallet.Shared.Contract.Dtos;
+using Wallet.Shared.Contract.ResultDtos;
 using Wallet.Shared.Contract.ViewModels.WalletVm;
 using Wallet.Shared.Contract.WalletTransaction;
 
@@ -18,7 +19,7 @@ namespace Wallet.Service.Services.WalletServices
         Task<bool> Delete(string serverName, Guid Id);
         Task<bool> CreateTransaction(string serverName, CreateWalletTransactionDto data);
         Task<bool> Transactionwithdrawal(string serverName, CreateWalletTransactionDto data);
-        Task<List<SubSystemVM>> GetAllSubSystem(string serverName);
+        Task<List<SubSysVM>> GetAllSubSystem(string serverName); // تغییر یافته
 
     }
 }

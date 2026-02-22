@@ -7,6 +7,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Wallet.Shared.Contract.Dtos;
+using Wallet.Shared.Contract.ResultDtos;
 using Wallet.Shared.Contract.ViewModels.WalletVm;
 using Wallet.Shared.Contract.WalletTransaction;
 
@@ -15,7 +16,7 @@ namespace Wallet.Service.Services.WalletServices
     public  class WalletService: IWalletService
     {
         readonly HttpClient _client = new HttpClient();
-        public async Task<List<SubSystemVM>> GetAllSubSystem(string serverName)
+        public async Task<List<SubSysVM>> GetAllSubSystem(string serverName)
         {
             try
             {
@@ -31,7 +32,7 @@ namespace Wallet.Service.Services.WalletServices
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<List<SubSystemVM>>(responseContent);
+                    return JsonConvert.DeserializeObject<List<SubSysVM>>(responseContent);
                 }
                 else
                 {

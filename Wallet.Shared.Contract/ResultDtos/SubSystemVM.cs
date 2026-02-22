@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wallet.Shared.Contract.ViewModels.WalletVm
+namespace Wallet.Shared.Contract.ResultDtos
 {
     public class SubSystemVM
     {
-        public Guid? SysId { get; set; }
-        public string SystemName { get; set; } = null!;
+        public Guid? Id { get; set; }
+        public string? Name { get; set; }
     }
 }

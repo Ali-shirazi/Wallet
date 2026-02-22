@@ -11,7 +11,6 @@ using Wallet.Api.Infrastructure.Repositories.WalletTransactionRepository;
 using Wallet.Api.Infrastructure.Repositories.WalletTransactionTypeRepository;
 using Wallet.Shared.Contract.Dtos;
 using Wallet.Shared.Contract.ResultDtos;
-using Wallet.Shared.Contract.ViewModels.WalletVm;
 using Wallet.Shared.Contract.WalletTransaction;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -46,24 +45,34 @@ namespace Wallet.Api.Application.Services.WalletService
                 _client.DefaultRequestHeaders.Accept.Clear();
                 _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-
-                var response = await _client.GetAsync("api/SubSystem/GetAll");
-
-                response.EnsureSuccessStatusCode();
+                // نکته: آدرس را طبق بحث قبلی اصلاح کنید (مثلا SubSystem/GetAll)
+                var response = await _client.GetAsync("SubSystem/GetAll");
 
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<List<SubSystemVM>>(responseContent);
+
+                    // چک کردن اینکه محتوا خالی نیست
+                    if (string.IsNullOrEmpty(responseContent))
+                    {
+                        return new List<SubSystemVM>(); // برگرداندن لیست خالی به جای خطا
+                    }
+
+                    // اگر سرویس SSO لیست خالی برمی‌گرداند، نباید اینجا کرش کند
+                    return JsonConvert.DeserializeObject<List<SubSystemVM>>(responseContent) ?? new List<SubSystemVM>();
                 }
                 else
                 {
-                    throw new Exception("Error in GetAll");
+                    // لاگ گرفتن خطا برای دیباگ
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"Error calling SSO: {response.StatusCode} - {errorContent}");
+                    return new List<SubSystemVM>(); // برگرداندن لیست خالی
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Console.WriteLine($"Exception: {ex.Message}");
+                return new List<SubSystemVM>(); // جلوگیری از کرش کردن کل برنامه
             }
         }
 
