@@ -17,6 +17,7 @@ C:\FinalWALLET\Wallet\Wallet.Api.Infrastructure\obj\Debug\net9.0\refint\Wallet.A
 C:\FinalWALLET\Wallet\Wallet.Api.Infrastructure\obj\Debug\net9.0\Wallet.Api.Infrastructure.pdb
 C:\FinalWALLET\Wallet\Wallet.Api.Infrastructure\obj\Debug\net9.0\Wallet.Api.Infrastructure.genruntimeconfig.cache
 C:\FinalWALLET\Wallet\Wallet.Api.Infrastructure\obj\Debug\net9.0\ref\Wallet.Api.Infrastructure.dll
+<<<<<<< HEAD
 C:\Users\ariya\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\bin\Debug\net9.0\Wallet.Api.Infrastructure.deps.json
 C:\Users\ariya\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\bin\Debug\net9.0\Wallet.Api.Infrastructure.runtimeconfig.json
 C:\Users\ariya\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\bin\Debug\net9.0\Wallet.Api.Infrastructure.dll
@@ -37,3 +38,25 @@ C:\Users\ariya\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\obj\Deb
 C:\Users\ariya\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\obj\Debug\net9.0\Wallet.Api.Infrastructure.pdb
 C:\Users\ariya\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\obj\Debug\net9.0\Wallet.Api.Infrastructure.genruntimeconfig.cache
 C:\Users\ariya\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\obj\Debug\net9.0\ref\Wallet.Api.Infrastructure.dll
+=======
+C:\Users\rhine\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\bin\Debug\net9.0\Wallet.Api.Infrastructure.deps.json
+C:\Users\rhine\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\bin\Debug\net9.0\Wallet.Api.Infrastructure.runtimeconfig.json
+C:\Users\rhine\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\bin\Debug\net9.0\Wallet.Api.Infrastructure.dll
+C:\Users\rhine\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\bin\Debug\net9.0\Wallet.Api.Infrastructure.pdb
+C:\Users\rhine\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\bin\Debug\net9.0\Wallet.Api.Domain.dll
+C:\Users\rhine\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\bin\Debug\net9.0\Wallet.Shared.Contract.dll
+C:\Users\rhine\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\bin\Debug\net9.0\Wallet.Api.Domain.pdb
+C:\Users\rhine\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\bin\Debug\net9.0\Wallet.Shared.Contract.pdb
+C:\Users\rhine\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\obj\Debug\net9.0\Wallet.Api.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\rhine\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\obj\Debug\net9.0\Wallet.Api.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rhine\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\obj\Debug\net9.0\Wallet.Api.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\rhine\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\obj\Debug\net9.0\Wallet.Api.Infrastructure.AssemblyInfo.cs
+C:\Users\rhine\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\obj\Debug\net9.0\Wallet.Api.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\rhine\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\obj\Debug\net9.0\Wallet.Api.Infrastructure.sourcelink.json
+C:\Users\rhine\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\obj\Debug\net9.0\Wallet.A.85B8E50A.Up2Date
+C:\Users\rhine\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\obj\Debug\net9.0\Wallet.Api.Infrastructure.dll
+C:\Users\rhine\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\obj\Debug\net9.0\refint\Wallet.Api.Infrastructure.dll
+C:\Users\rhine\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\obj\Debug\net9.0\Wallet.Api.Infrastructure.pdb
+C:\Users\rhine\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\obj\Debug\net9.0\Wallet.Api.Infrastructure.genruntimeconfig.cache
+C:\Users\rhine\source\repos\Ali-shirazi\Wallet\Wallet.Api.Infrastructure\obj\Debug\net9.0\ref\Wallet.Api.Infrastructure.dll
+>>>>>>> f87054fbfe20b2a93fc71c4296525bffb54cf22e

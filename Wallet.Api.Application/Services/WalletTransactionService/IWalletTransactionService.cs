@@ -10,11 +10,11 @@ namespace Wallet.Api.Application.Services.WalletTransactionService
 {
     public interface IWalletTransactionService
     {
-        Task<List<WalletTransactionResultDto>?> GetAll();
-        Task<int> Create(WalletTransactionDto transactionDto);
-        Task<bool> Update(WalletTransactionResultDto transactionResultDto);
-        Task<bool> Delete(Guid id);
-        Task<WalletTransactionResultDto?> GetById(Guid id);
-        Task<List<WalletTransactionResultDto>?> GetByWalletId(Guid walletId);
+        Task<ResponseDto<List<WalletTransactionResultDto>?>> GetAll();
+        Task<ResponseDto<int>> Create(WalletTransactionDto transactionDto);
+        Task<ResponseDto<bool>> Update(WalletTransactionResultDto transactionResultDto);
+        Task<ResponseDto<bool>> Delete(Guid id);
+        Task<ResponseDto<WalletTransactionResultDto?>> GetById(Guid id);
+        Task<List<WalletTransactionResultDto>> GetByWalletId(Guid walletId);
     }
 }

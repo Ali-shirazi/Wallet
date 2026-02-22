@@ -17,46 +17,46 @@ namespace Wallet.Api.Controllers
         }
 
         [HttpPost("AddTransaction")]
-        public async Task<ActionResult<int>> AddTransaction(WalletTransactionDto dto)
+        public async Task<ActionResult<ResponseDto<int>>> AddTransaction(WalletTransactionDto dto)
         {
             var result = await _service.Create(dto);
 
-            return Json(result);
+            return Json(result.Data);
         }
 
 
 
         [HttpGet("GetAllTransactions")]
-        public async Task<ActionResult<List<WalletTransactionResultDto>>> GetAllTransactions()
+        public async Task<ActionResult<ResponseDto<List<WalletTransactionResultDto>>>> GetAllTransactions()
         {
             var result = await _service.GetAll();
-            return Json(result);
+            return Json(result.Data);
         }
 
         [HttpPost("UpdateTransaction")]
-        public async Task<ActionResult<bool>> UpdateTransaction(WalletTransactionResultDto dto)
+        public async Task<ActionResult<ResponseDto<bool>>> UpdateTransaction(WalletTransactionResultDto dto)
         {
             var result = await _service.Update(dto);
-            return Json(result);
+            return Json(result.Data);
         }
 
 
 
         [HttpPost("DeleteTransactionById/{id}")]
-        public async Task<ActionResult<bool>> DeleteTransactionById(Guid id)
+        public async Task<ActionResult<ResponseDto<bool>>> DeleteTransactionById(Guid id)
         {
             var result = await _service.Delete(id);
-            return Json(result);
+            return Json(result.Data);
         }
 
 
 
         [HttpGet("GetTransactionById/{id}")]
-        public async Task<ActionResult<WalletTransactionResultDto?>> GetTransactionById(Guid id)
+        public async Task<ActionResult<ResponseDto<WalletTransactionResultDto?>>> GetTransactionById(Guid id)
         {
             var result = await _service.GetById(id);
 
-            return Json(result);
+            return Json(result.Data);
         }
 
         [HttpGet("GetTransationByWalletId/{walletId}")]

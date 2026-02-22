@@ -18,46 +18,46 @@ namespace Wallet.Api.Controllers
         }
 
         [HttpPost("AddWalletTransactionType")]
-        public async Task<ActionResult<int>> AddWalletTransactionType(WalletTransactionTypeDto dto)
+        public async Task<ActionResult<ResponseDto<int>>> AddWalletTransactionType(WalletTransactionTypeDto dto)
         {
             var result = await _service.Create(dto);
 
-            return Json(result);
+            return Json(result.Data);
         }
 
 
 
         [HttpGet("GetAllWalletTransactionsType")]
-        public async Task<ActionResult<List<WalletTransactionTypeResultDto>>> GetAllWalletTransactionsType()
+        public async Task<ActionResult<ResponseDto<List<WalletTransactionTypeResultDto>>>> GetAllWalletTransactionsType()
         {
             var result = await _service.GetAll();
-            return Json(result);
+            return Json(result.Data);
         }
 
         [HttpPost("UpdateWalletTransactionsType")]
-        public async Task<ActionResult<bool>> UpdateWalletTransactionsType(WalletTransactionTypeResultDto dto)
+        public async Task<ActionResult<ResponseDto<bool>>> UpdateWalletTransactionsType(WalletTransactionTypeResultDto dto)
         {
             var result = await _service.Update(dto);
-            return Json(result);
+            return Json(result.Data);
         }
 
 
 
         [HttpPost("DeleteWalletTransactionType/{id}")]
-        public async Task<ActionResult<bool>> DeleteWalletTransactionType(Guid id)
+        public async Task<ActionResult<ResponseDto<bool>>> DeleteWalletTransactionType(Guid id)
         {
             var result = await _service.Delete(id);
-            return Json(result);
+            return Json(result.Data);
         }
 
 
 
         [HttpGet("GetWalletTransactionTypeById/{id}")]
-        public async Task<ActionResult<WalletTransactionTypeResultDto>> GetWalletTransactionTypeById(Guid id)
+        public async Task<ActionResult<ResponseDto<WalletTransactionTypeResultDto>>> GetWalletTransactionTypeById(Guid id)
         {
             var result = await _service.GetById(id);
 
-            return Json(result);
+            return Json(result.Data);
         }
 
 

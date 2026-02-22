@@ -15,7 +15,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Int32",
+        "Type": "Wallet.Shared.Contract.ResultDtos.ResponseDto\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -41,7 +41,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Boolean",
+        "Type": "Wallet.Shared.Contract.ResultDtos.ResponseDto\u00601[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -61,7 +61,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[Wallet.Shared.Contract.ResultDtos.WalletTransactionResultDto, Wallet.Shared.Contract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Wallet.Shared.Contract.ResultDtos.ResponseDto\u00601[[System.Collections.Generic.List\u00601[[Wallet.Shared.Contract.ResultDtos.WalletTransactionResultDto, Wallet.Shared.Contract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -87,7 +87,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Wallet.Shared.Contract.ResultDtos.WalletTransactionResultDto",
+        "Type": "Wallet.Shared.Contract.ResultDtos.ResponseDto\u00601[[Wallet.Shared.Contract.ResultDtos.WalletTransactionResultDto, Wallet.Shared.Contract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -139,7 +139,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Boolean",
+        "Type": "Wallet.Shared.Contract.ResultDtos.ResponseDto\u00601[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -165,7 +165,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Int32",
+        "Type": "Wallet.Shared.Contract.ResultDtos.ResponseDto\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -191,7 +191,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Boolean",
+        "Type": "Wallet.Shared.Contract.ResultDtos.ResponseDto\u00601[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -211,7 +211,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[Wallet.Shared.Contract.ResultDtos.WalletTransactionTypeResultDto, Wallet.Shared.Contract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Wallet.Shared.Contract.ResultDtos.ResponseDto\u00601[[System.Collections.Generic.List\u00601[[Wallet.Shared.Contract.ResultDtos.WalletTransactionTypeResultDto, Wallet.Shared.Contract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -247,7 +247,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Wallet.Shared.Contract.ResultDtos.WalletTransactionTypeResultDto",
+        "Type": "Wallet.Shared.Contract.ResultDtos.ResponseDto\u00601[[Wallet.Shared.Contract.ResultDtos.WalletTransactionTypeResultDto, Wallet.Shared.Contract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -273,7 +273,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Boolean",
+        "Type": "Wallet.Shared.Contract.ResultDtos.ResponseDto\u00601[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -299,7 +299,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Int32",
+        "Type": "Wallet.Shared.Contract.ResultDtos.ResponseDto\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -351,7 +351,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Boolean",
+        "Type": "Wallet.Shared.Contract.ResultDtos.ResponseDto\u00601[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -371,7 +371,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[Wallet.Shared.Contract.ResultDtos.WalletResultDto, Wallet.Shared.Contract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Wallet.Shared.Contract.ResultDtos.ResponseDto\u00601[[System.Collections.Generic.List\u00601[[Wallet.Shared.Contract.ResultDtos.WalletResultDto, Wallet.Shared.Contract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -397,7 +397,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Wallet.Shared.Contract.ResultDtos.WalletResultDto",
+        "Type": "Wallet.Shared.Contract.ResultDtos.ResponseDto\u00601[[Wallet.Shared.Contract.ResultDtos.WalletResultDto, Wallet.Shared.Contract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -423,7 +423,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Boolean",
+        "Type": "Wallet.Shared.Contract.ResultDtos.ResponseDto\u00601[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
