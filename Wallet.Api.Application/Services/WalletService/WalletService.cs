@@ -18,14 +18,14 @@ namespace Wallet.Api.Application.Services.WalletService
     public class WalletService : IWalletService
     {
         private readonly IWalletRepository _walletRepository;
-        private readonly IWalletTransactionRepository _wallettransactionRepository; 
-        private readonly IWalletTransactionTypeRepository _walletTransactionTypeRepository; 
+        private readonly IWalletTransactionRepository _wallettransactionRepository;
+        private readonly IWalletTransactionTypeRepository _walletTransactionTypeRepository;
         private readonly IMapper _mapper;
 
         public WalletService(
             IWalletRepository walletRepository,
             IWalletTransactionRepository wallettransactionRepository,
-            IWalletTransactionTypeRepository walletTransactionTypeRepository, 
+            IWalletTransactionTypeRepository walletTransactionTypeRepository,
             IMapper mapper)
         {
             _walletRepository = walletRepository;
@@ -40,50 +40,50 @@ namespace Wallet.Api.Application.Services.WalletService
             //try
             //{
 
-                var transType = _walletTransactionTypeRepository.Get(x => x.Code == dto.TransactionTypeCode).FirstOrDefault();
-                //var transType = transTypeList.FirstOrDefault();
+            var transType = _walletTransactionTypeRepository.Get(x => x.Code == dto.TransactionTypeCode).FirstOrDefault();
+            //var transType = transTypeList.FirstOrDefault();
 
 
-                // 2. دریافت کیف پول
-                var wallet = await _walletRepository.GetByIdAsync(dto.WalletId);
+            // 2. دریافت کیف پول
+            var wallet = await _walletRepository.GetByIdAsync(dto.WalletId);
 
 
-                // 3. محاسبه موجودی
-                double newBalance = wallet.Balance;
-                double amount = dto.Amount;
+            // 3. محاسبه موجودی
+            double newBalance = wallet.Balance;
+            double amount = dto.Amount;
 
-                if (transType.Code == 1) // افزایش
-                {
-                    newBalance += amount;
-                }
-                else // کاهش
-                {
-                    if (wallet.Balance < amount)
-                        throw new Exception("موجودی کافی نیست");
-                    newBalance -= amount;
-                }
+            if (transType.Code == 1) // افزایش
+            {
+                newBalance += amount;
+            }
+            else // کاهش
+            {
+                if (wallet.Balance < amount)
+                    throw new Exception("موجودی کافی نیست");
+                newBalance -= amount;
+            }
 
-                // 4. ثبت تراکنش
-                var newTransaction = new TblWalletTransaction()
-                {
-                    Id = Guid.NewGuid(),
-                    WalletId = dto.WalletId,
-                    TransactionTypeId = transType.Id,
-                    Name = transType.Name, 
-                    Amount = amount,
-                    SaveDate = DateTime.Now,
-                    UserSaver =dto.UserSaver,
-                };
-                await _wallettransactionRepository.AddAsync(newTransaction);
+            // 4. ثبت تراکنش
+            var newTransaction = new TblWalletTransaction()
+            {
+                Id = Guid.NewGuid(),
+                WalletId = dto.WalletId,
+                TransactionTypeId = transType.Id,
+                Name = transType.Name,
+                Amount = amount,
+                SaveDate = DateTime.Now,
+                UserSaver = dto.UserSaver,
+            };
+            await _wallettransactionRepository.AddAsync(newTransaction);
 
-                wallet.Balance = newBalance;
-                wallet.SaveDate = DateTime.Now;
-                await _walletRepository.UpdateAsync(wallet);
+            wallet.Balance = newBalance;
+            wallet.SaveDate = DateTime.Now;
+            await _walletRepository.UpdateAsync(wallet);
 
-                // 6. ذخیره نهایی
-                await _walletRepository.SaveChangesAsync();
+            // 6. ذخیره نهایی
+            await _walletRepository.SaveChangesAsync();
 
-                return true;
+            return true;
             //}
             //catch (Exception)
             //{
@@ -96,7 +96,7 @@ namespace Wallet.Api.Application.Services.WalletService
 
 
 
-        public async Task<int> Create(WalletDto data)
+        public async Task<ResponseDto<int>> Create(WalletDto data)
         {
             try
             {
@@ -112,46 +112,49 @@ namespace Wallet.Api.Application.Services.WalletService
                 };
 
                 var result = await _walletRepository.AddAsync(res);
-                return result;
+                return new ResponseDto<int> { Data = 1, State = 1, Message = "عملیات با موفقیت انجام شد", };
             }
 
             catch (Exception)
             {
-
+                return new ResponseDto<int> { Data = 0, State = 1003, Message = "انجام عملیات با خطا مواجه شد", };
             }
-
-            return 0;
-
         }
 
 
 
-        public async Task<List<WalletResultDto>?> GetAll()
+        public async Task<ResponseDto<List<WalletResultDto>>?> GetAll()
         {
             try
             {
                 var data = await _walletRepository.GetAllAsync();
 
                 if (data.Any())
-                    return _mapper.Map<List<WalletResultDto>>(data);
+                {
+                    var mappedData = _mapper.Map<List<WalletResultDto>>(data);
+
+                    return new ResponseDto<List<WalletResultDto>>() { Data = mappedData, State = 1, Message = "عملیات با موفقیت انجام شد" };
+                }
+                return new ResponseDto<List<WalletResultDto>>() { Data = new List<WalletResultDto>(), State = 1003, Message = "خطا در لیست ارسالی " };
             }
             catch (Exception)
             {
-
+                return new ResponseDto<List<WalletResultDto>>() { Data = new List<WalletResultDto>(), State = 1001, Message = "انجام عملیات با خطا مواجه شد " };
             }
 
-            return [];
         }
 
-        public async Task<bool> Update(WalletResultDto data)
+        public async Task<ResponseDto<bool>> Update(WalletResultDto data)
         {
             try
             {
                 var wallet = await _walletRepository.GetByIdAsync(data.Id);
 
                 if (wallet == null)
-                    return false;
+                {
+                    return new ResponseDto<bool>() { Data = false, State = 1005, Message = "خطا در اطلاعات ارسالی " };
 
+                }
                 wallet.Name = data.Name;
                 wallet.Balance = data.Balance;
                 wallet.SubSysId = data.SubSysId;
@@ -160,48 +163,57 @@ namespace Wallet.Api.Application.Services.WalletService
 
                 await _walletRepository.UpdateAsync(wallet);
 
-                return true;
+                return new ResponseDto<bool>() { Data = true, State = 1, Message = "عملیات با موفقیت انجام شد " };
             }
             catch (Exception)
             {
+                return new ResponseDto<bool>() { Data = false, State = 1001, Message = "انجام عملیات با خطا مواجه شد " };
+
             }
-            return false;
         }
 
 
 
 
-        public async Task<bool> Delete(Guid id)
+        public async Task<ResponseDto<bool>> Delete(Guid id)
         {
             try
             {
+                var foundedId = _walletRepository.GetByIdAsync(id);
+                if (foundedId == null)
+                {
+                    return new ResponseDto<bool>() { Data = false, State = 1005, Message = "خطا در اطلاعات ارسالی " };
+                }
 
-                return await _walletRepository.DeleteAsync(id);
+
+
+                return new ResponseDto<bool>() { Data = true, State = 1, Message = "عملیات با موفقیت انجام شد " };
             }
             catch (Exception)
             {
-
+                return new ResponseDto<bool>() { Data = false, State = 1001, Message = "انجام عملیات با خطا مواجه شد " };
             }
-            return false;
+
         }
 
 
-        public async Task<WalletResultDto?> GetById(Guid id)
+        public async Task<ResponseDto<WalletResultDto>?> GetById(Guid id)
         {
             try
             {
                 var entity = await _walletRepository.GetByIdAsync(id);
 
                 if (entity == null)
-                    return null;
+                    return new ResponseDto<WalletResultDto>() { Data = new WalletResultDto(), State = 1005, Message = "خطا در اطلاعات ارسالی " };
 
-                return _mapper.Map<WalletResultDto>(entity);
+                var mappedData = _mapper.Map<WalletResultDto>(entity);
+                return new ResponseDto<WalletResultDto>() { Data = mappedData, State = 1, Message = "عملیات با موفقیت انجام شد " };
             }
             catch (Exception)
             {
+                return new ResponseDto<WalletResultDto>() { Data = new WalletResultDto(), State = 1001, Message = "انجام عملیات با خطا مواجه شد " };
 
             }
-            return null;
         }
 
     }

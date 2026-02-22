@@ -4,11 +4,11 @@
 
     <!-- ردیف اول -->
     <div class="row mb-3">
-        <div class="col-md-3">
+        <div class="col-md-6">
             <label for="Name" class="form-label">نام کیف پول</label>
             <input type="text" class="form-control shadow rounded-2 text-right" asp-for="Name">
         </div>
-        <div class="col-md-3">
+        <div class="col-md-6">
             <label for="SubSysId" class="form-label">نام شرکت</label>
             <input type="text" class="form-control shadow rounded-2 text-right" asp-for="SubSysId">
         </div>
@@ -17,25 +17,29 @@
 
     <!-- ردیف دوم -->
     <div class="row mb-3">
-        <div class="col-md-3">
+        <div class="col-md-6">
             <label for="Balance" class="form-label">موجودی</label>
             <input type="number" class="form-control shadow rounded-2 text-right" asp-for="Balance">
         </div>
-        <div class="col-md-3">
+        <div class="col-md-6">
             <label for="SaveDate" class="form-label">تاریخ</label>
             <input type="text" class="form-control shadow rounded-2 text-right" asp-for="SaveDate">
         </div>
     </div>
-
-    <!-- ردیف دکمه ذخیره (پایین و وسط) -->
-
     <div class="row">
-        <div class="col-12 text-center">
+        <div class="col-12 text-center d-flex justify-content-center gap-2">
+            <!-- دکمه ثبت -->
             <button type="button" onclick="AddWallet()" class="btn btn-success shadow rounded-2">
-                ذخیره
+                ثبت
+            </button>
+            <!-- دکمه انصراف -->
+            <button type="button" onclick="closeModal('my_md_modal')" class="btn btn-secondary">
+                انصراف
             </button>
         </div>
     </div>
+
+    
 
 </form>
 

@@ -5,6 +5,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<!-- اضافه کردن لینک Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<style>
+    /* استایل‌های سفارشی برای چیدمان پاورقی جدول */
+
+    /* 1. انتقال اطلاعات (صفحه 1 از 1) به سمت راست */
+    .dataTables_wrapper .dataTables_info {
+        text-align: right !important;
+        padding-right: 10px;
+        float: right; /* برای اطمینان از چسبیدن به راست */
+    }
+
+    /* 2. انتقال دکمه‌های پیجینیشن (قبلی/بعدی) به سمت چپ */
+    .dataTables_wrapper .dataTables_paginate {
+        text-align: left !important;
+        padding-left: 10px;
+        float: left; /* برای اطمینان از چسبیدن به چپ */
+    }
+</style>
+
 <!-- پنل ویرایش -->
 <div id="updateSubSystemEl" class="position-absolute rounded-3 p-2 flex-column justify-content-start align-items-center h-50 w-50"
      style="z-index: 10; background-color: rgba(15, 15, 15, 0.79); top:25%; right:23%; display:none">
@@ -21,40 +42,48 @@
     </div>
 </div>
 
-<div class="container-fluid h-100 w-100 mx-auto">
+<!-- تغییر: عرض کانتینر به 1100px افزایش یافت -->
+<div class="container-fluid mx-auto" style="max-width: 1100px;">
     <div style="background:#fff; padding:15px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,.1);">
         <div class="card-body" style="padding-top:2px;">
-            <div class="card-header d-flex flex-row-reverse justify-content-between align-items-center"
+
+            <!-- هدر کارت: چیدمان اصلاح شده -->
+            <div class="card-header d-flex flex-row justify-content-between align-items-center position-relative"
                  style="background-color:#fff; font-size:18px;">
-                <!-- بخش سمت راست: شامل دکمه افزودن و تیتر -->
+
+                <!-- بخش سمت راست: دکمه افزودن -->
                 <div class="d-flex align-items-center gap-2">
-                    <!-- دکمه افزودن -->
                     <a id="Create_Func" onclick="Create_Func()" class="btn btn-success">
                         <i class="bi bi-plus-lg"></i> افزودن نوع تراکنش
                     </a>
-                    <!-- تیتر -->
-                    <div class="d-flex align-items-center">
-                        لیست نوع تراکنش ها
-                        <p class="text-info mx-2" id="selectedSysNameElement"></p>
-                    </div>
                 </div>
+
+                <!-- بخش وسط: عنوان -->
+                <div class="position-absolute start-50 translate-middle-x">
+                    لیست نوع تراکنش ها
+                </div>
+
                 <!-- بخش سمت چپ: دکمه خروج -->
-                <div class="d-none d-lg-flex">
+                <div class="d-none d-lg-flex ms-auto">
                     <a href="~/Home/Index" class="btn btn-outline-dark">
                         بازگشت <i class="bi bi-arrow-return-left"></i>
                     </a>
                 </div>
             </div>
+
             <div class="card-body">
                 <div class="table-responsive shadow-lg rounded mb-5 w-100">
                     <table id="tbl_subsys" class="cell-border w-100" dir="rtl">
                         <thead class="bg-primary text-white" style="height:70px;">
                             <tr>
                                 <th style=" width:7%; border-left:1px solid #fff; border-top-right-radius:10px;  text-align:center">ردیف</th>
-                                <th style="border-left:1px solid #fff; text-align:center">نام تراکنش  </th>
-                                <th style="width:30%; border-left:1px solid #fff;  border-top-left-radius:10px; text-align:center">عملیات</th>
+                                <!-- تغییر: عرض نام تراکنش کمتر شد (40%) -->
+                                <th style="width:40%; border-left:1px solid #fff; text-align:center">نام نوع تراکنش  </th>
+                                <!-- تغییر: عرض عملیات بیشتر شد (53%) -->
+                                <th style="width:53%; border-left:1px solid #fff;  border-top-left-radius:10px; text-align:center">عملیات</th>
                             </tr>
                         </thead>
+                        <!-- کلاس bg-white برگردانده شد -->
                         <tbody class="bg-white" style="height:70px">
                             @foreach (var (item, index) in Model.Select((item, index) => (item, index)))
                             {
@@ -62,19 +91,19 @@
                                     <td class="text-center border border-secondary">@(index + 1)</td>
                                     <td class="text-center border border-secondary">@item.Name</td>
                                     <td class="text-center border border-secondary">
-                                        <!-- دکمه مشاهده (Bootstrap Icon) -->
+                                        <!-- دکمه مشاهده -->
                                         <button type="button" onclick="Detail_TransactionType('@item.Id')"
                                                 title="مشاهده"
                                                 style="background:#0d6efd; border:none; padding:10px 15px; border-radius:8px; margin:0 5px; cursor:pointer; color:white; font-size:18px;">
                                             <i class="bi bi-eye"></i>
                                         </button>
-                                        <!-- دکمه ویرایش (Bootstrap Icon) -->
+                                        <!-- دکمه ویرایش -->
                                         <button type="button" onclick="Edit_TransactionType('@item.Id')"
                                                 title="ویرایش"
                                                 style="background:#ffc107; border:none; padding:10px 15px; border-radius:8px; margin:0 5px; cursor:pointer; color:white; font-size:18px;">
                                             <i class="bi bi-pencil-square"></i>
                                         </button>
-                                        <!-- دکمه حذف (Bootstrap Icon) -->
+                                        <!-- دکمه حذف -->
                                         <button type="button" onclick="Del_TransactionType('@item.Id','@item.Name')"
                                                 title="حذف"
                                                 style="background:#dc3545; border:none; padding:10px 15px; border-radius:8px; margin:0 5px; cursor:pointer; color:white; font-size:18px;">
@@ -95,17 +124,15 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            // این کد فقط زمانی اجرا می‌شود که صفحه و تمام کتابخانه‌ها لود شده باشند
             new DataTable('#tbl_subsys', {
-
                 ordering: false,
                 paging: true,
                 pageLength: 6,
                 layout: {
-                    topStart: 'pageLength',
-                    topEnd: 'search',
-                    bottomStart: 'paging',
-                    bottomEnd: 'info'
+                    topStart: 'search',       // جستجو در سمت راست
+                    topEnd: 'pageLength',     // تعداد در صفحه در سمت چپ
+                    bottomStart: 'info',      // اطلاعات (صفحه 1 از 1) در سمت راست
+                    bottomEnd: 'paging'       // دکمه‌ها (قبلی/بعدی) در سمت چپ
                 },
                 language: {
                     info: 'صفحه _PAGE_ از _PAGES_',
@@ -131,7 +158,7 @@
                 data: { Id: Id },
                 success: function (data) {
                     $('#my_lg_modal .modal-body').html(data);
-                    $('#my_lg_modal .modal-title').html("<p>اطلاعات تراکنش</p>");
+                    $('#my_lg_modal .modal-title').html("<p>اطلاعات نوع تراکنش</p>");
                     var modalElement = new bootstrap.Modal(document.getElementById('my_lg_modal'), {
                         backdrop: 'static',
                         keyboard: false
@@ -231,7 +258,7 @@
                         return;
                     }
                     $('#my_lg_modal .modal-body').html(data);
-                    $('#staticBackdropLabelLG').html("فرم به روز رسانی تراکنش");
+                    $('#staticBackdropLabelLG').html("فرم به روز رسانی نوع تراکنش");
                     setTimeout(function () {
                         var modalElement = document.getElementById('my_lg_modal');
                         var modalInstance = bootstrap.Modal.getInstance(modalElement);
