@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,31 +82,32 @@ namespace Wallet.Service.Services.WalletServices
             try
             {
                 var _client = new HttpClient();
-            _client.BaseAddress = new Uri(serverName);
-            _client.DefaultRequestHeaders.Accept.Clear();
-            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                _client.BaseAddress = new Uri(serverName);
+                _client.DefaultRequestHeaders.Accept.Clear();
+                _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var json = JsonConvert.SerializeObject(data);
+                var json = JsonConvert.SerializeObject(data);
 
-            var response = await _client.PostAsync("api/Wallet/Transactionwithdrawal", new StringContent(json, Encoding.UTF8, "application/json"));
+                var response = await _client.PostAsync("api/Wallet/Transactionwithdrawal", new StringContent(json, Encoding.UTF8, "application/json"));
 
-            response.EnsureSuccessStatusCode();
-
-            if (response.IsSuccessStatusCode)
-            {
-                var responseContent = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<bool>(responseContent);
+                response.EnsureSuccessStatusCode();
+                
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    var jObject = JObject.Parse(responseContent);
+                    return jObject["data"].Value<bool>();
+                }
+                else
+                {
+                    throw new Exception("Error in Transactionwithdrawal");
+                }
             }
-            else
-            {
-                throw new Exception("Error in Transactionwithdrawal");
-            }
-        }
             catch (Exception)
             {
                 throw;
             }
-}
+        }
 
         public async Task<WalletVm> GetById(string serverName, Guid Id)
         {

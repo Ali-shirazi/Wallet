@@ -166,7 +166,7 @@ namespace Wallet.Api.Application.Services.WalletService
                 double amount = dto.Amount;
 
                 // چون این متد برای واریز است، مستقیماً مبلغ را اضافه می‌کنیم
-                newBalance += amount;
+                newBalance -= amount;
 
                 // 4. ثبت تراکنش
                 var newTransaction = new TblWalletTransaction()

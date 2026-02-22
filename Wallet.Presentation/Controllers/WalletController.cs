@@ -77,6 +77,26 @@ namespace Wallet.Presentation.Controllers
 
           
         }
+        public async Task<IActionResult> _Transactionwithdrawal(Guid walletId)
+        {
+            var res = await _TransactionTypeService.GetTransactionForWallet(_serverName);
+            var mylist = new List<TransactionTypeForWalletVm>();
+
+            ViewBag.WIdd = walletId;
+            return PartialView(res);
+
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> Transactionwithdrawal(CreateWalletTransactionDto data)
+        {
+            data.UserSaver = Guid.NewGuid();
+            var res = await _WalletService.Transactionwithdrawal(_serverName, data);
+            return Json(res);
+        }
+
+
+      
 
         [HttpPost]
         public async Task<IActionResult> Update(WalletVm data)
