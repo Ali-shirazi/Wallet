@@ -92,13 +92,12 @@
         @RenderBody()
     </div>
 
-    <!-- Modal XL -->
-    <div class="modal fade" id="my_xl_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabelXL" aria-hidden="true">
+    <div class="modal fade" id="my_xl_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-center w-100" id="staticBackdropLabelXL"></h1>
-                    <button type="button" id="xl_modal_dismiss" class="btn-close bg-danger" style="margin-left: auto;" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel"></h1>
+                    <button type="button" id="xl_modal_dismiss" class="btn-close bg-danger" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!-- Dynamic content -->
@@ -106,14 +105,12 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal LG -->
-    <div class="modal fade" id="my_lg_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabelLG" aria-hidden="true">
+    <div class="modal fade" id="my_lg_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-center w-100" id="staticBackdropLabelLG"></h1>
-                    <button type="button" id="lg_modal_dismiss" class="btn-close bg-danger" style="margin-left: auto;" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel"></h1>
+                    <button type="button" id="lg_modal_dismiss" class="btn-close bg-danger d-flex" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!-- Dynamic content -->
@@ -121,14 +118,12 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal MD -->
-    <div class="modal fade" id="my_md_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabelMD" aria-hidden="true">
+    <div class="modal fade" id="my_md_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-center w-100" id="staticBackdropLabelMD"></h1>
-                    <button type="button" id="md_modal_dismiss" class="btn-close bg-danger" style="margin-left: auto;" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel"></h1>
+                    <button type="button" id="md_modal_dismiss" class="btn-close bg-danger" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!-- Dynamic content -->
@@ -136,14 +131,12 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal SM -->
-    <div class="modal fade" id="my_sm_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabelSM" aria-hidden="true">
+    <div class="modal fade" id="my_sm_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-center w-100" id="staticBackdropLabelSM"></h1>
-                    <button type="button" id="sm_modal_dismiss" class="btn-close bg-danger" style="margin-left: auto;" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel"></h1>
+                    <button type="button" id="sm_modal_dismiss" class="btn-close bg-danger" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!-- Dynamic content -->
@@ -191,35 +184,15 @@
 <!-- اسکریپت یکپارچه برای مدیریت مودال‌ها -->
 <!-- اسکریپت فورس بستن مودال -->
 <script>
-    $(document).ready(function () {
-        // این تابع را به صورت سراسری تعریف می‌کنیم تا همه جا قابل دسترسی باشد
-        window.forceCloseModal = function (modalId) {
-            var modalElement = document.getElementById(modalId);
-            if (modalElement) {
-                // روش 1: استفاده از API بوت‌استرپ
-                var modalInstance = bootstrap.Modal.getInstance(modalElement);
-                if (modalInstance) {
-                    modalInstance.hide();
-                } else {
-                    // روش 2: اگر اینستنس نبود، یکی بساز و ببند
-                    var newModal = new bootstrap.Modal(modalElement);
-                    newModal.hide();
-                }
+    function updateClock() {
+        const now = moment();
+        const timeString = now.format('ss : mm : HH');
+        const persianDateString = now.format('jYYYY/jMM/jDD');
 
-                // روش 3: حذف کلاس‌های نمایشی به صورت دستی (فورس)
-                $(modalElement).removeClass('show');
-                $('body').removeClass('modal-open');
-                $('.modal-backdrop').remove();
-            }
-        };
+        document.getElementById('clock').innerText = timeString;
+        document.getElementById('date').innerText = persianDateString;
+    }
 
-        // اتصال دکمه ضربدر (X) به این تابع
-        $(document).on('click', '[data-bs-dismiss="modal"]', function (e) {
-            e.preventDefault(); // جلوگیری از عملکرد پیش‌فرض که ممکن است خراب باشد
-            var modalId = $(this).closest('.modal').attr('id');
-            if (modalId) {
-                forceCloseModal(modalId);
-            }
-        });
-    });
+    setInterval(updateClock, 1000);
+    updateClock();
 </script>
