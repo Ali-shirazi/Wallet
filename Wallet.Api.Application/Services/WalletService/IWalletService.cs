@@ -18,6 +18,7 @@ namespace Wallet.Api.Application.Services.WalletService
         Task<ResponseDto<bool>> Delete(Guid id);
 
         Task<ResponseDto<WalletResultDto>?> GetById(Guid id);
-        Task<bool> CreateTransaction(CreateWalletTransactionDto dto);
+        Task<ResponseDto<bool>> CreateTransaction(CreateWalletTransactionDto dto);
+        Task<ResponseDto<bool>> Transactionwithdrawal(CreateWalletTransactionDto dto);
     }
 }

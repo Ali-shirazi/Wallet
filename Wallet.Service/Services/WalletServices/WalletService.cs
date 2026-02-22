@@ -48,8 +48,8 @@ namespace Wallet.Service.Services.WalletServices
 
         public async Task<bool> CreateTransaction(string serverName, CreateWalletTransactionDto data )
         {
-            //try
-            //{
+            try
+            {
                 var _client = new HttpClient();
                 _client.BaseAddress = new Uri(serverName);
                 _client.DefaultRequestHeaders.Accept.Clear();
@@ -70,12 +70,42 @@ namespace Wallet.Service.Services.WalletServices
                 {
                     throw new Exception("Error in CreateTransaction");
                 }
-            //}
-            //catch (Exception)
-            //{
-            //    throw;
-            //}
         }
+            catch (Exception)
+            {
+                throw;
+            }
+}
+        public async Task<bool> Transactionwithdrawal(string serverName, CreateWalletTransactionDto data)
+        {
+            try
+            {
+                var _client = new HttpClient();
+            _client.BaseAddress = new Uri(serverName);
+            _client.DefaultRequestHeaders.Accept.Clear();
+            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var json = JsonConvert.SerializeObject(data);
+
+            var response = await _client.PostAsync("api/Wallet/Transactionwithdrawal", new StringContent(json, Encoding.UTF8, "application/json"));
+
+            response.EnsureSuccessStatusCode();
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<bool>(responseContent);
+            }
+            else
+            {
+                throw new Exception("Error in Transactionwithdrawal");
+            }
+        }
+            catch (Exception)
+            {
+                throw;
+            }
+}
 
         public async Task<WalletVm> GetById(string serverName, Guid Id)
         {
@@ -190,5 +220,7 @@ namespace Wallet.Service.Services.WalletServices
                 throw;
             }
         }
+
+      
     }
 }

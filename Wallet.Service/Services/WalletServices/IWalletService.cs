@@ -17,6 +17,7 @@ namespace Wallet.Service.Services.WalletServices
         Task<bool> Update(string serverName, WalletVm data);
         Task<bool> Delete(string serverName, Guid Id);
         Task<bool> CreateTransaction(string serverName, CreateWalletTransactionDto data);
+        Task<bool> Transactionwithdrawal(string serverName, CreateWalletTransactionDto data);
 
     }
 }

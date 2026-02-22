@@ -47,9 +47,15 @@ namespace Wallet.Api.Controllers
             return Json(result.Data);
         }
         [HttpPost("CreateTransaction")]
-        public async Task<ActionResult<bool>> CreateTransaction(CreateWalletTransactionDto dto)
+        public async Task<ActionResult<ResponseDto<bool>>> CreateTransaction(CreateWalletTransactionDto dto)
         {
             var result = await _service.CreateTransaction(dto);
+            return Json(result);
+        }
+        [HttpPost("Transactionwithdrawal")]
+        public async Task<ActionResult<ResponseDto<bool>>> Transactionwithdrawal(CreateWalletTransactionDto dto)
+        {
+            var result = await _service.Transactionwithdrawal(dto);
             return Json(result);
         }
     }

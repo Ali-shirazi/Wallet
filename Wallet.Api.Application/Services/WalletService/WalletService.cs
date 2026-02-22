@@ -35,61 +35,176 @@ namespace Wallet.Api.Application.Services.WalletService
         }
 
 
-        public async Task<bool> CreateTransaction(CreateWalletTransactionDto dto)
+            public async Task<ResponseDto<bool>> CreateTransaction(CreateWalletTransactionDto dto)
+            {
+                 try
+                 {
+                     // 1. دریافت نوع تراکنش
+                     var transType = _walletTransactionTypeRepository
+                         .Get(x => x.Code == dto.TransactionTypeCode)
+                         .FirstOrDefault();
+                 
+                     if (transType == null)
+                     {
+                         return new ResponseDto<bool>
+                         {
+                             Data = false,
+                             State = 1005,
+                             Message = "نوع تراکنش یافت نشد"
+                         };
+                     }
+                 
+                     // 2. دریافت کیف پول
+                     var wallet = await _walletRepository.GetByIdAsync(dto.WalletId);
+                 
+                     if (wallet == null)
+                     {
+                         return new ResponseDto<bool>
+                         {
+                             Data = false,
+                             State = 1005,
+                             Message = "کیف پول یافت نشد"
+                         };
+                     }
+                 
+                     // 3. محاسبه موجودی
+                     double newBalance = wallet.Balance;
+                     double amount = dto.Amount;
+                 
+                     if (transType.Code == 1) // افزایش
+                     {
+                         newBalance += amount;
+                     }
+                     else // کاهش
+                     {
+                         if (wallet.Balance < amount)
+                         {
+                             return new ResponseDto<bool>
+                             {
+                                 Data = false,
+                                 State = 1006,
+                                 Message = "موجودی کافی نیست"
+                             };
+                         }
+                 
+                         newBalance -= amount;
+                     }
+                 
+                     // 4. ثبت تراکنش
+                     var newTransaction = new TblWalletTransaction()
+                     {
+                         Id = Guid.NewGuid(),
+                         WalletId = dto.WalletId,
+                         TransactionTypeId = transType.Id,
+                         Name = transType.Name,
+                         Amount = amount,
+                         SaveDate = DateTime.Now,
+                         UserSaver = dto.UserSaver,
+                     };
+                 
+                     await _wallettransactionRepository.AddAsync(newTransaction);
+                 
+                     // 5. بروزرسانی کیف پول
+                     wallet.Balance = newBalance;
+                     wallet.SaveDate = DateTime.Now;
+                 
+                     await _walletRepository.UpdateAsync(wallet);
+                 
+                     // 6. ذخیره نهایی
+                     await _walletRepository.SaveChangesAsync();
+                 
+                     return new ResponseDto<bool>
+                     {
+                         Data = true,
+                         State = 1,
+                         Message = "عملیات با موفقیت انجام شد"
+                     };
+                 }
+                 catch (Exception)
+                 {
+                     return new ResponseDto<bool>
+                     {
+                         Data = false,
+                         State = 1001,
+                         Message = "انجام عملیات با خطا مواجه شد"
+                     };
+                 }
+            }
+
+        public async Task<ResponseDto<bool>> Transactionwithdrawal(CreateWalletTransactionDto dto)
         {
-            //try
-            //{
-
-            var transType = _walletTransactionTypeRepository.Get(x => x.Code == dto.TransactionTypeCode).FirstOrDefault();
-            //var transType = transTypeList.FirstOrDefault();
-
-
-            // 2. دریافت کیف پول
-            var wallet = await _walletRepository.GetByIdAsync(dto.WalletId);
-
-
-            // 3. محاسبه موجودی
-            double newBalance = wallet.Balance;
-            double amount = dto.Amount;
-
-            if (transType.Code == 1) // افزایش
+            try
             {
+                // 1. دریافت نوع تراکنش
+                var transType = _walletTransactionTypeRepository
+                    .Get(x => x.Code == dto.TransactionTypeCode)
+                    .FirstOrDefault();
+                if (transType == null)
+                {
+                    return new ResponseDto<bool>
+                    {
+                        Data = false,
+                        State = 1005,
+                        Message = "نوع تراکنش یافت نشد"
+                    };
+                }
+
+                // 2. دریافت کیف پول
+                var wallet = await _walletRepository.GetByIdAsync(dto.WalletId);
+                if (wallet == null)
+                {
+                    return new ResponseDto<bool>
+                    {
+                        Data = false,
+                        State = 1005,
+                        Message = "کیف پول یافت نشد"
+                    };
+                }
+
+                // 3. محاسبه موجودی (فقط افزایش)
+                double newBalance = wallet.Balance;
+                double amount = dto.Amount;
+
+                // چون این متد برای واریز است، مستقیماً مبلغ را اضافه می‌کنیم
                 newBalance += amount;
+
+                // 4. ثبت تراکنش
+                var newTransaction = new TblWalletTransaction()
+                {
+                    Id = Guid.NewGuid(),
+                    WalletId = dto.WalletId,
+                    TransactionTypeId = transType.Id,
+                    Name = transType.Name,
+                    Amount = amount,
+                    SaveDate = DateTime.Now,
+                    UserSaver = dto.UserSaver,
+                };
+                await _wallettransactionRepository.AddAsync(newTransaction);
+
+                // 5. بروزرسانی کیف پول
+                wallet.Balance = newBalance;
+                wallet.SaveDate = DateTime.Now;
+                await _walletRepository.UpdateAsync(wallet);
+
+                // 6. ذخیره نهایی
+                await _walletRepository.SaveChangesAsync();
+
+                return new ResponseDto<bool>
+                {
+                    Data = true,
+                    State = 1,
+                    Message = "عملیات واریز با موفقیت انجام شد"
+                };
             }
-            else // کاهش
+            catch (Exception)
             {
-                if (wallet.Balance < amount)
-                    throw new Exception("موجودی کافی نیست");
-                newBalance -= amount;
+                return new ResponseDto<bool>
+                {
+                    Data = false,
+                    State = 1001,
+                    Message = "انجام عملیات با خطا مواجه شد"
+                };
             }
-
-            // 4. ثبت تراکنش
-            var newTransaction = new TblWalletTransaction()
-            {
-                Id = Guid.NewGuid(),
-                WalletId = dto.WalletId,
-                TransactionTypeId = transType.Id,
-                Name = transType.Name,
-                Amount = amount,
-                SaveDate = DateTime.Now,
-                UserSaver = dto.UserSaver,
-            };
-            await _wallettransactionRepository.AddAsync(newTransaction);
-
-            wallet.Balance = newBalance;
-            wallet.SaveDate = DateTime.Now;
-            await _walletRepository.UpdateAsync(wallet);
-
-            // 6. ذخیره نهایی
-            await _walletRepository.SaveChangesAsync();
-
-            return true;
-            //}
-            //catch (Exception)
-            //{
-
-            //   return false;
-            //}
         }
 
 
