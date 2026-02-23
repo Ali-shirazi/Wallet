@@ -66,8 +66,6 @@ namespace Wallet.Api.Controllers
         [HttpGet("GetAllSubSys")]
         public async Task<ActionResult<ResponseDto<List<SubSystemVM>>>> GetAllSubSys()
         {
-            
-         
             // ارسال آدرس به متد سرویس
             var result = await _service.GetAllSubSys(serverName);
 
