@@ -5,33 +5,38 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Wallet.Shared.Contract.ResultDtos;
 using Wallet.Shared.Contract.ViewModels.TransactionTypeVm;
+using Wallet.Shared.Contract.ViewModels.TransactionVm;
 using Wallet.Shared.Contract.WalletTransaction;
 
 namespace Wallet.Service.Services.TransactionTypeService
 {
-    public  class TransactionTypeService: ITransactionTypeService
+    public class TransactionTypeService : ITransactionTypeService
     {
         readonly HttpClient _client = new HttpClient();
 
-        public async Task<int> Create(string serverName, TransactionTypeVm data)
+        public async Task<ResponseDto<int>> Create(string serverName, TransactionTypeVm data)
         {
             try
             {
                 _client.BaseAddress = new Uri(serverName);
                 _client.DefaultRequestHeaders.Accept.Clear();
                 _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
                 var json = JsonConvert.SerializeObject(data);
-
                 var response = await _client.PostAsync("api/TransactionType/AddWalletTransactionType", new StringContent(json, Encoding.UTF8, "application/json"));
-
-                response.EnsureSuccessStatusCode();
-
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<int>(responseContent);
+                    try
+                    {
+                        return JsonConvert.DeserializeObject<ResponseDto<int>>(responseContent);
+                    }
+                    catch
+                    {
+                        var resultId = JsonConvert.DeserializeObject<int>(responseContent);
+                        return new ResponseDto<int> { Data = resultId };
+                    }
                 }
                 else
                 {
@@ -44,7 +49,9 @@ namespace Wallet.Service.Services.TransactionTypeService
             }
         }
 
-        public async Task<TransactionTypeVm> GetById(string serverName, Guid Id)
+
+
+        public async Task<ResponseDto<TransactionTypeVm>> GetById(string serverName, Guid Id)
         {
             try
             {
@@ -52,15 +59,28 @@ namespace Wallet.Service.Services.TransactionTypeService
                 _client.DefaultRequestHeaders.Accept.Clear();
                 _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                // آدرس اصلاح شده: api/TransactionType/{Id} (بدون کلمه GetById)
                 var response = await _client.GetAsync($"api/TransactionType/GetWalletTransactionTypeById/{Id}");
 
+                // بهتر است EnsureSuccessStatusCode را برای مدیریت خطا نگه دارید
                 response.EnsureSuccessStatusCode();
 
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<TransactionTypeVm>(responseContent);
+
+                    // --- اصلاحیه ---
+                    // فرض می‌کنیم API مستقیماً آبجکت TransactionTypeVm برمی‌گرداند (مشابه GetAll)
+                    try
+                    {
+                        var data = JsonConvert.DeserializeObject<TransactionTypeVm>(responseContent);
+                        return new ResponseDto<TransactionTypeVm> { Data = data };
+                    }
+                    catch
+                    {
+                        // اگر ساختار پاسخ تغییر کرد و ResponseDto بود، حالت قبلی را امتحان می‌کنیم
+                        return JsonConvert.DeserializeObject<ResponseDto<TransactionTypeVm>>(responseContent);
+                    }
+                    // --------------
                 }
                 else
                 {
@@ -73,33 +93,43 @@ namespace Wallet.Service.Services.TransactionTypeService
             }
         }
 
-        public async Task<bool> Delete(string serverName, Guid Id)
+
+
+        public async Task<ResponseDto<bool>> Delete(string serverName, Guid Id)
         {
             try
             {
                 _client.BaseAddress = new Uri(serverName);
                 _client.DefaultRequestHeaders.Accept.Clear();
                 _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                var response = await _client.PostAsync($"api/TransactionType/DeleteWalletTransactionType/{Id}", null);
+                var content = new StringContent(string.Empty, Encoding.UTF8, "application/json");
+                var response = await _client.PostAsync($"api/TransactionType/DeleteWalletTransactionType/{Id}", content);
 
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<bool>(responseContent);
+                    try
+                    {
+                        return JsonConvert.DeserializeObject<ResponseDto<bool>>(responseContent);
+                    }
+                    catch
+                    {
+                        var result = JsonConvert.DeserializeObject<bool>(responseContent);
+                        return new ResponseDto<bool> { Data = result };
+                    }
                 }
                 else
                 {
-                    return false;
+                    throw new Exception("Error in Delete");
                 }
             }
             catch (Exception)
             {
-                return false;
+                throw;
             }
         }
 
-        public async Task<List<TransactionTypeVm>> GetAll(string serverName)
+        public async Task<ResponseDto<List<TransactionTypeVm>>> GetAll(string serverName)
         {
             try
             {
@@ -107,15 +137,15 @@ namespace Wallet.Service.Services.TransactionTypeService
                 _client.DefaultRequestHeaders.Accept.Clear();
                 _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-
                 var response = await _client.GetAsync("api/TransactionType/GetAllWalletTransactionsType");
-
                 response.EnsureSuccessStatusCode();
 
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<List<TransactionTypeVm>>(responseContent);
+                    // الگوی GetAll: فرض بر این است API آرایه برمی‌گرداند
+                    var data = JsonConvert.DeserializeObject<List<TransactionTypeVm>>(responseContent);
+                    return new ResponseDto<List<TransactionTypeVm>> { Data = data };
                 }
                 else
                 {
@@ -128,7 +158,7 @@ namespace Wallet.Service.Services.TransactionTypeService
             }
         }
 
-        public async Task<bool> Update(string serverName, TransactionTypeVm data)
+        public async Task<ResponseDto<bool>> Update(string serverName, TransactionTypeVm data)
         {
             try
             {
@@ -137,15 +167,13 @@ namespace Wallet.Service.Services.TransactionTypeService
                 _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var json = JsonConvert.SerializeObject(data);
-
                 var response = await _client.PostAsync("api/TransactionType/UpdateWalletTransactionsType", new StringContent(json, Encoding.UTF8, "application/json"));
-
                 response.EnsureSuccessStatusCode();
 
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<bool>(responseContent);
+                    return JsonConvert.DeserializeObject<ResponseDto<bool>>(responseContent);
                 }
                 else
                 {
@@ -158,7 +186,7 @@ namespace Wallet.Service.Services.TransactionTypeService
             }
         }
 
-        public async Task<List<TransactionTypeForWalletVm>> GetTransactionForWallet(string serverName)
+        public async Task<ResponseDto<List<TransactionTypeForWalletVm>>> GetTransactionForWallet(string serverName)
         {
             try
             {
@@ -166,15 +194,14 @@ namespace Wallet.Service.Services.TransactionTypeService
                 _client.DefaultRequestHeaders.Accept.Clear();
                 _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-
                 var response = await _client.GetAsync("api/TransactionType/GetForWallet");
-
                 response.EnsureSuccessStatusCode();
 
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<List<TransactionTypeForWalletVm>>(responseContent);
+                    var data = JsonConvert.DeserializeObject<List<TransactionTypeForWalletVm>>(responseContent);
+                    return new ResponseDto<List<TransactionTypeForWalletVm>> { Data = data };
                 }
                 else
                 {
@@ -186,6 +213,5 @@ namespace Wallet.Service.Services.TransactionTypeService
                 throw;
             }
         }
-
     }
 }

@@ -32,18 +32,17 @@
 </form>
 
 <script>
-    function AddTransactionType() {
-           var formData = {
+
+function  AddTransactionType() {
+        var formData = {
             Name: $('#Name').val(),
         };
-
         $.ajax({
             type: "POST",
             url: "/TransactionType/Create",
-
             data: formData,
             success: function (data) {
-                if (data) {
+                if (data > 0) {
                     swal.fire({
                         title:'موفق!',
                         html:  'اطلاعات با موفقیت ثبت شد.',
@@ -71,4 +70,5 @@
             }
         });
     }
+
 </script>
