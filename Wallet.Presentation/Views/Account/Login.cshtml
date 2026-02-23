@@ -1,0 +1,158 @@
+﻿@addTagHelper *, DNTCaptcha.Core
+@model Wallet.Shared.Contract.Dtos.LoginRequestDto
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود به حساب کاربری</title>
+
+    <!-- Bootstrap -->
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Semantic UI -->
+    <link href="~/Semantic-UI-CSS-master/semantic.min.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+
+<body dir="rtl" class="bgImage">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse justify-content-center align-items-center row w-100">
+            <ul class="navbar-nav mr-3 row col-12">
+                <li class="nav-item col-lg-4 col-12 d-flex flex-column justify-content-center align-items-center m-1">
+                    <img src="~/images/logo.png" class="ui tiny image" alt="">
+                    <p>نام سیستم شما</p>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Login Card -->
+    <div class="login-container w-100 h-100 my-5">
+        <div class="login-card shadow-lg p-4">
+
+            <h2 class="text-center mb-4">ورود به حساب کاربری</h2>
+
+            <form asp-controller="Account"
+                  asp-action="Login"
+                  method="post"
+                  class="ui form">
+
+                @Html.AntiForgeryToken()
+
+                <!-- موبایل -->
+                <div class="form-group">
+                    <label class="w-100 text-right font-weight-bold">
+                        شماره موبایل
+                    </label>
+
+                    <div class="input-group w-75 mx-auto">
+                        <input asp-for="Mobile"
+                               type="number"
+                               maxlength="11"
+                               placeholder="09123456789"
+                               class="form-control digit-input-phone text-left"
+                               required>
+                    </div>
+
+                    <span asp-validation-for="Mobile" class="text-danger"></span>
+                </div>
+
+                <!-- پسورد -->
+                <div class="form-group mb-4 mt-3">
+                    <label class="w-100 text-right font-weight-bold">
+                        رمز عبور
+                    </label>
+
+                    <div class="input-group w-75 mx-auto">
+                        <input asp-for="Password"
+                               type="password"
+                               id="password"
+                               placeholder="رمز عبور خود را وارد کنید"
+                               class="form-control digit-input"
+                               required>
+
+                        <span class="input-group-text" id="togglePassword" style="cursor: pointer;">
+                            <i class="eye icon d-none large" id="see"></i>
+                            <i class="eye slash outline icon large" id="notsee"></i>
+                        </span>
+                    </div>
+
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <!-- کپچا -->
+                <div class="field row form-group mb-4 text-center">
+                    <div class="ui labeled icon input w-75 mx-auto">
+                        <dnt-captcha asp-captcha-generator-max="9"
+                                     asp-captcha-generator-min="1"
+                                     asp-captcha-generator-language="Persian"
+                                     asp-use-relative-urls="true"
+                                     asp-placeholder="کد امنیتی"
+                                     asp-validation-error-message="کد امنیتی اشتباه است"
+                                     asp-font-name="Tahoma"
+                                     asp-font-size="20"
+                                     asp-fore-color="#333333"
+                                     asp-text-box-class="form-control text-center"
+                                     asp-validation-message-class="text-danger"
+                                     asp-refresh-button-class="fas fa-redo btn-sm"
+                                     asp-captcha-generator-display-mode="SumOfTwoNumbers" />
+                    </div>
+                </div>
+
+                <!-- پیام خطا -->
+                @if (TempData["msg"] != null)
+                {
+                    <div class="text-center mb-3">
+                        <h6 class="text-danger">
+                            @TempData["msg"]
+                        </h6>
+                    </div>
+                }
+
+                <!-- دکمه -->
+                <div class="w-100 d-flex justify-content-center">
+                    <button type="submit" class="ui primary button w-50">
+                        ورود
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Semantic-UI-CSS-master/semantic.min.js"></script>
+
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        const seeIcon = document.getElementById("see");
+        const notseeIcon = document.getElementById("notsee");
+
+        togglePassword.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password'
+                ? 'text'
+                : 'password';
+
+            passwordInput.setAttribute('type', type);
+
+            seeIcon.classList.toggle("d-none");
+            notseeIcon.classList.toggle("d-none");
+        });
+    </script>
+
+</body>
+</html>

@@ -1,41 +1,56 @@
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
+﻿using DNTCaptcha.Core;
 using Wallet.Service.Services.TransactionService;
 using Wallet.Service.Services.TransactionTypeService;
 using Wallet.Service.Services.WalletServices;
-
+using Wallet.Service.Services.AccountServiice;
 var builder = WebApplication.CreateBuilder(args);
+
+// MVC
 builder.Services.AddControllersWithViews();
 
+// AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+// Services
 builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<ITransactionTypeService, TransactionTypeService>();
 builder.Services.AddScoped<IWalletService, WalletService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
+// Session
+builder.Services.AddSession();
+
+// Captcha 
+builder.Services.AddDNTCaptcha(options =>
+{
+    options
+        .UseCookieStorageProvider()
+        .AbsoluteExpiration(10)
+        .ShowExceptionsInResponse(builder.Environment.IsDevelopment())
+        .WithEncryptionKey("This is my secure key!")
+        .WithNonceKey("NETESCAPADES_NONCE")
+        .Identifier("dnt_Captcha");
+});
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+
 app.UseRouting();
+
+app.UseSession();
 
 app.UseAuthorization();
 
-app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
-app.UseAuthorization();
-app.UseCors("AllowAll");
+    pattern: "{controller=Account}/{action=Login}/{id?}");
 
 app.Run();

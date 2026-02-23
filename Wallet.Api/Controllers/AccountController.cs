@@ -1,21 +1,29 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Wallet.Api.Application.Services.AccountService;
 using Wallet.Shared.Contract.Dtos;
-using Wallet.Shared.Contract.ResultDtos;
-using Wallet.Shared.Contract.ViewModels.LoginVm;
 
 namespace Wallet.Api.Controllers
 {
-    public class AccountController(IAccountService _service,IConfiguration _configuration) : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class AccountController : ControllerBase
     {
-        string serverName = _configuration["AuthServiceInfo:Server"]!;
+        private readonly IAccountService _service;
+        private readonly IConfiguration _configuration;
+        string serverName;
 
+        public AccountController(IAccountService service, IConfiguration configuration)
+        {
+            _service = service;
+            _configuration = configuration;
+            serverName = _configuration["AuthServiceInfo:Server"]!;
+        }
 
         [HttpPost("Login")]
         public async Task<ActionResult<LoginResponseDto>> Login(LoginRequestDto dto)
         {
             var result = await _service.Login(serverName, dto);
-            return Json(result);
+            return Ok(result);
         }
     }
 }

@@ -42,3 +42,15 @@ body {
 .clickable {
     cursor: pointer;
 }
+
+.bgImage {
+    background: linear-gradient(135deg, #4e73df, #1cc88a);
+    min-height: 100vh;
+}
+
+.login-card {
+    max-width: 500px;
+    margin: auto;
+    border-radius: 15px;
+    background: #ffffff;
+}
