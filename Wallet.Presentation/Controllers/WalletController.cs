@@ -122,7 +122,7 @@ namespace Wallet.Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(WalletVm data)
         {
-            data.UserSaver = Guid.NewGuid();
+            data.UserSaver= Guid.NewGuid();
             var res = await _WalletService.Create(_serverName, data);
             return Json(res);
         }
