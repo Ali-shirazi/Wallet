@@ -67,10 +67,10 @@ namespace Wallet.Presentation.Controllers
 
             var res = await _WalletService.GetAllSubSystem(_serverName);
 
-            var subSystemList = new SelectList(res, "Id", "Title");
+            // اصلاحیه: تغییر "Title" به "Name" برای تطابق با خروجی JSON
+            var subSystemList = new SelectList(res, "Id", "Name");
 
             ViewBag.SubSystemList = subSystemList;
-
             return PartialView();
         }
         [HttpGet]
