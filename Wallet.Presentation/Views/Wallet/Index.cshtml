@@ -244,9 +244,9 @@
                 type: "Get",
                 url: "/Wallet/_Create",
                 success: function (data) {
-                    $('#my_md_modal .modal-body').html(data);
-                     $('#my_md_modal .modal-title').html("افزودن کیف پول");
-                    var modalElement = new bootstrap.Modal(document.getElementById('my_md_modal'), {
+                    $('#my_lg_modal .modal-body').html(data);
+                     $('#my_lg_modal .modal-title').html("افزودن کیف پول");
+                    var modalElement = new bootstrap.Modal(document.getElementById('my_lg_modal'), {
                         backdrop: 'static',
                         keyboard: false
                     });
@@ -301,7 +301,7 @@
         }
 
         function Bardasht_Wallet(walletId) {
-            
+            debugger;
             $.ajax({
                 cache: false,
                 type: "GET",

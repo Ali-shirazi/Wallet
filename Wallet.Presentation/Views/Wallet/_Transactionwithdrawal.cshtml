@@ -4,43 +4,51 @@
     <div class="card p-4 shadow">
         <!-- Price -->
         <div class="mb-3">
-            <label class="form-label">Price</label>
-            <input type="number" id="price" class="form-control" />
+            <label class="form-label">مبلغ برداشت</label>
+            <input type="number" id="price" class="form-control" placeholder="مبلغ را وارد کنید" />
         </div>
-        <!--  select Code-->
+
+        <!--  select Code -->
         <div class="mb-3">
-            <label class="form-label">انتخاب کیف پول</label>
-            <select id="Code" class="form-select">
-                <option value="">انتخاب آیتم</option>
-                @foreach (var item in Model.Where(x => x.Code == 2))
-                {
-                    <option value="@item.Code">@item.Name</option>
-                }
+            <label class="form-label">نوع تراکنش</label>
+            <!-- disabled: کاربر نمی‌تواند تغییر دهد -->
+            <select id="Code" class="form-select" disabled>
+                <!-- value="2": کد برداشت -->
+                <!-- selected: به صورت خودکار انتخاب شده -->
+                <!-- متن داخل تگ: برداشت -->
+                <option value="2" selected>برداشت</option>
             </select>
         </div>
+
         <!--  wallet ID -->
         <input type="hidden" id="walletIdHidden" value="@ViewBag.WIdd" />
+
         <div class="text-center mt-4">
             <button type="button" class="btn btn-success px-5" onclick="sharjSubmitfunc()">
-                ثبت
+                ثبت برداشت
             </button>
         </div>
     </div>
 </div>
+
 <script>
     function sharjSubmitfunc() {
         debugger;
         var walletId = $("#walletIdHidden").val();
         var amount = $("#price").val();
-        var transactionTypeCode = $("#Code").val();
-        if (!transactionTypeCode) {
+
+        // چون دراپ‌داون دیزابل (غیرفعال) است، مقدار آن را به صورت دستی روی 2 تنظیم می‌کنیم
+        var transactionTypeCode = "2";
+
+        if (!amount || amount <= 0) {
             Swal.fire({
                 icon: 'warning',
                 title: 'توجه',
-                text: 'لطفاً نوع تراکنش را انتخاب کنید!'
+                text: 'لطفاً مبلغ برداشت را وارد کنید!'
             });
             return;
         }
+
         $.ajax({
             cache: false,
             url: "/Wallet/Transactionwithdrawal",

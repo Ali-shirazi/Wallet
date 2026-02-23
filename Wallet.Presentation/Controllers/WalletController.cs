@@ -66,11 +66,8 @@ namespace Wallet.Presentation.Controllers
         {
 
             var res = await _WalletService.GetAllSubSystem(_serverName);
-
-            var subSystemList = new SelectList(res, "Id", "Title");
-
+            var subSystemList = new SelectList(res, "Id", "Name");
             ViewBag.SubSystemList = subSystemList;
-
             return PartialView();
         }
         [HttpGet]
@@ -78,7 +75,6 @@ namespace Wallet.Presentation.Controllers
         {
           var res = await _TransactionTypeService.GetTransactionForWallet(_serverName);
             var mylist = new List<TransactionTypeForWalletVm>();
-
             ViewBag.WIdd = walletId;
             return PartialView(res);
 
@@ -86,13 +82,10 @@ namespace Wallet.Presentation.Controllers
         }
         public async Task<IActionResult> _Transactionwithdrawal(Guid walletId)
         {
-            var res = await _WalletService.GetAllSubSystem(_serverName);
-            // اصلاحیه: استفاده از "Name" به جای "Title" یا "SystemName"
-            var subSystemList = new SelectList(res, "Id", "Name");
-            ViewBag.SubSystemList = subSystemList;
-            return PartialView();
-
-
+            var res = await _TransactionTypeService.GetTransactionForWallet(_serverName);
+            var mylist = new List<TransactionTypeForWalletVm>();
+            ViewBag.WIdd = walletId;
+            return PartialView(res);
         }
         [HttpPost]
         public async Task<IActionResult> Transactionwithdrawal(CreateWalletTransactionDto data)
@@ -122,7 +115,7 @@ namespace Wallet.Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(WalletVm data)
         {
-            data.UserSaver = Guid.NewGuid();
+            data.UserSaver= Guid.NewGuid();
             var res = await _WalletService.Create(_serverName, data);
             return Json(res);
         }
