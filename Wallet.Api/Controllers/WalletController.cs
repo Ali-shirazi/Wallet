@@ -12,6 +12,7 @@ namespace Wallet.Api.Controllers
     public class WalletController(IWalletService _service, IConfiguration _configuration) : Controller
     {
         // اضافه کردن IConfiguration به سازنده کلاس (در بالا انجام شد)
+        string serverName = _configuration["AuthServiceInfo:Server"]!;
 
         [HttpPost("AddWallet")]
         public async Task<ActionResult<ResponseDto<int>>> AddWallet(WalletDto dto)
@@ -66,8 +67,7 @@ namespace Wallet.Api.Controllers
         public async Task<ActionResult<ResponseDto<List<SubSystemVM>>>> GetAllSubSys()
         {
             
-            string serverName = _configuration["AuthServiceInfo:Server"]!;
-
+         
             // ارسال آدرس به متد سرویس
             var result = await _service.GetAllSubSys(serverName);
 
