@@ -75,7 +75,7 @@ namespace Wallet.Presentation.Controllers
         public async Task<IActionResult> GetTransactionByWalletId(Guid Id)
         {
             var res = await _transactionService.GetTransactionByWalletId(_serverName, Id);
-            return PartialView(res);
+            return PartialView(res.Data);
         }
     }
 }

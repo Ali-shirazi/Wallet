@@ -60,10 +60,10 @@ namespace Wallet.Api.Controllers
         }
 
         [HttpGet("GetTransationByWalletId/{walletId}")]
-        public async Task<ActionResult<List<WalletTransactionResultDto>>> GetTransationByWalletId(Guid walletId)
+        public async Task<ActionResult<ResponseDto<List<WalletTransactionResultDto>>>> GetTransationByWalletId(Guid walletId)
         {
             var result = await _service.GetByWalletId(walletId);
-            return Json(result);
+            return Json(result.Data);
         }
     }
 }

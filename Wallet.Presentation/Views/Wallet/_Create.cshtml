@@ -44,15 +44,15 @@
 
 <!-- اسکریپت شما بدون تغییر باقی می‌ماند، چون ID المنت همچنان SubSysId است -->
 <script>
-    function AddWallet() {
+
+ function AddWallet() {
         var formData = {
             Name: $('#Name').val(),
             SubSysId: $('#SubSysId').val(), // این خط مقدار انتخاب شده از دراپ‌داون را می‌گیرد
             Balance: $('#Balance').val(),
             SaveDate: $('#SaveDate').val()
         };
-        // ... باقی کد اسکریپت بدون تغییر ...
-        if (!formData.Name || formData.Name.trim() === "") {
+         if (!formData.Name || formData.Name.trim() === "") {
             Swal.fire('هشدار', 'لطفاً نام کیف پول را وارد کنید.', 'warning');
             return;
         }
@@ -60,36 +60,39 @@
             Swal.fire('هشدار', 'لطفاً موجودی را وارد کنید.', 'warning');
             return;
         }
+
         $.ajax({
             type: "POST",
             url: "/Wallet/Create",
             data: formData,
-            success: function (data) {
-                if (data) {
+            success: function (response) {
+                if (response.state > 0 && response.state < 1000) {
                     swal.fire({
-                        title:'موفق!',
-                        html:  'اطلاعات با موفقیت ثبت شد.',
-                        icon:'success',
-                        confirmButtonText:'تایید'
+                        title: 'موفق!',
+                        html: response.message,
+                        icon: 'success',
+                        confirmButtonText: 'تایید'
                     }).then(function () {
                         window.location.reload();
                     });
                 } else {
                     swal.fire({
                         title: 'خطا!',
-                        html: 'انجام عملیات با خطا مواجه شد.',
+                        html: response.message,
                         icon: 'error',
                         confirmButtonText: 'تایید'
                     });
                 }
             },
-            error: function (xhr, status, error) {
-                var errorMessage = 'سرویس مورد نظر در دسترس نمی‌باشد';
-                if (xhr.responseJSON && xhr.responseJSON.Message) {
-                    errorMessage = xhr.responseJSON.Message;
-                }
-                Swal.fire('خطا!', errorMessage, 'error');
+            error: function (xhr, ajaxOptions, thrownError) {
+                swal.fire({
+                   title: 'خطا!',
+                   html: 'خطا در برقراری ارتباط با سرور',
+                   icon: 'error',
+                   confirmButtonText: 'تایید'
+                });
             }
         });
     }
+
 </script>

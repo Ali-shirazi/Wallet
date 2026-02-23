@@ -26,13 +26,14 @@ namespace Wallet.Api.Application.Services.WalletTransactionTypeService
         {
             try
             {
-
+                var maxCode = _WalletTransactionTypeRepository.Get().Max(x => (int?)x.Code) ?? 0;
                 var res = new TblWalletTransactionType()
                 {
                     Id = Guid.NewGuid(),
                     Name = data.Name,
                     SaveDate = DateTime.Now,
                     UserSaver = data.UserSaver,
+                    Code = maxCode + 1,
                 };
 
                 var result = await _WalletTransactionTypeRepository.AddAsync(res);
@@ -144,25 +145,46 @@ namespace Wallet.Api.Application.Services.WalletTransactionTypeService
                 return new ResponseDto<WalletTransactionTypeResultDto?>() { Data = new WalletTransactionTypeResultDto(), State = 1001, Message = "انجام عملیات با خطا مواجه شد " };
             }
         }
-        public async Task<List<TransactionTypeForWallet>> GetForWallet()
+        public async Task<ResponseDto<List<TransactionTypeForWallet>>> GetForWallet()
         {
             try
             {
                 var data = await _WalletTransactionTypeRepository.GetAllAsync();
 
-                var result = data.Select(x => new TransactionTypeForWallet
+                if (data != null && data.Any())
                 {
-                    Code = x.Code,
-                    Name = x.Name
-                }).ToList();
+                    var result = data.Select(x => new TransactionTypeForWallet
+                    {
+                        Code = x.Code,
+                        Name = x.Name
+                    }).ToList();
 
-                return result;
+                    return new ResponseDto<List<TransactionTypeForWallet>>()
+                    {
+                        Data = result,
+                        State = 1,
+                        Message = "عملیات با موفقیت انجام شد"
+                    };
+                }
+                else
+                {
+                    return new ResponseDto<List<TransactionTypeForWallet>>()
+                    {
+                        Data = new List<TransactionTypeForWallet>(),
+                        State = 1003, 
+                        Message = "اطلاعاتی یافت نشد"
+                    };
+                }
             }
             catch (Exception)
             {
-                return [];
+                return new ResponseDto<List<TransactionTypeForWallet>>()
+                {
+                    Data = new List<TransactionTypeForWallet>(),
+                    State = 1001,
+                    Message = "انجام عملیات با خطا مواجه شد"
+                };
             }
-           
         }
     }
 }

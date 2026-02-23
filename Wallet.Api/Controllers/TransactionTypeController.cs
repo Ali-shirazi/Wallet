@@ -2,6 +2,7 @@
 using Wallet.Api.Application.Services.WalletTransactionTypeService;
 using Wallet.Shared.Contract.Dtos;
 using Wallet.Shared.Contract.ResultDtos;
+using Wallet.Shared.Contract.WalletTransaction;
 
 namespace Wallet.Api.Controllers
 {
@@ -62,10 +63,10 @@ namespace Wallet.Api.Controllers
 
 
         [HttpGet("GetForWallet")]
-        public async Task<IActionResult> GetForWallet()
+        public async Task<ActionResult<ResponseDto<List<TransactionTypeForWallet>>>> GetForWallet()
         {
             var result = await _service.GetForWallet();
-            return Json(result);
+            return Json(result.Data);
         }
     }
 }

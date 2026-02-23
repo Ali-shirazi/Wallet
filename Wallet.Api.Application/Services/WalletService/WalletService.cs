@@ -37,7 +37,7 @@ namespace Wallet.Api.Application.Services.WalletService
             _walletTransactionTypeRepository = walletTransactionTypeRepository;
             _mapper = mapper;
         }
-        public async Task<List<SubSystemVM>> GetAllSubSys(string serverName)
+        public async Task<ResponseDto<List<SubSystemVM>>> GetAllSubSys(string serverName)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace Wallet.Api.Application.Services.WalletService
                 _client.DefaultRequestHeaders.Accept.Clear();
                 _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                // نکته: آدرس را طبق بحث قبلی اصلاح کنید (مثلا SubSystem/GetAll)
+                // نکته: آدرس را طبق نیاز سرویس SSO تنظیم کنید
                 var response = await _client.GetAsync("SubSystem/GetAll");
 
                 if (response.IsSuccessStatusCode)
@@ -55,24 +55,45 @@ namespace Wallet.Api.Application.Services.WalletService
                     // چک کردن اینکه محتوا خالی نیست
                     if (string.IsNullOrEmpty(responseContent))
                     {
-                        return new List<SubSystemVM>(); // برگرداندن لیست خالی به جای خطا
+                        return new ResponseDto<List<SubSystemVM>>
+                        {
+                            Data = new List<SubSystemVM>(),
+                            State = 1, // یا کد وضعیت مناسب برای خالی بودن
+                            Message = "لیست شرکت‌ها خالی است"
+                        };
                     }
 
-                    // اگر سرویس SSO لیست خالی برمی‌گرداند، نباید اینجا کرش کند
-                    return JsonConvert.DeserializeObject<List<SubSystemVM>>(responseContent) ?? new List<SubSystemVM>();
+                    // دی‌سریالایز کردن داده‌ها
+                    var data = JsonConvert.DeserializeObject<List<SubSystemVM>>(responseContent);
+
+                    return new ResponseDto<List<SubSystemVM>>
+                    {
+                        Data = data ?? new List<SubSystemVM>(),
+                        State = 1,
+                        Message = "عملیات با موفقیت انجام شد"
+                    };
                 }
                 else
                 {
-                    // لاگ گرفتن خطا برای دیباگ
+                    // مدیریت خطاهای سمت سرور SSO
                     var errorContent = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"Error calling SSO: {response.StatusCode} - {errorContent}");
-                    return new List<SubSystemVM>(); // برگرداندن لیست خالی
+                    return new ResponseDto<List<SubSystemVM>>
+                    {
+                        Data = new List<SubSystemVM>(),
+                        State = 1005, // کد خطای عمومی
+                        Message = $"خطا در دریافت اطلاعات: {response.StatusCode}"
+                    };
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Exception: {ex.Message}");
-                return new List<SubSystemVM>(); // جلوگیری از کرش کردن کل برنامه
+                // مدیریت خطاهای شبکه یا کد
+                return new ResponseDto<List<SubSystemVM>>
+                {
+                    Data = new List<SubSystemVM>(),
+                    State = 1001, // کد خطای اکسپشن
+                    Message = $"انجام عملیات با خطا مواجه شد: {ex.Message}"
+                };
             }
         }
 
@@ -235,7 +256,7 @@ namespace Wallet.Api.Application.Services.WalletService
                 {
                     Data = true,
                     State = 1,
-                    Message = "عملیات واریز با موفقیت انجام شد"
+                    Message = "عملیات برداشت با موفقیت انجام شد"
                 };
             }
             catch (Exception)

@@ -184,11 +184,12 @@
                 error: function () {
                     alert('سرویس مورد نظر در دسترس نمی باشد');
                 }
-            });
+            }); 
         }
 
+
         function Del_Wallet(id, name) {
-            debugger;
+            // debugger;
             swal.fire({
                 title: 'حذف',
                 text: "کاربر گرامی، از حذف " + name + " مطمئن هستید؟",
@@ -204,39 +205,41 @@
                         cache: false,
                         type: "POST",
                         url: "/Wallet/Delete/" + id,
-                        success: function (data) {
-                            if (data === true) {
+                        success: function (response) {
+                            if (Number.parseInt(response.state) > 0 && Number.parseInt(response.state) < 1000) {
                                 swal.fire({
                                     title: 'حذف!',
-                                    text: "با موفقیت حذف شد",
+                                    html: response.message,
                                     icon: 'success',
-                                    confirmButtonText: 'تأیید'
+                                    confirmButtonText: 'تایید'
                                 }).then(function () {
                                     window.location.reload();
                                 });
                             } else {
                                 swal.fire({
                                     title: 'هشدار!',
-                                    text: "عملیات حذف با شکست مواجه شد.",
+                                    html: response.message,
                                     icon: 'warning',
                                     confirmButtonText: 'لغو'
+                                }).then(function () {
+                                    window.location.reload();
                                 });
                             }
                         },
                         error: function (xhr, ajaxOptions, thrownError) {
-                            console.log(xhr);
                             swal.fire({
                                 title: 'خطا!',
-                                text: "سرویس مورد نظر در دسترس نمی‌باشد: " + xhr.status,
+                                html: 'انجام عملیات با خطا مواجه شد.',
                                 icon: 'error',
-                                confirmButtonText: 'باشه'
+                                confirmButtonText: 'تایید'
                             });
                         }
                     });
                 }
             });
         }
-
+        
+            
         function Create_Func() {
             debugger;
             $.ajax({
@@ -320,13 +323,14 @@
             });
         }
 
-        function Transactions(Id) {
+                function Transactions(walletId) { // نام پارامتر را اینجا هم می‌توانید تغییر دهید
            debugger;
             $.ajax({
                 cache: false,
                 type: "Get",
-                url: "/Transaction/GetTransactionByWalletId",
-                data: { Id: Id },
+                // تغییر: پارامتر را مستقیماً در URL قرار دهید
+                url: "/Transaction/GetTransactionByWalletId?Id=" + walletId,
+                // خط data حذف شد چون در URL قرار گرفت
                 success: function (data) {
                     $('#my_lg_modal .modal-body').html(data);
                     $('#my_lg_modal .modal-title').html("<p>اطلاعات تراکنش</p>");
