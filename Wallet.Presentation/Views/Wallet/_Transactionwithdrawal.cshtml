@@ -1,0 +1,74 @@
+﻿@using Wallet.Shared.Contract.ViewModels.TransactionTypeVm
+@model List<TransactionTypeForWalletVm>
+<div class="container mt-3">
+    <div class="card p-4 shadow">
+        <!-- Price -->
+        <div class="mb-3">
+            <label class="form-label">Price</label>
+            <input type="number" id="price" class="form-control" />
+        </div>
+        <!--  select Code-->
+        <div class="mb-3">
+            <label class="form-label">انتخاب کیف پول</label>
+            <select id="Code" class="form-select">
+                <option value="">انتخاب آیتم</option>
+                @foreach (var item in Model.Where(x => x.Code == 2))
+                {
+                    <option value="@item.Code">@item.Name</option>
+                }
+            </select>
+        </div>
+        <!--  wallet ID -->
+        <input type="hidden" id="walletIdHidden" value="@ViewBag.WIdd" />
+        <div class="text-center mt-4">
+            <button type="button" class="btn btn-success px-5" onclick="sharjSubmitfunc()">
+                ثبت
+            </button>
+        </div>
+    </div>
+</div>
+<script>
+    function sharjSubmitfunc() {
+        debugger;
+        var walletId = $("#walletIdHidden").val();
+        var amount = $("#price").val();
+        var transactionTypeCode = $("#Code").val();
+        if (!transactionTypeCode) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'توجه',
+                text: 'لطفاً نوع تراکنش را انتخاب کنید!'
+            });
+            return;
+        }
+        $.ajax({
+            cache: false,
+            url: "/Wallet/Transactionwithdrawal",
+            type: "POST",
+            data: {
+                WalletId: walletId,
+                Amount: amount,
+                TransactionTypeCode: transactionTypeCode
+            },
+            success: function () {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'موفق!',
+                    text: 'برداشت با موفقیت انجام شد'
+                }).then(() => {
+                    var modalEl = document.getElementById('my_md_modal');
+                    var modalInstance = bootstrap.Modal.getInstance(modalEl);
+                    $('#my_md_modal .modal-body').html('');
+                    modalInstance.hide();
+                });
+            },
+            error: function () {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'خطا',
+                    text: 'مشکلی در انجام عملیات پیش آمد'
+                });
+            }
+        });
+    }
+</script>

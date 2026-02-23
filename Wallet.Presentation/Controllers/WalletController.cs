@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Wallet.Service.Services.TransactionService;
 using Wallet.Service.Services.TransactionTypeService;
 using Wallet.Service.Services.WalletServices;
@@ -63,8 +64,14 @@ namespace Wallet.Presentation.Controllers
         [HttpGet]
         public async Task<IActionResult> _Create()
         {
-            var res = new WalletVm();
-            return PartialView(res);
+
+            var res = await _WalletService.GetAllSubSystem(_serverName);
+
+            var subSystemList = new SelectList(res, "Id", "Title");
+
+            ViewBag.SubSystemList = subSystemList;
+
+            return PartialView();
         }
         [HttpGet]
         public async Task<IActionResult> _Sharj(Guid walletId)
@@ -77,6 +84,26 @@ namespace Wallet.Presentation.Controllers
 
           
         }
+        public async Task<IActionResult> _Transactionwithdrawal(Guid walletId)
+        {
+            var res = await _WalletService.GetAllSubSystem(_serverName);
+            // اصلاحیه: استفاده از "Name" به جای "Title" یا "SystemName"
+            var subSystemList = new SelectList(res, "Id", "Name");
+            ViewBag.SubSystemList = subSystemList;
+            return PartialView();
+
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> Transactionwithdrawal(CreateWalletTransactionDto data)
+        {
+            data.UserSaver = Guid.NewGuid();
+            var res = await _WalletService.Transactionwithdrawal(_serverName, data);
+            return Json(res);
+        }
+
+
+      
 
         [HttpPost]
         public async Task<IActionResult> Update(WalletVm data)

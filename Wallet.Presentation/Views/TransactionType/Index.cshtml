@@ -9,21 +9,18 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
 <style>
-    /* استایل‌های سفارشی برای چیدمان پاورقی جدول */
-
-    /* 1. انتقال اطلاعات (صفحه 1 از 1) به سمت راست */
+ 
     .dataTables_wrapper .dataTables_info {
         text-align: right !important;
         padding-right: 10px;
-        float: right; /* برای اطمینان از چسبیدن به راست */
+        float: right; 
     }
 
-    /* 2. انتقال دکمه‌های پیجینیشن (قبلی/بعدی) به سمت چپ */
+
     .dataTables_wrapper .dataTables_paginate {
         text-align: left !important;
         padding-left: 10px;
-        float: left; /* برای اطمینان از چسبیدن به چپ */
-    }
+        float: left; 
 </style>
 
 <!-- پنل ویرایش -->
@@ -42,12 +39,12 @@
     </div>
 </div>
 
-<!-- تغییر: عرض کانتینر به 1100px افزایش یافت -->
+
 <div class="container-fluid mx-auto" style="max-width: 1100px;">
     <div style="background:#fff; padding:15px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,.1);">
         <div class="card-body" style="padding-top:2px;">
 
-            <!-- هدر کارت: چیدمان اصلاح شده -->
+     
             <div class="card-header d-flex flex-row justify-content-between align-items-center position-relative"
                  style="background-color:#fff; font-size:18px;">
 
@@ -77,13 +74,13 @@
                         <thead class="bg-primary text-white" style="height:70px;">
                             <tr>
                                 <th style=" width:7%; border-left:1px solid #fff; border-top-right-radius:10px;  text-align:center">ردیف</th>
-                                <!-- تغییر: عرض نام تراکنش کمتر شد (40%) -->
+
                                 <th style="width:40%; border-left:1px solid #fff; text-align:center">نام نوع تراکنش  </th>
-                                <!-- تغییر: عرض عملیات بیشتر شد (53%) -->
+
                                 <th style="width:53%; border-left:1px solid #fff;  border-top-left-radius:10px; text-align:center">عملیات</th>
                             </tr>
                         </thead>
-                        <!-- کلاس bg-white برگردانده شد -->
+
                         <tbody class="bg-white" style="height:70px">
                             @foreach (var (item, index) in Model.Select((item, index) => (item, index)))
                             {
@@ -243,33 +240,21 @@
         }
 
         function Edit_TransactionType(Id) {
-            debugger;
-            $.ajax({
+           $.ajax({
                 cache: false,
                 type: "Get",
                 url: "/TransactionType/_Update",
                 data: { Id: Id },
                 success: function (data) {
-                    // چاپ کردن کل خروجی سرور در کنسول
-                    console.log("خروجی سرور:", data);
-                    // چک کردن اینکه آیا خروجی خالی است یا خیر
-                    if (!data || data.trim() === "") {
-                        alert("خروجی سرور خالی است! احتمالا مدل نال است.");
-                        return;
-                    }
-                    $('#my_lg_modal .modal-body').html(data);
-                    $('#staticBackdropLabelLG').html("فرم به روز رسانی نوع تراکنش");
-                    setTimeout(function () {
-                        var modalElement = document.getElementById('my_lg_modal');
-                        var modalInstance = bootstrap.Modal.getInstance(modalElement);
-                        if (!modalInstance) {
-                            modalInstance = new bootstrap.Modal(modalElement, {
-                                backdrop: 'static',
-                                keyboard: false
-                            });
-                        }
-                        modalInstance.show();
-                    }, 100);
+
+                     $('#my_lg_modal .modal-body').html(data);
+                     $('#my_lg_modal .modal-title').html("<p>فرم به روز رسانی نوع تراکنش</p>");
+
+                     var modalElement = new bootstrap.Modal(document.getElementById('my_lg_modal'), {
+                         backdrop: 'static',
+                         keyboard: false
+                     });
+                     modalElement.show();
                 },
                 error: function (xhr, status, error) {
                     alert('خطا در دریافت اطلاعات: ' + error);

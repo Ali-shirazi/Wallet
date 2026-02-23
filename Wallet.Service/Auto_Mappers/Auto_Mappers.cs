@@ -23,6 +23,7 @@ namespace Wallet.Service.Auto_Mappers
             CreateMap<WalletResultDto, WalletVm>().ReverseMap();
             CreateMap<TransactionTypeForWallet, TransactionTypeForWalletVm>().ReverseMap();
             CreateMap<WalletTransactionResultDto, TransactionVm>().ReverseMap();
+            CreateMap<SubSystemVM, SubSysVM>().ReverseMap();
 
             //CreateMap<CreateTransactionDto, CreateWalletTransactionDto>().ReverseMap();
 

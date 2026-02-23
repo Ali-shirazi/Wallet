@@ -1,32 +1,57 @@
-﻿<div style="display: flex; justify-content: center; align-items: center; height: 100vh; width: 100%; background-color: #f0f2f5; margin: 0; padding: 0;">
+﻿<div class="ui three column grid w-100 justify-content-center align-items-center">
 
-    <!-- حذف margin-right و استفاده از فلکس برای وسط چین شدن -->
-    <div style="display: flex; flex-wrap: nowrap; width: auto;">
-
-        <!-- دکمه اول: Transaction -->
-        <div style="padding: 0 20px;">
-            <a href="/Transaction/Index" class="ui fluid button massive"
-               style="height: 700px; width: 300px; font-size: 2.5rem; border-radius: 5px; background-color: #0056b3; color: white; box-shadow: 0 15px 30px rgba(0,0,0,0.3); text-decoration: none;">
-                Transaction
-            </a>
+    <!-- دکمه اول: Transaction -->
+    <div id="transactionCardbtn" class="column clickable w-25 mx-3">
+        <div class="ui fluid card">
+            <div class="image">
+                <img src="~/images/homeindexcards/transactionpng.png" />
+            </div>
+            <div class="content">
+                <a class="header text-center">
+                    Transaction
+                </a>
+            </div>
         </div>
-
-        <!-- دکمه دوم: TransactionType -->
-        <div style="padding: 0 20px;">
-            <a href="/TransactionType/Index" class="ui fluid button massive"
-               style="height: 700px; width: 300px; font-size: 2.5rem; border-radius: 5px; background-color: #0056b3; color: white; box-shadow: 0 15px 30px rgba(0,0,0,0.3); text-decoration: none;">
-                TransactionType
-            </a>
-        </div>
-
-        <!-- دکمه سوم: Wallet -->
-        <div style="padding: 0 20px;">
-            <a href="/Wallet/Index" class="ui fluid button massive"
-               style="height: 700px; width: 300px; font-size: 2.5rem; border-radius: 5px; background-color: #0056b3; color: white; box-shadow: 0 15px 30px rgba(0,0,0,0.3); text-decoration: none;">
-                Wallet
-            </a>
-        </div>
-
     </div>
 
+    <!-- دکمه دوم: TransactionType -->
+    <div id="transTypeCardbtn" class="column clickable w-25 mx-3">
+        <div class="ui fluid card">
+            <div class="image">
+                <img src="~/images/homeindexcards/ttypepng.png" />
+            </div>
+            <div class="content">
+                <a class="header text-center">
+                    TransactionType
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- دکمه سوم: Wallet -->
+    <div id="WalletCardbtn" class="column clickable w-25 mx-3">
+        <div class="ui fluid card">
+            <div class="image">
+                <img src="~/images/homeindexcards/walletpng.png" />
+            </div>
+            <div class="content">
+                <a class="header w-100 text-center">
+                    Wallet
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
+<script>
+    document.getElementById("transactionCardbtn")?.addEventListener("click", () => {
+        window.location.href = "/Transaction/Index";
+    });
+
+    document.getElementById("transTypeCardbtn")?.addEventListener("click", () => {
+        window.location.href = "/TransactionType/Index";
+    });
+
+    document.getElementById("WalletCardbtn")?.addEventListener("click", () => {
+        window.location.href = "/Wallet/Index";
+    });
+</script>
