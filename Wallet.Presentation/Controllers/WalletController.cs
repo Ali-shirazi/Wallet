@@ -66,10 +66,7 @@ namespace Wallet.Presentation.Controllers
         {
 
             var res = await _WalletService.GetAllSubSystem(_serverName);
-
-            // اصلاحیه: تغییر "Title" به "Name" برای تطابق با خروجی JSON
             var subSystemList = new SelectList(res, "Id", "Name");
-
             ViewBag.SubSystemList = subSystemList;
             return PartialView();
         }
@@ -78,7 +75,6 @@ namespace Wallet.Presentation.Controllers
         {
           var res = await _TransactionTypeService.GetTransactionForWallet(_serverName);
             var mylist = new List<TransactionTypeForWalletVm>();
-
             ViewBag.WIdd = walletId;
             return PartialView(res);
 
@@ -86,13 +82,10 @@ namespace Wallet.Presentation.Controllers
         }
         public async Task<IActionResult> _Transactionwithdrawal(Guid walletId)
         {
-            var res = await _WalletService.GetAllSubSystem(_serverName);
-            // اصلاحیه: استفاده از "Name" به جای "Title" یا "SystemName"
-            var subSystemList = new SelectList(res, "Id", "Name");
-            ViewBag.SubSystemList = subSystemList;
-            return PartialView();
-
-
+            var res = await _TransactionTypeService.GetTransactionForWallet(_serverName);
+            var mylist = new List<TransactionTypeForWalletVm>();
+            ViewBag.WIdd = walletId;
+            return PartialView(res);
         }
         [HttpPost]
         public async Task<IActionResult> Transactionwithdrawal(CreateWalletTransactionDto data)
