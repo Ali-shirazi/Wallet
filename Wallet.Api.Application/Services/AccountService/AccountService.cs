@@ -15,14 +15,14 @@ namespace Wallet.Api.Application.Services.AccountService
         readonly HttpClient _client = new HttpClient();
         public async Task<LoginResponseDto> Login(string serverName, LoginRequestDto dto)
         {
-           
+            dto.SystemId = Guid.NewGuid();
                 _client.BaseAddress = new Uri(serverName);
                 _client.DefaultRequestHeaders.Accept.Clear();
                 _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var json = JsonConvert.SerializeObject(dto);
             try
             {
-                var response = await _client.PostAsync("/Account/LoginA", new StringContent(json, Encoding.UTF8, "application/json"));
+                var response = await _client.PostAsync("Account/Login", new StringContent(json, Encoding.UTF8, "application/json"));
 
                 if (response.IsSuccessStatusCode)
                 {

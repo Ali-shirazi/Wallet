@@ -10,6 +10,6 @@ namespace Wallet.Shared.Contract.Dtos
     {
         public string Mobile {  get; set; }
         public string Password { get; set; }
-        public Guid SystemId {  get; set; }
+        public Guid? SystemId {  get; set; }
     }
 }
