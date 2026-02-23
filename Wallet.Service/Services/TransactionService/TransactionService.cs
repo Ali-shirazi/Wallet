@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Wallet.Shared.Contract.ResultDtos;
 using Wallet.Shared.Contract.ViewModels.TransactionTypeVm;
 using Wallet.Shared.Contract.ViewModels.TransactionVm;
 
@@ -44,7 +45,7 @@ namespace Wallet.Service.Services.TransactionService
             }
         }
 
-        public async Task<TransactionVm> GetById(string serverName, Guid Id)
+        public async Task<ResponseDto<TransactionVm>> GetById(string serverName, Guid Id)
         {
             try
             {
@@ -60,7 +61,7 @@ namespace Wallet.Service.Services.TransactionService
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<TransactionVm>(responseContent);
+                    return JsonConvert.DeserializeObject<ResponseDto<TransactionVm>>(responseContent);
                 }
                 else
                 {
@@ -128,7 +129,7 @@ namespace Wallet.Service.Services.TransactionService
             }
         }
 
-        public async Task<bool> Update(string serverName, TransactionVm data)
+        public async Task<ResponseDto<bool>> Update(string serverName, TransactionVm data)
         {
             try
             {
@@ -145,7 +146,7 @@ namespace Wallet.Service.Services.TransactionService
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<bool>(responseContent);
+                    return JsonConvert.DeserializeObject<ResponseDto<bool>>(responseContent);
                 }
                 else
                 {
