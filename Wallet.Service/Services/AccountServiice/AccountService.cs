@@ -14,12 +14,7 @@ namespace Wallet.Service.Services.AccountServiice
 {
     public class AccountService : IAccountService
     {
-        private readonly HttpClient _client;
-
-        public AccountService(HttpClient client)
-        {
-            _client = client;
-        }
+        readonly HttpClient _client = new HttpClient();
 
         public async Task<LoginResponseDto> Login(string serverName, LoginRequestDto data)
         {

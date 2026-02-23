@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Wallet.Api.Application.MappingProfille;
+using Wallet.Api.Application.Services.AccountService;
 using Wallet.Api.Application.Services.WalletService;
 using Wallet.Api.Application.Services.WalletTransactionService;
 using Wallet.Api.Application.Services.WalletTransactionTypeService;
@@ -46,6 +47,7 @@ builder.Services.AddScoped<IWalletTransactionService, WalletTransactionService>(
 
 builder.Services.AddScoped<IWalletTransactionTypeRepository, WalletTransactionTypeRepository>();
 builder.Services.AddScoped<IWalletTransactionTypeService, WalletTransactionTypeService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
 
 
 var app = builder.Build();

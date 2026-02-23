@@ -11,7 +11,7 @@ namespace Wallet.Api.Controllers
         string serverName = _configuration["AuthServiceInfo:Server"]!;
 
 
-        [HttpPost("Login")]
+        [HttpGet("Login")]
         public async Task<ActionResult<LoginResponseDto>> Login(LoginRequestDto dto)
         {
             var result = await _service.Login(serverName, dto);
