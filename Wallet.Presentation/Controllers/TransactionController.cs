@@ -40,7 +40,7 @@ namespace Wallet.Presentation.Controllers
         public async Task<IActionResult> _Update(Guid Id)
         {
             var res = await _transactionService.GetById(_serverName, Id);
-            return PartialView(res);
+            return PartialView(res.Data);
         }
         [HttpGet]
         public async Task<IActionResult> _Create()
@@ -53,6 +53,7 @@ namespace Wallet.Presentation.Controllers
         public async Task<IActionResult> Update(TransactionVm data)
         {
             var res = await _transactionService.Update(_serverName, data);
+
             return Json(res);
 
         }

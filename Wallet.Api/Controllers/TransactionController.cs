@@ -37,7 +37,7 @@ namespace Wallet.Api.Controllers
         public async Task<ActionResult<ResponseDto<bool>>> UpdateTransaction(WalletTransactionResultDto dto)
         {
             var result = await _service.Update(dto);
-            return Json(result.Data);
+            return result;
         }
 
 
@@ -56,7 +56,7 @@ namespace Wallet.Api.Controllers
         {
             var result = await _service.GetById(id);
 
-            return Json(result.Data);
+            return result;
         }
 
         [HttpGet("GetTransationByWalletId/{walletId}")]

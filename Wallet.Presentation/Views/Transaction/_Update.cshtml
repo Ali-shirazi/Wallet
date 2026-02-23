@@ -47,12 +47,12 @@
             type: "POST",
             url: "/Transaction/Update",
             data: currentFormData, // اکنون این متغیر تعریف شده است
-            success: function (data) {
+            success: function (response) {
                 // Handle successful update
-                if (data) {
+                if (Number.parseInt( response.state) > 0 && Number.parseInt( response.state)<1000) {
                     swal.fire({
                         title:'موفق!',
-                        html:  'اطلاعات با موفقیت ویرایش شد.',
+                        html: response.message,
                         icon:'success',
                         confirmButtonText:'تایید'
                     }).then(function () {
@@ -61,7 +61,7 @@
                 } else {
                     swal.fire({
                         title: 'خطا!',
-                        html: 'ویرایش انجام نشد.',
+                        html: response.message,
                         icon: 'error',
                         confirmButtonText: 'تایید'
                     }).then(function () {
