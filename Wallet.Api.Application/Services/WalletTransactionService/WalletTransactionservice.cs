@@ -113,6 +113,8 @@ namespace Wallet.Api.Application.Services.WalletTransactionService
                 {
                     return new ResponseDto<bool>() { Data = false, State = 1005, Message = "خطا در اطلاعات ارسالی " };
                 }
+                _wallettransactionRepository.DeleteAsync(id);
+
                 return new ResponseDto<bool>() { Data = true, State = 1, Message = "عملیات با موفقیت انجام شد " };
 
             }
