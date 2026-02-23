@@ -108,14 +108,14 @@ namespace Wallet.Api.Application.Services.WalletTransactionService
         {
             try
             {
-                var foundedId = _wallettransactionRepository.GetByIdAsync(id);
+                var foundedId = await _wallettransactionRepository.GetByIdAsync(id);
                 if (foundedId == null)
                 {
                     return new ResponseDto<bool>() { Data = false, State = 1005, Message = "خطا در اطلاعات ارسالی " };
                 }
-                _wallettransactionRepository.DeleteAsync(id);
+              var data= await _wallettransactionRepository.DeleteAsync(id);
 
-                return new ResponseDto<bool>() { Data = true, State = 1, Message = "عملیات با موفقیت انجام شد " };
+                return new ResponseDto<bool>() { Data = data, State = 1, Message = "عملیات با موفقیت انجام شد " };
 
             }
             catch (Exception)

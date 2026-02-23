@@ -109,13 +109,13 @@ namespace Wallet.Api.Application.Services.WalletTransactionTypeService
 
             try
             {
-                var foundedId = _WalletTransactionTypeRepository.GetByIdAsync(id);
+                var foundedId =await _WalletTransactionTypeRepository.GetByIdAsync(id);
                 if (foundedId == null)
                 {
                     return new ResponseDto<bool>() { Data = false, State = 1005, Message = "خطا در اطلاعات ارسالی " };
                 }
-                _WalletTransactionTypeRepository.DeleteAsync(id);
-                return new ResponseDto<bool>() { Data = true, State = 1, Message = "عملیات با موفقیت انجام شد " };
+               var data= await _WalletTransactionTypeRepository.DeleteAsync(id);
+                return new ResponseDto<bool>() { Data = data, State = 1, Message = "عملیات با موفقیت انجام شد " };
             }
             catch (Exception)
             {

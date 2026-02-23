@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Wallet.Shared.Contract.Dtos;
 using Wallet.Shared.Contract.ResultDtos;
+using Wallet.Shared.Contract.ViewModels.LoginVm;
 using Wallet.Shared.Contract.ViewModels.TransactionTypeVm;
 using Wallet.Shared.Contract.ViewModels.TransactionVm;
 using Wallet.Shared.Contract.ViewModels.WalletVm;
@@ -24,7 +25,7 @@ namespace Wallet.Service.Auto_Mappers
             CreateMap<TransactionTypeForWallet, TransactionTypeForWalletVm>().ReverseMap();
             CreateMap<WalletTransactionResultDto, TransactionVm>().ReverseMap();
             CreateMap<SubSystemVM, SubSysVM>().ReverseMap();
-
+            CreateMap<LoginResponseDto, LoginResponseVm>().ReverseMap();
             //CreateMap<CreateTransactionDto, CreateWalletTransactionDto>().ReverseMap();
 
         }
