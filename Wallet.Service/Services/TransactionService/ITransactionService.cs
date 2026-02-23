@@ -10,11 +10,17 @@ namespace Wallet.Service.Services.TransactionService
 {
     public interface ITransactionService
     {
-        Task<List<TransactionVm>> GetAll(string _serverName);
+
+        Task<ResponseDto<List<TransactionVm>>> GetAll(string _serverName);
+
         Task<ResponseDto<TransactionVm>> GetById(string serverName, Guid Id);
-        Task<int> Create(string serverName, TransactionVm data);
+
+        Task<ResponseDto<int>> Create(string serverName, TransactionVm data);
+
         Task<ResponseDto<bool>> Update(string serverName, TransactionVm data);
-        Task<bool> Delete(string serverName, Guid Id);
-        Task<List<TransactionVm>> GetTransactionByWalletId(string serverName, Guid Id);
+
+        Task<ResponseDto<bool>> Delete(string serverName, Guid Id);
+
+        Task<ResponseDto<List<TransactionVm>>> GetTransactionByWalletId(string serverName, Guid Id);
     }
 }

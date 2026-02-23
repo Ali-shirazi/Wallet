@@ -17,8 +17,7 @@ namespace Wallet.Presentation.Controllers
         public async Task<IActionResult> Index()
         {
             var res = await _transactionService.GetAll(_serverName);
-
-            return View(res);
+            return View(res.Data);
         }
 
         [HttpGet]
@@ -26,15 +25,14 @@ namespace Wallet.Presentation.Controllers
         {
 
             var res = await _transactionService.GetAll(_serverName);
-            return View(res);
-
+            return View(res.Data);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetById(Guid Id)
         {
             var res = await _transactionService.GetById(_serverName, Id);
-            return PartialView(res);
+            return PartialView(res.Data);
         }
         [HttpGet]
         public async Task<IActionResult> _Update(Guid Id)
@@ -62,7 +60,7 @@ namespace Wallet.Presentation.Controllers
         public async Task<IActionResult> Delete(Guid Id)
         {
             var res = await _transactionService.Delete(_serverName, Id);
-            return Json(res);
+            return Json(res.Data);
         }
         [HttpPost]
         public async Task<IActionResult> Create(TransactionVm data)
