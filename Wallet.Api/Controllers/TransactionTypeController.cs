@@ -22,7 +22,7 @@ namespace Wallet.Api.Controllers
         {
             var result = await _service.Create(dto);
 
-            return Json(result.Data);
+            return result;
         }
 
 
@@ -38,7 +38,7 @@ namespace Wallet.Api.Controllers
         public async Task<ActionResult<ResponseDto<bool>>> UpdateWalletTransactionsType(WalletTransactionTypeResultDto dto)
         {
             var result = await _service.Update(dto);
-            return Json(result.Data);
+            return result;
         }
 
 
@@ -47,7 +47,7 @@ namespace Wallet.Api.Controllers
         public async Task<ActionResult<ResponseDto<bool>>> DeleteWalletTransactionType(Guid id)
         {
             var result = await _service.Delete(id);
-            return Json(result.Data);
+            return result;
         }
 
 
@@ -57,7 +57,7 @@ namespace Wallet.Api.Controllers
         {
             var result = await _service.GetById(id);
 
-            return Json(result.Data);
+            return result;
         }
 
 

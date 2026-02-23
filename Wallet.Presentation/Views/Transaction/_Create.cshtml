@@ -51,11 +51,10 @@
             url: "/Transaction/Create",
             data: formData,
             success: function (response) {
-                // اکنون response شامل state و message است
                 if (response.state > 0 && response.state < 1000) {
                     swal.fire({
                         title: 'موفق!',
-                        html: response.message, // پیام از سمت سرور خوانده می‌شود
+                        html: response.message, 
                         icon: 'success',
                         confirmButtonText: 'تایید'
                     }).then(function () {
@@ -64,7 +63,7 @@
                 } else {
                     swal.fire({
                         title: 'خطا!',
-                        html: response.message, // پیام خطا از سمت سرور خوانده می‌شود
+                        html: response.message, 
                         icon: 'error',
                         confirmButtonText: 'تایید'
                     });

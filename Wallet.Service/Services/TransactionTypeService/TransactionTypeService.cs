@@ -58,29 +58,12 @@ namespace Wallet.Service.Services.TransactionTypeService
                 _client.BaseAddress = new Uri(serverName);
                 _client.DefaultRequestHeaders.Accept.Clear();
                 _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
                 var response = await _client.GetAsync($"api/TransactionType/GetWalletTransactionTypeById/{Id}");
-
-                // بهتر است EnsureSuccessStatusCode را برای مدیریت خطا نگه دارید
                 response.EnsureSuccessStatusCode();
-
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-
-                    // --- اصلاحیه ---
-                    // فرض می‌کنیم API مستقیماً آبجکت TransactionTypeVm برمی‌گرداند (مشابه GetAll)
-                    try
-                    {
-                        var data = JsonConvert.DeserializeObject<TransactionTypeVm>(responseContent);
-                        return new ResponseDto<TransactionTypeVm> { Data = data };
-                    }
-                    catch
-                    {
-                        // اگر ساختار پاسخ تغییر کرد و ResponseDto بود، حالت قبلی را امتحان می‌کنیم
-                        return JsonConvert.DeserializeObject<ResponseDto<TransactionTypeVm>>(responseContent);
-                    }
-                    // --------------
+                    return JsonConvert.DeserializeObject<ResponseDto<TransactionTypeVm>>(responseContent);
                 }
                 else
                 {

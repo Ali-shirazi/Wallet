@@ -19,7 +19,6 @@ namespace Wallet.Presentation.Controllers
         public async Task<IActionResult> Index()
         {
             var res = await _transactionTypeService.GetAll(_serverName);
-            // اصلاحیه: ارسال res.Data به View
             return View(res.Data);
         }
 
@@ -27,7 +26,6 @@ namespace Wallet.Presentation.Controllers
         public async Task<IActionResult> GetAll()
         {
             var res = await _transactionTypeService.GetAll(_serverName);
-            // اصلاحیه: ارسال res.Data به View
             return View(res.Data);
         }
 
@@ -63,7 +61,7 @@ namespace Wallet.Presentation.Controllers
         public async Task<IActionResult> Delete(Guid Id)
         {
             var res = await _transactionTypeService.Delete(_serverName, Id);
-            return Json(res.Data);
+            return Json(res);
         }
 
         [HttpPost]
@@ -71,7 +69,7 @@ namespace Wallet.Presentation.Controllers
         {
             data.UserSaver = Guid.NewGuid();
             var res = await _transactionTypeService.Create(_serverName, data);
-            return Json(res.Data);
+            return Json(res);
         }
     }
 }

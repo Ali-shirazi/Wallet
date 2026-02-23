@@ -4,21 +4,17 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<!-- اضافه کردن لینک Bootstrap Icons -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 <style>
-    /* استایل‌های سفارشی برای چیدمان پاورقی جدول */
-    /* 1. انتقال اطلاعات (صفحه 1 از 1) به سمت راست */
     .dataTables_wrapper .dataTables_info {
         text-align: right !important;
         padding-right: 10px;
-        float: right; /* برای اطمینان از چسبیدن به راست */
+        float: right; 
     }
-    /* 2. انتقال دکمه‌های پیجینیشن (قبلی/بعدی) به سمت چپ */
     .dataTables_wrapper .dataTables_paginate {
         text-align: left !important;
         padding-left: 10px;
-        float: left; /* برای اطمینان از چچیدن به چپ */
+        float: left;
     }
 </style>
 <!-- پنل ویرایش -->
@@ -117,10 +113,10 @@
                 paging: true,
                 pageLength: 6,
                 layout: {
-                    topStart: 'search',       // جستجو در سمت راست
-                    topEnd: 'pageLength',     // تعداد در صفحه در سمت چپ
-                    bottomStart: 'info',      // اطلاعات (صفحه 1 از 1) در سمت راست
-                    bottomEnd: 'paging'       // دکمه‌ها (قبلی/بعدی) در سمت چپ
+                    topStart: 'search',     
+                    topEnd: 'pageLength',     
+                    bottomStart: 'info',      
+                    bottomEnd: 'paging'      
                 },
                 language: {
                     info: 'صفحه _PAGE_ از _PAGES_',
@@ -157,8 +153,8 @@
                 }
             });
         }
-        function Del_Transaction(id, name) {
-            debugger;
+                   function Del_Transaction(id, name) {
+            // debugger;
             swal.fire({
                 title: 'حذف',
                 text: "کاربر گرامی، از حذف " + name + " مطمئن هستید؟",
@@ -174,32 +170,33 @@
                         cache: false,
                         type: "POST",
                         url: "/Transaction/Delete/" + id,
-                        success: function (data) {
-                            if (data === true) {
+                        success: function (response) {
+                            if (Number.parseInt(response.state) > 0 && Number.parseInt(response.state) < 1000) {
                                 swal.fire({
                                     title: 'حذف!',
-                                    text: "با موفقیت حذف شد",
+                                    html: response.message, 
                                     icon: 'success',
-                                    confirmButtonText: 'تأیید'
+                                    confirmButtonText: 'تایید'
                                 }).then(function () {
                                     window.location.reload();
                                 });
                             } else {
                                 swal.fire({
                                     title: 'هشدار!',
-                                    text: "عملیات حذف با شکست مواجه شد.",
+                                    html: response.message, 
                                     icon: 'warning',
                                     confirmButtonText: 'لغو'
+                                }).then(function () {
+                                    window.location.reload();
                                 });
                             }
                         },
                         error: function (xhr, ajaxOptions, thrownError) {
-                            console.log(xhr);
                             swal.fire({
                                 title: 'خطا!',
-                                text: "سرویس مورد نظر در دسترس نمی‌باشد: " + xhr.status,
+                                html: 'انجام عملیات با خطا مواجه شد.',
                                 icon: 'error',
-                                confirmButtonText: 'باشه'
+                                confirmButtonText: 'تایید'
                             });
                         }
                     });

@@ -60,7 +60,7 @@ namespace Wallet.Presentation.Controllers
         public async Task<IActionResult> Delete(Guid Id)
         {
             var res = await _transactionService.Delete(_serverName, Id);
-            return Json(res.Data);
+            return Json(res);
         }
         [HttpPost]
         public async Task<IActionResult> Create(TransactionVm data)

@@ -25,10 +25,6 @@ namespace Wallet.Service.Services.TransactionService
 
                 var json = JsonConvert.SerializeObject(data);
                 var response = await _client.PostAsync("api/Transaction/AddTransaction", new StringContent(json, Encoding.UTF8, "application/json"));
-
-                // EnsureSuccessStatusCode را حذف کردیم تا مدیریت خطا دست ما باشد
-                // response.EnsureSuccessStatusCode(); 
-
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
