@@ -37,8 +37,6 @@ namespace Wallet.Api.Application.Services.AccountService
                 }
                 else
                 {
-                    var errorContent = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"Error calling SSO: {response.StatusCode} - {errorContent}");
                     return new LoginResponseDto();
                 }
             }

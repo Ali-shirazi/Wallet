@@ -55,10 +55,10 @@ namespace Wallet.Presentation.Controllers
                 string.IsNullOrEmpty(data.Token))
             {
                 TempData["msg"] = "شماره تلفن همراه یا کلمه عبور صحیح نیست.";
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Login));
             }
 
-            HttpContext.Session.SetString("_sToken", data.Token);
+            HttpContext.Session.SetString("_Token", data.Token);
             HttpContext.Session.SetString("_usr", data.UserId.ToString());
             HttpContext.Session.SetString("_role", data.Role.ToString());
 
