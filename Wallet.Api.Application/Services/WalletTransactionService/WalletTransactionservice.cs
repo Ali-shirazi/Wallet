@@ -145,19 +145,47 @@ namespace Wallet.Api.Application.Services.WalletTransactionService
         }
 
 
-        public async Task<List<WalletTransactionResultDto>> GetByWalletId(Guid walletId)
+        public async Task<ResponseDto<List<WalletTransactionResultDto>>> GetByWalletId(Guid walletId)
         {
             try
             {
-                 var data = _wallettransactionRepository.Get(x => x.WalletId == walletId);
-                 if (data.Any())
-                    return _mapper.Map<List<WalletTransactionResultDto>>(data);
+                // اصلاحیه: استفاده از GetAllAsync برای اطمینان از لود شدن داده‌ها
+                var allData = await _wallettransactionRepository.GetAllAsync();
+
+                // فیلتر کردن در حافظه
+                var data = allData.Where(x => x.WalletId == walletId).ToList();
+
+                if (data.Any())
+                {
+                    var mappedData = _mapper.Map<List<WalletTransactionResultDto>>(data);
+
+                    // مهم: برگرداندن ResponseDto به جای List خالص
+                    return new ResponseDto<List<WalletTransactionResultDto>>()
+                    {
+                        Data = mappedData,
+                        State = 1,
+                        Message = "عملیات با موفقیت انجام شد"
+                    };
+                }
+                else
+                {
+                    return new ResponseDto<List<WalletTransactionResultDto>>()
+                    {
+                        Data = new List<WalletTransactionResultDto>(),
+                        State = 1003,
+                        Message = "اطلاعاتی یافت نشد"
+                    };
+                }
             }
             catch (Exception)
             {
-                return [];
+                return new ResponseDto<List<WalletTransactionResultDto>>()
+                {
+                    Data = new List<WalletTransactionResultDto>(),
+                    State = 1001,
+                    Message = "انجام عملیات با خطا مواجه شد"
+                };
             }
-            return [];
         }
     }
 }

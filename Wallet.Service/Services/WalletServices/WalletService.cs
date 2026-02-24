@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Wallet.Shared.Contract.Dtos;
 using Wallet.Shared.Contract.ResultDtos;
+using Wallet.Shared.Contract.ViewModels.TransactionVm;
 using Wallet.Shared.Contract.ViewModels.WalletVm;
 using Wallet.Shared.Contract.WalletTransaction;
 
@@ -16,7 +17,7 @@ namespace Wallet.Service.Services.WalletServices
     public  class WalletService: IWalletService
     {
         readonly HttpClient _client = new HttpClient();
-        public async Task<List<SubSysVM>> GetAllSubSystem(string serverName)
+        public async Task<ResponseDto<List<SubSysVM>>> GetAllSubSystem(string serverName)
         {
             try
             {
@@ -32,7 +33,7 @@ namespace Wallet.Service.Services.WalletServices
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<List<SubSysVM>>(responseContent);
+                    return JsonConvert.DeserializeObject <ResponseDto<List<SubSysVM>>>(responseContent);
                 }
                 else
                 {
@@ -45,7 +46,7 @@ namespace Wallet.Service.Services.WalletServices
             }
         }
 
-        public async Task<int> Create(string serverName, WalletVm data)
+        public async Task<ResponseDto<int>> Create(string serverName, WalletVm data)
         {
             try
             {
@@ -57,12 +58,19 @@ namespace Wallet.Service.Services.WalletServices
 
                 var response = await _client.PostAsync("api/Wallet/AddWallet", new StringContent(json, Encoding.UTF8, "application/json"));
 
-                response.EnsureSuccessStatusCode();
-
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<int>(responseContent);
+
+                    try
+                    {
+                        return JsonConvert.DeserializeObject<ResponseDto<int>>(responseContent);
+                    }
+                    catch
+                    {
+                        var resultId = JsonConvert.DeserializeObject<int>(responseContent);
+                        return new ResponseDto<int> { Data = resultId };
+                    }
                 }
                 else
                 {
@@ -73,10 +81,11 @@ namespace Wallet.Service.Services.WalletServices
             {
                 throw;
             }
+
         }
 
 
-        public async Task<bool> CreateTransaction(string serverName, CreateWalletTransactionDto data )
+        public async Task<ResponseDto<bool>> CreateTransaction(string serverName, CreateWalletTransactionDto data )
         {
             try
             {
@@ -89,24 +98,32 @@ namespace Wallet.Service.Services.WalletServices
 
                 var response = await _client.PostAsync("api/Wallet/CreateTransaction", new StringContent(json, Encoding.UTF8, "application/json"));
 
-                response.EnsureSuccessStatusCode();
 
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<bool>(responseContent);
+
+                    try
+                    {
+                        return JsonConvert.DeserializeObject<ResponseDto<bool>>(responseContent);
+                    }
+                    catch
+                    {
+                        var resultId = JsonConvert.DeserializeObject<bool>(responseContent);
+                        return new ResponseDto<bool> { Data = resultId };
+                    }
                 }
                 else
                 {
-                    throw new Exception("Error in CreateTransaction");
+                    throw new Exception("Error in Create");
                 }
-        }
+            }
             catch (Exception)
             {
                 throw;
             }
-}
-        public async Task<bool> Transactionwithdrawal(string serverName, CreateWalletTransactionDto data)
+        }
+        public async Task<ResponseDto<bool>> Transactionwithdrawal(string serverName, CreateWalletTransactionDto data)
         {
             try
             {
@@ -119,26 +136,34 @@ namespace Wallet.Service.Services.WalletServices
 
                 var response = await _client.PostAsync("api/Wallet/Transactionwithdrawal", new StringContent(json, Encoding.UTF8, "application/json"));
 
-                response.EnsureSuccessStatusCode();
-                
+
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    var jObject = JObject.Parse(responseContent);
-                    return jObject["data"].Value<bool>();
+
+                    try
+                    {
+                        return JsonConvert.DeserializeObject<ResponseDto<bool>>(responseContent);
+                    }
+                    catch
+                    {
+                        var resultId = JsonConvert.DeserializeObject<bool>(responseContent);
+                        return new ResponseDto<bool> { Data = resultId };
+                    }
                 }
                 else
                 {
-                    throw new Exception("Error in Transactionwithdrawal");
+                    throw new Exception("Error in Create");
                 }
             }
             catch (Exception)
             {
                 throw;
             }
+       
         }
 
-        public async Task<WalletVm> GetById(string serverName, Guid Id)
+        public async Task<ResponseDto<WalletVm>> GetById(string serverName, Guid Id)
         {
             try
             {
@@ -149,12 +174,10 @@ namespace Wallet.Service.Services.WalletServices
 
                 var response = await _client.GetAsync($"api/Wallet/GetByIdWallet/{Id}");
 
-                response.EnsureSuccessStatusCode();
-
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<WalletVm>(responseContent);
+                    return JsonConvert.DeserializeObject<ResponseDto<WalletVm>>(responseContent);
                 }
                 else
                 {
@@ -167,7 +190,7 @@ namespace Wallet.Service.Services.WalletServices
             }
         }
 
-        public async Task<bool> Delete(string serverName, Guid Id)
+        public async Task<ResponseDto<bool>> Delete(string serverName, Guid Id)
         {
             try
             {
@@ -176,24 +199,32 @@ namespace Wallet.Service.Services.WalletServices
                 _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var response = await _client.PostAsync($"api/Wallet/DeleteWallet/{Id}", null);
-
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<bool>(responseContent);
+
+                    try
+                    {
+                        return JsonConvert.DeserializeObject<ResponseDto<bool>>(responseContent);
+                    }
+                    catch
+                    {
+                        var result = JsonConvert.DeserializeObject<bool>(responseContent);
+                        return new ResponseDto<bool> { Data = result };
+                    }
                 }
                 else
                 {
-                    return false;
+                    throw new Exception("Error in Delete");
                 }
             }
             catch (Exception)
             {
-                return false;
+                throw;
             }
         }
 
-        public async Task<List<WalletVm>> GetAll(string serverName)
+        public async Task<ResponseDto<List<WalletVm>>> GetAll(string serverName)
         {
             try
             {
@@ -209,7 +240,9 @@ namespace Wallet.Service.Services.WalletServices
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<List<WalletVm>>(responseContent);
+                    // چون API آرایه برمی‌گرداند، ابتدا به لیست تبدیل می‌کنیم
+                    var data = JsonConvert.DeserializeObject<List<WalletVm>>(responseContent);
+                    return new ResponseDto<List<WalletVm>> { Data = data };
                 }
                 else
                 {
@@ -222,7 +255,7 @@ namespace Wallet.Service.Services.WalletServices
             }
         }
 
-        public async Task<bool> Update(string serverName, WalletVm data)
+        public async Task<ResponseDto<bool>> Update(string serverName, WalletVm data)
         {
             try
             {
@@ -239,7 +272,7 @@ namespace Wallet.Service.Services.WalletServices
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<bool>(responseContent);
+                    return JsonConvert.DeserializeObject<ResponseDto<bool>>(responseContent);
                 }
                 else
                 {

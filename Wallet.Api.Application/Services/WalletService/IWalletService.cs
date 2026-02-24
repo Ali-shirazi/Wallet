@@ -20,6 +20,6 @@ namespace Wallet.Api.Application.Services.WalletService
         Task<ResponseDto<WalletResultDto>?> GetById(Guid id);
         Task<ResponseDto<bool>> CreateTransaction(CreateWalletTransactionDto dto);
         Task<ResponseDto<bool>> Transactionwithdrawal(CreateWalletTransactionDto dto);
-        Task<List<SubSystemVM>> GetAllSubSys(string serverName);
+        Task<ResponseDto<List<SubSystemVM>>> GetAllSubSys(string serverName);
     }
 }

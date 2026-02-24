@@ -168,8 +168,9 @@
             });
         }
 
+
         function Del_TransactionType(id, name) {
-            debugger;
+            // debugger;
             swal.fire({
                 title: 'حذف',
                 text: "کاربر گرامی، از حذف " + name + " مطمئن هستید؟",
@@ -184,39 +185,41 @@
                     $.ajax({
                         cache: false,
                         type: "POST",
-                        url: "/TransactionType/Delete/" + id,
-                        success: function (data) {
-                            if (data === true) {
+                         url: "/TransactionType/Delete/" + id,
+                        success: function (response) {
+                            if (Number.parseInt(response.state) > 0 && Number.parseInt(response.state) < 1000) {
                                 swal.fire({
                                     title: 'حذف!',
-                                    text: "با موفقیت حذف شد",
+                                    html: response.message,
                                     icon: 'success',
-                                    confirmButtonText: 'تأیید'
+                                    confirmButtonText: 'تایید'
                                 }).then(function () {
                                     window.location.reload();
                                 });
                             } else {
                                 swal.fire({
                                     title: 'هشدار!',
-                                    text: "عملیات حذف با شکست مواجه شد.",
+                                    html: response.message,
                                     icon: 'warning',
                                     confirmButtonText: 'لغو'
+                                }).then(function () {
+                                    window.location.reload();
                                 });
                             }
                         },
                         error: function (xhr, ajaxOptions, thrownError) {
-                            console.log(xhr);
                             swal.fire({
                                 title: 'خطا!',
-                                text: "سرویس مورد نظر در دسترس نمی‌باشد: " + xhr.status,
+                                html: 'انجام عملیات با خطا مواجه شد.',
                                 icon: 'error',
-                                confirmButtonText: 'باشه'
+                                confirmButtonText: 'تایید'
                             });
                         }
                     });
                 }
             });
         }
+
 
         function Create_Func() {
             debugger;

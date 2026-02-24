@@ -21,7 +21,7 @@ namespace Wallet.Api.Controllers
         {
             var result = await _service.Create(dto);
 
-            return Json(result.Data);
+            return result;
         }
 
 
@@ -46,7 +46,7 @@ namespace Wallet.Api.Controllers
         public async Task<ActionResult<ResponseDto<bool>>> DeleteTransactionById(Guid id)
         {
             var result = await _service.Delete(id);
-            return Json(result.Data);
+            return result;
         }
 
 
@@ -60,10 +60,10 @@ namespace Wallet.Api.Controllers
         }
 
         [HttpGet("GetTransationByWalletId/{walletId}")]
-        public async Task<ActionResult<List<WalletTransactionResultDto>>> GetTransationByWalletId(Guid walletId)
+        public async Task<ActionResult<ResponseDto<List<WalletTransactionResultDto>>>> GetTransationByWalletId(Guid walletId)
         {
             var result = await _service.GetByWalletId(walletId);
-            return Json(result);
+            return Json(result.Data);
         }
     }
 }

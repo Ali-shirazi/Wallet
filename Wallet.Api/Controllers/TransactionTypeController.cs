@@ -2,6 +2,7 @@
 using Wallet.Api.Application.Services.WalletTransactionTypeService;
 using Wallet.Shared.Contract.Dtos;
 using Wallet.Shared.Contract.ResultDtos;
+using Wallet.Shared.Contract.WalletTransaction;
 
 namespace Wallet.Api.Controllers
 {
@@ -22,7 +23,7 @@ namespace Wallet.Api.Controllers
         {
             var result = await _service.Create(dto);
 
-            return Json(result.Data);
+            return result;
         }
 
 
@@ -38,7 +39,7 @@ namespace Wallet.Api.Controllers
         public async Task<ActionResult<ResponseDto<bool>>> UpdateWalletTransactionsType(WalletTransactionTypeResultDto dto)
         {
             var result = await _service.Update(dto);
-            return Json(result.Data);
+            return result;
         }
 
 
@@ -47,7 +48,7 @@ namespace Wallet.Api.Controllers
         public async Task<ActionResult<ResponseDto<bool>>> DeleteWalletTransactionType(Guid id)
         {
             var result = await _service.Delete(id);
-            return Json(result.Data);
+            return result;
         }
 
 
@@ -57,15 +58,15 @@ namespace Wallet.Api.Controllers
         {
             var result = await _service.GetById(id);
 
-            return Json(result.Data);
+            return result;
         }
 
 
         [HttpGet("GetForWallet")]
-        public async Task<IActionResult> GetForWallet()
+        public async Task<ActionResult<ResponseDto<List<TransactionTypeForWallet>>>> GetForWallet()
         {
             var result = await _service.GetForWallet();
-            return Json(result);
+            return Json(result.Data);
         }
     }
 }

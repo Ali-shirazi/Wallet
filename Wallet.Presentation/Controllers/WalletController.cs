@@ -30,7 +30,7 @@ namespace Wallet.Presentation.Controllers
         {
             var res = await _WalletService.GetAll(_serverName);
 
-            return View(res);
+            return View(res.Data);
         }
 
         [HttpGet]
@@ -38,7 +38,7 @@ namespace Wallet.Presentation.Controllers
         {
 
             var res = await _WalletService.GetAll(_serverName);
-            return View(res);
+            return View(res.Data);
 
         }
 
@@ -46,7 +46,7 @@ namespace Wallet.Presentation.Controllers
         public async Task<IActionResult> GetById(Guid Id)
         {
             var res = await _WalletService.GetById(_serverName, Id);
-            return PartialView(res);
+            return PartialView(res.Data);
         }
 
         [HttpGet]
@@ -59,14 +59,13 @@ namespace Wallet.Presentation.Controllers
         public async Task<IActionResult> _Update(Guid Id)
         {
             var res = await _WalletService.GetById(_serverName, Id);
-            return PartialView(res);
+            return PartialView(res.Data);
         }
         [HttpGet]
         public async Task<IActionResult> _Create()
         {
-
             var res = await _WalletService.GetAllSubSystem(_serverName);
-            var subSystemList = new SelectList(res, "Id", "Name");
+            var subSystemList = new SelectList(res.Data, "Id", "Name");
             ViewBag.SubSystemList = subSystemList;
             return PartialView();
         }
@@ -76,7 +75,7 @@ namespace Wallet.Presentation.Controllers
           var res = await _TransactionTypeService.GetTransactionForWallet(_serverName);
             var mylist = new List<TransactionTypeForWalletVm>();
             ViewBag.WIdd = walletId;
-            return PartialView(res);
+            return PartialView(res.Data);
 
           
         }
@@ -85,7 +84,7 @@ namespace Wallet.Presentation.Controllers
             var res = await _TransactionTypeService.GetTransactionForWallet(_serverName);
             var mylist = new List<TransactionTypeForWalletVm>();
             ViewBag.WIdd = walletId;
-            return PartialView(res);
+            return PartialView(res.Data);
         }
         [HttpPost]
         public async Task<IActionResult> Transactionwithdrawal(CreateWalletTransactionDto data)

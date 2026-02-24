@@ -25,10 +25,6 @@ namespace Wallet.Service.Services.TransactionService
 
                 var json = JsonConvert.SerializeObject(data);
                 var response = await _client.PostAsync("api/Transaction/AddTransaction", new StringContent(json, Encoding.UTF8, "application/json"));
-
-                // EnsureSuccessStatusCode را حذف کردیم تا مدیریت خطا دست ما باشد
-                // response.EnsureSuccessStatusCode(); 
-
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
@@ -192,11 +188,13 @@ namespace Wallet.Service.Services.TransactionService
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<ResponseDto<List<TransactionVm>>>(responseContent);
+                    // چون API آرایه برمی‌گرداند، ابتدا به لیست تبدیل می‌کنیم
+                    var data = JsonConvert.DeserializeObject<List<TransactionVm>>(responseContent);
+                    return new ResponseDto<List<TransactionVm>> { Data = data };
                 }
                 else
                 {
-                    throw new Exception("GetTransactionByWalletId");
+                    throw new Exception("Error in GetAll");
                 }
             }
             catch (Exception)

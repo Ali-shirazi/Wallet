@@ -16,6 +16,6 @@ namespace Wallet.Api.Application.Services.WalletTransactionTypeService
         Task<ResponseDto<bool>> Update(WalletTransactionTypeResultDto transactionResultDto);
         Task<ResponseDto<bool>> Delete(Guid id);
         Task<ResponseDto<WalletTransactionTypeResultDto?>> GetById(Guid id);
-        Task<List<TransactionTypeForWallet>> GetForWallet();
+        Task<ResponseDto<List<TransactionTypeForWallet>>> GetForWallet();
     }
 }

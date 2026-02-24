@@ -25,7 +25,7 @@
 
         <div class="text-center mt-4">
             <button type="button" class="btn btn-success px-5" onclick="sharjSubmitfunc()">
-                ثبت برداشت
+                ثبت 
             </button>
         </div>
     </div>
@@ -48,35 +48,42 @@
             });
             return;
         }
-
         $.ajax({
-            cache: false,
-            url: "/Wallet/Transactionwithdrawal",
             type: "POST",
+            url: "/Wallet/Transactionwithdrawal",
             data: {
                 WalletId: walletId,
                 Amount: amount,
                 TransactionTypeCode: transactionTypeCode
             },
-            success: function () {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'موفق!',
-                    text: 'برداشت با موفقیت انجام شد'
-                }).then(() => {
-                    var modalEl = document.getElementById('my_md_modal');
-                    var modalInstance = bootstrap.Modal.getInstance(modalEl);
-                    $('#my_md_modal .modal-body').html('');
-                    modalInstance.hide();
-                });
+            success: function (response) {
+                if (response.state > 0 && response.state < 1000) {
+                    swal.fire({
+                        title: 'موفق!',
+                        html: response.message,
+                        icon: 'success',
+                        confirmButtonText: 'تایید'
+                    }).then(function () {
+                        window.location.reload();
+                    });
+                } else {
+                    swal.fire({
+                        title: 'خطا!',
+                        html: response.message,
+                        icon: 'error',
+                        confirmButtonText: 'تایید'
+                    });
+                }
             },
-            error: function () {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'خطا',
-                    text: 'مشکلی در انجام عملیات پیش آمد'
+            error: function (xhr, ajaxOptions, thrownError) {
+                swal.fire({
+                   title: 'خطا!',
+                   html: 'خطا در برقراری ارتباط با سرور',
+                   icon: 'error',
+                   confirmButtonText: 'تایید'
                 });
             }
         });
     }
+
 </script>
