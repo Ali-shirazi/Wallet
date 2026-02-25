@@ -16,17 +16,15 @@ namespace Wallet.Presentation.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var token = HttpContext.Session.GetString("_token")!;
-            var res = await _transactionService.GetAll(token, _serverName);
+            var res = await _transactionService.GetAll(_serverName);
             return View(res.Data);
         }
-         
+
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-          var token = HttpContext.Session.GetString("_token")!;
 
-            var res = await _transactionService.GetAll(token,_serverName);
+            var res = await _transactionService.GetAll(_serverName);
             return View(res.Data);
         }
 

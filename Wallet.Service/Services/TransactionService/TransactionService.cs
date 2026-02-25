@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace Wallet.Service.Services.TransactionService
                     catch
                     {
                         var resultId = JsonConvert.DeserializeObject<int>(responseContent);
-                        return new ResponseDto<int> { Data = resultId};
+                        return new ResponseDto<int> { Data = resultId };
                     }
                 }
                 else
@@ -101,7 +102,7 @@ namespace Wallet.Service.Services.TransactionService
                     catch
                     {
                         var result = JsonConvert.DeserializeObject<bool>(responseContent);
-                        return new ResponseDto<bool> { Data = result};
+                        return new ResponseDto<bool> { Data = result };
                     }
                 }
                 else
@@ -115,14 +116,13 @@ namespace Wallet.Service.Services.TransactionService
             }
         }
 
-        public async Task<ResponseDto<List<TransactionVm>>> GetAll(string token,string serverName)
+        public async Task<ResponseDto<List<TransactionVm>>> GetAll(string serverName)
         {
             try
             {
                 _client.BaseAddress = new Uri(serverName);
                 _client.DefaultRequestHeaders.Accept.Clear();
                 _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
                 var response = await _client.GetAsync("api/Transaction/GetAllTransactions");
                 response.EnsureSuccessStatusCode();
@@ -205,3 +205,4 @@ namespace Wallet.Service.Services.TransactionService
         }
     }
 }
+
