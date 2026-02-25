@@ -20,7 +20,7 @@ namespace Wallet.Presentation.Controllers
             var res = await _transactionService.GetAll(token, _serverName);
             return View(res.Data);
         }
-
+         
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
