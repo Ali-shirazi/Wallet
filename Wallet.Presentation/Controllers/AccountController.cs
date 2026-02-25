@@ -58,7 +58,7 @@ namespace Wallet.Presentation.Controllers
                 return RedirectToAction(nameof(Login));
             }
 
-            HttpContext.Session.SetString("_Token", data.Token);
+            HttpContext.Session.SetString("_token", data.Token);
             HttpContext.Session.SetString("_usr", data.UserId.ToString());
             HttpContext.Session.SetString("_role", data.Role.ToString());
 

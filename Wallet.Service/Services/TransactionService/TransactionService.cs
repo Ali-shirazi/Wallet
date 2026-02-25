@@ -115,13 +115,14 @@ namespace Wallet.Service.Services.TransactionService
             }
         }
 
-        public async Task<ResponseDto<List<TransactionVm>>> GetAll(string serverName)
+        public async Task<ResponseDto<List<TransactionVm>>> GetAll(string token,string serverName)
         {
             try
             {
                 _client.BaseAddress = new Uri(serverName);
                 _client.DefaultRequestHeaders.Accept.Clear();
                 _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
                 var response = await _client.GetAsync("api/Transaction/GetAllTransactions");
                 response.EnsureSuccessStatusCode();

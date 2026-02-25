@@ -11,7 +11,7 @@ namespace Wallet.Service.Services.TransactionService
     public interface ITransactionService
     {
 
-        Task<ResponseDto<List<TransactionVm>>> GetAll(string _serverName);
+        Task<ResponseDto<List<TransactionVm>>> GetAll(string token,string _serverName);
 
         Task<ResponseDto<TransactionVm>> GetById(string serverName, Guid Id);
 

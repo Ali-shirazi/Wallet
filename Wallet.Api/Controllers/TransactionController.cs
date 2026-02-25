@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Wallet.Api.Application.Services.WalletTransactionService;
 using Wallet.Shared.Contract.Dtos;
 using Wallet.Shared.Contract.ResultDtos;
@@ -7,6 +8,7 @@ namespace Wallet.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    
     public class TransactionController : Controller
     {
         private readonly IWalletTransactionService _service;
@@ -27,6 +29,7 @@ namespace Wallet.Api.Controllers
 
 
         [HttpGet("GetAllTransactions")]
+        [Authorize]
         public async Task<ActionResult<ResponseDto<List<WalletTransactionResultDto>>>> GetAllTransactions()
         {
             var result = await _service.GetAll();
